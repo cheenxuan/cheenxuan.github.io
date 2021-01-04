@@ -22,6 +22,254 @@
       </categories>
   </entry>
   <entry>
+    <title>计算机网络</title>
+    <url>/2021/01/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>[toc]</p>
+<h2 id="计算机网络简史"><a href="#计算机网络简史" class="headerlink" title="计算机网络简史"></a>计算机网络简史</h2><p>世界第一台电子计算机ENIAC<br>–&gt;集成电路–&gt;<br>早起计算机<strong>体积大</strong><br>集成电路产生后，计算机体积下降<br>杰克基尔.比发明世界上第一个芯片，体积非常小<br>理论发展：</p>
+<ul>
+<li>Paul Baran提出分布式可适应信息快交换集成电路</li>
+<li>Donald Davies提出封包交换</li>
+<li><em>封包交换算法*</em>：解决数据如何从一个点通过复杂网络到达另一个点的问题。<br>材料发展：<br>1858年跨大西洋同轴电缆：材料是同轴电缆，每分钟传输120个字。<br>同轴电缆：一个导线，速度慢。<br>双绞线电缆：导线两两缠绕，传输速度由导体材料决定，速度较快。<br>光纤：光传输，速度最快（10Gbps），能量耗损低。<br>操作系统：</li>
+<li><em>分时系统*</em>：操作系统里能跑多个应用且单个应用也需要使用分时。<br>互联网发展：<br>1969年出现了ARPANET（阿帕网），也就是互联网的雏形，仅连接四个节点，传输速率低，没应用场景。</li>
+<li>应用程序：依赖性</li>
+<li>互联网地址：IP协议</li>
+<li>传输和研发成本：传输的正确性（TCP）</li>
+<li>带宽： 网速慢</li>
+<li>网络安全：明文传输数据</li>
+<li>标准进化：互联网兼容性差，出现OSI7层模型解决问题</li>
+<li>商业力量：商业力量介入<br>万维网发展：</li>
+<li>第一个浏览器万维网（World wide web）蒂姆·博纳斯·李</li>
+<li>应用层协议（HTTP协议）的构建</li>
+<li>HTTP协议成功的原理：介入互联网的应用增多，成本大，对界面的描述困难。<br>无线技术发展：<br>WaveLan（1990）–&gt;热点接入（1993）–&gt;802.11协议出世（1997）–&gt;WIFI开始普及（2003）–&gt;WIFI（2013）<br>1997 802.11    2Mbps<br>1999 802.11B   11Mbps<br>   802.11A   54Mbps<br>2003 802.11G   造价下降<br>2009 802.11N   600Mbps  支持2.4GHz和5GHz 2.4GHz传播更远更容易穿透更容易受到干扰，5GHz传播更近更不容易受到干扰<br>2013 802.11AC  WIFI5 7000Mbps<br>智能手机&amp;移动互联网：<br>乔布斯发明智能手机，拓展手机边界能力<br>流量价格：<br>流量价格降低，降低了手机联网延迟的问题<br>展望未来：</li>
+<li>万物互联：任何设备都有芯片，芯片体积小，成本低，网络技术成熟</li>
+<li>5G:速度快，延迟低。</li>
+<li>卫星上网：网络覆盖远，包括偏远地区</li>
+</ul>
+<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p>OSI模型指的是Open System Interconnection Reference Model，即<strong>开放式系统互联模型</strong>。它是世界上第一个试图在世界范围内规范网络标准的框架。<br>产生背景：<br>基础建设在学术界早已成型，如封包交换原理理论、数据传输能力等。</p>
+<ul>
+<li>应用层（Application Layer）<br>应用层位于OSI模型最上方，只关心业务逻辑，不关心数据的传输</li>
+<li>表现层（Persentation Layer）<br>负责协商用于传输的数据格式，并转换数据格式</li>
+<li>会话层（Session Layer）<br>负责管理两个联网实体间的连接，提供一个稳定实时的连接</li>
+<li>传输层（Transport Layer）<br>负责将数据从一个实体（一个服务或应用传输到另一个实体，但不负责数据传输的方式），主要负责数据拆分并封包<br>  传输层的能力<ul>
+<li>数据分隔重组：将数据拆分后按顺序重组</li>
+<li>纠错：在数据传输过程中出现问题后采取方式进行纠正</li>
+<li>管理连接：处理数据的频繁交换</li>
+<li>流量控制：控制传输数据的速率</li>
+<li>端口寻址：标明参与传输的实体的端口号</li>
+</ul>
+</li>
+<li>网络层（Network Layer）<br>负责把一个封包从一个IP传输到另一个IP地址<br>路由算法：帮助路由选择下一个目的地用的</li>
+<li>数据链路层（Data Link Layer）<br>确保两个临近设备间数据的传输，并隐藏底层实现<br>帧同步：两个设备之间传输时的协商速率问题<br>数据纠错</li>
+<li>物理层（Physical Layer）<br>封装和隐藏具体的传输手段，并提供稳定的传输接口<br>比如：电缆、光纤、蓝牙、WIFI等</li>
+</ul>
+<p>OSI的问题<br>分层设计较为臃肿，并非每一层都为必要的<br>应用层、表示层、会话层 –&gt; 应用层</p>
+<h2 id="TCP-IP协议群"><a href="#TCP-IP协议群" class="headerlink" title="TCP/IP协议群"></a>TCP/IP协议群</h2><p>OSI无实际可行方案<br>罗伯特·卡恩和文顿·顿瑟夫提出的TCP协议<br>TCP/IP 协议群</p>
+<ol>
+<li>报文拆分：数据量大，网络底层设备不支持，复用路径</li>
+<li>增加协议头：数据分块后在接收端需要重组，所以需要使用头部来添加一些描述字段</li>
+<li>数据在相邻设备间数据传递：网络边界</li>
+<li>路由和寻址：路由算法:通过算法寻找下一个要到达的节点</li>
+<li>数据重组</li>
+</ol>
+<p>5层模型</p>
+<ul>
+<li>应用层<br>数据从一个应用发往另一个应用的过程</li>
+<li>传输层<br>主机到主机之间的传输 tcp协议头</li>
+<li>网络层<br>提供路由和寻址 IP头</li>
+<li>数据链路层<br>两个节点之间的物理连接</li>
+<li>物理层<br>负责0-1信号的传输</li>
+</ul>
+<p>5层模型和OSI的区别</p>
+<ul>
+<li>删除了会话层，会话是虚拟概念，不是必须的</li>
+<li>删除了表示层，数据压缩、数据格式转换不是应用必须的</li>
+</ul>
+<p>TCP/IP协议群可选性</p>
+<ul>
+<li>传输层：TCP协议、UDP协议、TLS/SSL、SCTP等</li>
+<li>网络层：IP协议（ipv4和ipv6）、ICMP协议、IPSec协议</li>
+</ul>
+<h2 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h2><ul>
+<li><p>概述<br>TCP全名是（Transport Control Protocol），是一个可以提供可靠的、支持全双工、连接导向的协议，因此在客户端和服务端之间传输数据的时候，是必须先建立一个连接的。</p>
+</li>
+<li><p>TCP的特点</p>
+<ol>
+<li>连接<br>是虚拟、抽象的概念，能让两个通信的程序间确保彼此都在线，加快响应请求速度，连接也被称为会话（Session）。使通信更稳定、安全，消耗更多资源。</li>
+<li>全双工<br>单工：任何时刻数据只能单向发送<br>半双工：允许数据在两个方向上的传输，在某一时刻，只允许数据在一个方向上传输<br>全双工：任何时刻都可以双向发送</li>
+<li>可靠性<br>可靠性指数据保证无损传输</li>
+</ol>
+</li>
+<li><p>TCP协议的工作工程<br>  建立连接的过程（三次握手）</p>
+<ul>
+<li><p>客户端发送SYN</p>
+</li>
+<li><p>服务端准备好进行连接</p>
+</li>
+<li><p>服务端针对客户端的SYN给ACK</p>
+</li>
+<li><p>服务端发送SYN</p>
+</li>
+<li><p>客户端准备就绪</p>
+</li>
+<li><p>客户端针对服务端的SYN给ACK<br><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm3eatreiej311o0j20vn.jpg" alt=""></p>
+<p>断开连接的过程（四次挥手）</p>
+</li>
+<li><p>客户端发送断开请求FIN</p>
+</li>
+<li><p>服务端收到请求，发送ACK （无法与FIN打包发送）</p>
+</li>
+<li><p>服务端经过一个等待，确定可以关闭连接，发送FIN</p>
+</li>
+<li><p>客户端收到FIN，处理完自己的事情后发送ACK</p>
+<p>传输数据</p>
+</li>
+</ul>
+<ul>
+<li>顺序保证<br><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm3emphpi8j31120i0dh5.jpg" alt=""></li>
+</ul>
+<ul>
+<li><p>TCP序号：发送序号（Seq）、接收序号（Ack）</p>
+</li>
+<li><p>一个段的发送序号是另一个端的接收序号</p>
+<p>TCP协议：报文拆分–&gt;增加TCP头–&gt;数据重组</p>
+</li>
+<li><p>报文拆分：拿到应用层的数据进行拆分，拆分成TCP段 注：应用层数据很大时无法一次性传输完，拆分后可实现并行传输</p>
+</li>
+<li><p>增加TCP头<br>  源端口：描述发送方机器上的引用；<br>  目标端口：描述接收方服务器上的应用；<br>  发送序号（Seq）和接收序号（Ack）每个序号32个字节；<br>  标志位：</p>
+<ul>
+<li>NS、CWR、ECN：TCP扩展协议</li>
+<li>ECN：显示拥塞控制协议，有助于帮助解决延迟和丢包问题</li>
+<li>URG：紧急标志位</li>
+<li>SYN（Synchronized Sequence Numbers）：同步序号，也就是在建立连接</li>
+<li>FIN：终止连接</li>
+<li>ACK(Achnowledgment):响应</li>
+<li>PSH（push）：传送数据</li>
+<li>RST（Reset Connection）：重置连接<br>TCP协议周边配置</li>
+<li>纠错能力：保证数据可靠性；</li>
+<li>流控能力：协同两边速率，保证可靠性<br>纠错和Checksum</li>
+<li>TCP拥有一个16bit的Checksum字段</li>
+<li>Checksum是一个函数，发送方把元文映射到一个不可逆的16bit的编码中这样就可以知道原文传输过程中又有发生变化<br>流控能力</li>
+<li>主要目标：让发送方和接收方协商一个合理的收发速率，让两边都可以稳定的工作</li>
+<li>利用滑动窗口<h2 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h2>IP协议（Internet Protocal）：网络层协议。<br>IP协议可能遇到的问题<br>封包损坏、丢包、重发、乱序<br>网络层需要解决的3个问题<br>延迟、吞吐量、丢包率<br>IP协议的架构<br>IP协议目前主要有两种架构，Ipv4和Ipv6，Ipv4是目前应用最广泛的互联网协议。<br>IP协议的工作原理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>分片（Fragmentation）<ul>
+<li>把数据切分成片</li>
+<li>适配底层传输网络</li>
+</ul>
+</li>
+<li>增加协议头 （IP Header）<br><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm3j3ra76yj311s0h20tq.jpg" alt=""><br>Source address（源IP）<br>Destination address（目的IP）<br>Type of service（服务类型）：服务的类型，是为了响应不同的用户诉求，用于选择延迟、吞吐量和丢包率之间的关系。<br>IHL（IP协议头长度）：IP协议头的大小。<br>Total length（报文的长度）：报文（封包datagram）的长度。<br>Identification：报文的ID，发送方分配，代表顺序<br>Fragment offset：描述是否要分包（拆分），和如何拆分。<br>Time To Live：封包存活的时间。<br>Protocol：描述上层的协议，比如TCP=6，UDP=17<br>Options：可选项<br>Checksum：检验封包的正确性</li>
+<li>延迟、吞吐量、丢包率<br> 延迟：1bit的数据从网络的1个终端传送到另一个终端需要的时间<br> 吞吐量：单位时间内可以传输的平均数据量<br> 丢包率：发送出去的封包没有到达目的地的比例</li>
+<li>寻址（Addressing）<br> 寻址：给一个地址，然后找到这个东西<br> Ipv4地址（32位）：逐级寻址</li>
+<li>路由（Routing）<br>若寻找的IP地址不在局域网中，需要路由找到去往对应网络的路径<br>IP地址和子网掩码位与的过程是由路由算法实现的。</li>
+</ol>
+<h2 id="Ipv6"><a href="#Ipv6" class="headerlink" title="Ipv6"></a>Ipv6</h2><p>Ipv4只能支持43亿设备，不够用<br>目前通过拆分子网的方式增加 （通过NAT协议转换）NAT(network address translate)<br>Ipv6的工作原理<br>Ipv6和Ipv4两者工作原理相似，为切片、增加封包头、路由（寻址）几个阶段。<br>Ipv6和Ipv4的主要区别：</p>
+<ul>
+<li>地址<ul>
+<li>地址数量：Ipv4有4个8位，共32位，Ipv6有8个16位，共128位</li>
+<li>分隔符号：<ul>
+<li>Ipv4的地址用.分隔，如：103.28.7.35。每一位是8位，用0-255的数字表示；</li>
+<li>Ipv6的地址用：分隔，如0123:4567:89ab:dcef:0123:4567:89ab:cdef。每个是一个16位的16进制数字，就是4个字符。</li>
+</ul>
+</li>
+<li>书写方式：Ipv6地址可简写</li>
+</ul>
+</li>
+<li>寻址<ul>
+<li>全局单播<br>  站点前缀（Site Prefix）：48bit，一般是由ISP（internet Service Provider，运营商）或者RIR（Regional Internet Registry，地区性互联网注册机构）RIR将IP地址分配给运营商。<br>  子网号（subnet ID）:16bit,用于站点内部区分子网<br>  接口号（Interface ID）：64bit，用于站点内部区分设备</li>
+<li>本地单播<br>  定义：给定地址，本地网定位设备<br>  Link-local必须以fe80开头</li>
+<li>分组多播<br>  需要以8个1，也就是ff00开头，后面跟上一个分组的编号<br>  所在的网络中已经定义了该分组编号，而且有设备可以识别这个编号<br>  拥有分组下设备的完整清单，并把数据发送给对应的设备们<br>  Ipv4也支持分组多播，但是需要网络配置整体配合<br>新设备接入<br>  新设备接入Ipv6后，会使用Ipv6的邻居发现协议（Neighbour Discover Protocol）为自己申请一个IP地址。当新设备需要发送信息到目的地时，还可以通过ND协议广播查询目标设备。然后如果需要路由，还可以通过ND查找路由器。<br>  传统：ARP协议（Address Resolution Protocol，地址解析协议），每个节点存储许多额外信息。<br>  Ipv6：更加无状态化，减少数据冗余带来的风险和负担。<h2 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h2>1980年由科学家David P.Reed提出<br>协议简单，搭建在IP协议之上<br>尽可能的减少通信机制，速度非常快</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>UDP协议介绍<br>  全称：User Datagram Protocol，用户数据报文协议<br>  定义：在传输层提供直接发送报文（Datagram）的能力。Datagram是数据传输的最小单位。<br>  目标：发送报文，无法拆分数据<pre><code>为什么不直接调用IP协议？IP协议只能把数据从一个网络接口发送到另一个网络接口，无法寻址到应用。</code></pre>  设计目标：允许用户直接发送报文的情况下最大限度的简化应用的设计<pre><code>Source Port：源端口号
+Destination Port：目标端口号
+Length：消息体长度
+Checksum：检查封包是否出错
+Data octets：一个字节一个字节的数据，Octet是8位</code></pre>  UDP和TCP的区别</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>UDP</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本质</td>
+<td>提供报文交换，简化协议</td>
+<td>提供可靠的网络传输</td>
+</tr>
+<tr>
+<td>可靠性</td>
+<td>不可靠</td>
+<td>可靠</td>
+</tr>
+<tr>
+<td>顺序</td>
+<td>无序</td>
+<td>有序</td>
+</tr>
+<tr>
+<td>负载</td>
+<td>负载小</td>
+<td>负载大</td>
+</tr>
+<tr>
+<td>广播场景</td>
+<td>合适</td>
+<td>不适合，代价大</td>
+</tr>
+</tbody></table>
+<p>聊天室场景分析<br>聊天室是否适合UDP？ 不适合，聊天室并发高但流量不大，依赖可靠性<br>HTTP协议适不适合UDP？ 合适，HTTP3.0就是建立在UDP上的，重新搭建了协议，重新实现了可靠性 提高了速度又能保证了可靠性</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>1991年伯纳斯·李，发明了万维网（WWW），写了第一个Web Server<br>HTTP协议：浏览器和Web Server 之间通信的协议<br>HTTP协议（Hyper Text Transfer Protocol）:应用层协议</p>
+<ul>
+<li>请求和返回<br>  一次请求，分成头（head）和体（body），返回同请求</li>
+<li>URL<br>  URL（Uniform Resource Locator）：用于在互联网上定位（Locate）一个资源（Resource）<br>  scheme://host:port/path?query#fragment</li>
+<li>DNS<br>  DNS(Domin Name System):域名解析系统。<br>  DNS Query的分级缓存策略：<ol>
+<li>先查询浏览器的本地缓存（通常在内存中）</li>
+<li>本地没缓存，查找操作系统的host文件，该文件在linux中再/etc/hosts里</li>
+<li>上述步骤没有找到，DNS会查询本地服务提供商（ISP）</li>
+<li>ISP没有，请求指向Root根服务器，返回顶级域名服务器地址</li>
+<li>浏览器发送请求给顶级域名服务器，返回权威域名服务器地址</li>
+<li>浏览器发送Lookup请求给权威域名服务器，找到具体DNS记录，返回给浏览器</li>
+</ol>
+<ul>
+<li>DNS记录<br>DNS的数据以记录形式存储，就叫DNS记录。DNS记录的种类非常多，有30多种。每条DNS记录描述了网址（URL）的一种关系。</li>
+</ul>
+<ul>
+<li>A记录 功能：定义主机的Ip地址</li>
+<li>AAAA记录 功能：定义主机的Ipv6的地址</li>
+<li>CNAME记录 功能：定义域名的别名</li>
+<li>MX记录 功能：定义邮件服务器所在的位置</li>
+<li>NS记录 功能：定义DNS信息服务器所在的位置</li>
+<li>SOA记录 功能：定义在多个服务器中哪个是主服务器</li>
+<li>TXT记录 功能：提供一个文本</li>
+</ul>
+</li>
+<li>内容分发网络（CDN）<br>  CDN（Content Delivery Network）将请求分散到全世界各地，分发流量，加快访问速度<br>  CDN上无法部署业务逻辑，更新慢，无法保证一致性，比较适合纯的静态资源，比如图片、视频、脚本文件、样式文件等。</li>
+<li>请求头/响应头<br>  Content—Length：发送/接收Body内容的字节数<br>  User-Agent：帮助客户端用了什么浏览器、操作系统等。<br>  Content-Type：请求的时候，告知服务器数据的媒体类（MediaType/MIMEType）。返回的时候告知客户端，数据的媒体类型。  <pre><code>text/html：HTML格式
+text/css：css文本
+application/json：JSON数据格式
+image/jpeg：jpg图片格式
+text/plain：纯文本</code></pre>  Origin：描述请求来源地址<br>  Accept：是HTTP协议协商能力的体现，用于建议服务器端返回何种媒体类型（MIME Type）<br>  Accept-Encoding：建议服务端发送哪种编码（压缩算法）<br>  Accept-Language：建议服务端传递哪种语言<br>  Referer：高速服务端打开当前页面的上一张页面的URL<pre><code>非浏览器环境有时候不发送Referer（或者虚拟Referer，通常是爬虫）</code></pre></li>
+</ul>
+]]></content>
+      <categories>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>“深入理解AQS和CAS原理”</title>
     <url>/2020/09/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3AQS%E5%92%8CCAS%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[]]></content>
