@@ -26,77 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kotlin的应用</title>
-    <url>/2021/04/08/Kotlin%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="Kotlin概述"><a href="#Kotlin概述" class="headerlink" title="Kotlin概述"></a>Kotlin概述</h2><ul>
-<li>一种在Java虚拟机上运行的静态类型编程语言</li>
-<li>可以和Java代码相互运作</li>
-<li>容易在Android项目中替代Java或者同Java一起使用</li>
-</ul>
-<h2 id="Kotlin特点"><a href="#Kotlin特点" class="headerlink" title="Kotlin特点"></a>Kotlin特点</h2><ul>
-<li>简单易用</li>
-<li>安全</li>
-<li>互操作性</li>
-<li>工具友好</li>
-</ul>
-<p>以上是文章摘要 <span id="more"></span> 以下是余下全文 </p>
-<h2 id="Kotlin构建流程"><a href="#Kotlin构建流程" class="headerlink" title="Kotlin构建流程"></a>Kotlin构建流程</h2><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpchbozwzuj30tq0eq75d.jpg" alt="Kotlin与Java构建流程"></p>
-<h2 id="Kotlin必备基础"><a href="#Kotlin必备基础" class="headerlink" title="Kotlin必备基础"></a>Kotlin必备基础</h2><h3 id="Kotlin基本数值类型"><a href="#Kotlin基本数值类型" class="headerlink" title="Kotlin基本数值类型"></a>Kotlin基本数值类型</h3><p>Kotlin的基本数值类型包括Byte、Short、Int、Long、Float、Double等。<em>不同于Java</em>的是，字符不属于数值类型，是一个独立的数据类型。</p>
-<blockquote>
-<p>对于整数，存在四种具有不同大小和值范围的类型</p>
-</blockquote>
-<h3 id="Kotlin-数组"><a href="#Kotlin-数组" class="headerlink" title="Kotlin 数组"></a>Kotlin 数组</h3><h3 id="Kotlin集合"><a href="#Kotlin集合" class="headerlink" title="Kotlin集合"></a>Kotlin集合</h3><p>Kotlin标准库提供了一整套用于管理集合的工具，集合是可变数量（可能为零）的一组条目，各种结合对于解决为题都具有重要意义，并且经常用到。</p>
-<ul>
-<li>List是一个有序集合，可通过索引（反应元素位置的整数）访问元素。元素可以在list中出现多次。列表的一个示例就是一句话：有一组字、这些字的顺序很重要并且字可以重复。</li>
-<li>Set是唯一元素的集合。它反应了集合（Set）的数学抽象：一组无重复的对象。一般来说set中元素的顺序并不重要。例如，字母表是字母的集合（Set）。</li>
-<li>Map（或者字典）是一组键值对。键是唯一的，每个键都刚好映射到一个值，值可以重复。</li>
-</ul>
-<h4 id="集合的可变性与不可变性"><a href="#集合的可变性与不可变性" class="headerlink" title="集合的可变性与不可变性"></a>集合的可变性与不可变性</h4><p>那什么叫Kotlin集合的可变性与不可变性呢？在Kotlin中存在两种意义上的集合，一种是可以修改的一种是不可修改的<br><em>不可变集合</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//list</span><br><span class="line">val stringList = listOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringList)</span><br><span class="line">//set</span><br><span class="line">val stringSet = setOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringSet)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><em>可变集合</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">val numbers = mutableListOf(1,2,3,4)</span><br><span class="line">numbers.add(5)</span><br><span class="line">numbers.removeAt(1)</span><br><span class="line">numbers[0] = 0</span><br><span class="line">println(numbers)</span><br></pre></td></tr></table></figure>
-
-<h5 id="原理探索"><a href="#原理探索" class="headerlink" title="原理探索"></a>原理探索</h5><ul>
-<li>Q1：两个具有相同键值对，但顺序不同的map相等吗？为什么？<br>  相等，map的equals方法</li>
-<li>Q2：两个具有相同元素，但单顺序不同的list相等吗？为什么？<br>  不相等</li>
-</ul>
-<h3 id="Kotlin方法与lambda表达式"><a href="#Kotlin方法与lambda表达式" class="headerlink" title="Kotlin方法与lambda表达式"></a>Kotlin方法与lambda表达式</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法可以在文件中直接定义 </p>
-<p>成员方法 在class类中定义</p>
-<p>静态类方法 可以用通过companion object来实现</p>
-<p>静态类 使用修饰符object而不是class</p>
-<p>单表达式方法，当方法返回单个表达式时，恶意省略花括号并且在 = 符号之后指定代码体即可</p>
-<p>可变参数方法 使用vararg 关键字修饰参数</p>
-<h4 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h4><p>对比<br>view.setOnClickListener(new View.OnClickListener(){<br>    @Override<br>    public void onClick(View v){<br>        Toast.makeText(v.getContext(),”Lambda简洁之道”,Toast.LENGTH.LONG).show();<br>    }<br>});</p>
-<p>VS</p>
-<p>view.setOnClickListener{v -&gt; Toast.makeText(v.context,”Lambda简洁之道”,Toast.LENGTH.LONG).show() }</p>
-<p>Lambda表达式的特点：</p>
-<ul>
-<li>是匿名方法</li>
-<li>可传递</li>
-</ul>
-<p>Lambda语法：<br>无参数的情况<br>val/var 变量名 = { 操作的代码 }</p>
-<p>有参数的情况<br>val/var 变量名: (参数类型，参数类型，…) -&gt; 返回值类型 = { 参数1，参数2，… -&gt; 操作的代码 }<br>等价于<br>val/var 变量名 = {参数1：参数类型，参数2：参数类型,… -&gt; 操作的代码}</p>
-<p>it:</p>
-<ul>
-<li>it并不是Kotlin中的一个关键字（保留字）</li>
-<li>it是在当一个高阶方法中Lambda表达式的参数只有一个的时候可以使用it来使用此参数</li>
-<li>it可表示为单个参数的隐式名称，是Kotlin语言约定的</li>
-</ul>
-<h5 id="Kotlin方法进阶"><a href="#Kotlin方法进阶" class="headerlink" title="Kotlin方法进阶"></a>Kotlin方法进阶</h5><p>高阶方法</p>
-<p>闭包</p>
-<p>匿名方法</p>
-<p>方法字面值</p>
-<h3 id="Kotlin类与接口"><a href="#Kotlin类与接口" class="headerlink" title="Kotlin类与接口"></a>Kotlin类与接口</h3><h3 id="Kotlin泛型"><a href="#Kotlin泛型" class="headerlink" title="Kotlin泛型"></a>Kotlin泛型</h3><h3 id="Kotlin注解"><a href="#Kotlin注解" class="headerlink" title="Kotlin注解"></a>Kotlin注解</h3><h3 id="Kotlin扩展"><a href="#Kotlin扩展" class="headerlink" title="Kotlin扩展"></a>Kotlin扩展</h3><p>​    </p>
-]]></content>
-      <categories>
-        <category>Kotlin</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Kotlin</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Launcher启动与ActivityThread深入分析</title>
     <url>/2021/04/12/Launcher%E5%90%AF%E5%8A%A8%E4%B8%8EActivityThread%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h4 id="知识要求"><a href="#知识要求" class="headerlink" title="知识要求"></a>知识要求</h4><ol>
@@ -223,15 +152,26 @@
       </tags>
   </entry>
   <entry>
-    <title>“深入理解AQS和CAS原理”</title>
-    <url>/2020/09/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3AQS%E5%92%8CCAS%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[]]></content>
+    <title>LeetCode 初级</title>
+    <url>/2021/09/26/LeetCode_%E5%88%9D%E7%BA%A7/</url>
+    <content><![CDATA[<h3 id="LeetCode-初级"><a href="#LeetCode-初级" class="headerlink" title="LeetCode 初级"></a>LeetCode 初级</h3><p><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/</a><br><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/</a><br><a href="https://leetcode-cn.com/leetbook/detail/illustrate-lcof/">https://leetcode-cn.com/leetbook/detail/illustrate-lcof/</a><br><a href="https://leetcode-cn.com/leetbook/detail/dfs/">https://leetcode-cn.com/leetbook/detail/dfs/</a></p>
+<h4 id="01-删除排序数组中的重复项"><a href="#01-删除排序数组中的重复项" class="headerlink" title="01 - 删除排序数组中的重复项"></a>01 - 删除排序数组中的重复项</h4><p>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<blockquote>
+<p>说明：首先数组是一个有序数组</p>
+</blockquote>
+<h4 id="02-买卖股票的最佳时机-II"><a href="#02-买卖股票的最佳时机-II" class="headerlink" title="02 - 买卖股票的最佳时机 II"></a>02 - 买卖股票的最佳时机 II</h4><p>给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<blockquote>
+<p>说明： prices数组是无序的 关键点 i + 1天的价格大于 i 天 则在i天买入   如果i + 1天的价格小于i天，则在i天卖出</p>
+<p>另外不能多账户操作 只存在一个账户</p>
+</blockquote>
+]]></content>
       <categories>
-        <category>Java基础</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>Android</tag>
-        <tag>Java</tag>
+        <tag>LeetCode</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -244,6 +184,89 @@
       <tags>
         <tag>计算机基础</tag>
         <tag>计算机原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>“深入理解AQS和CAS原理”</title>
+    <url>/2020/09/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3AQS%E5%92%8CCAS%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kotlin的应用</title>
+    <url>/2021/04/08/Kotlin%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="Kotlin概述"><a href="#Kotlin概述" class="headerlink" title="Kotlin概述"></a>Kotlin概述</h2><ul>
+<li>一种在Java虚拟机上运行的静态类型编程语言</li>
+<li>可以和Java代码相互运作</li>
+<li>容易在Android项目中替代Java或者同Java一起使用</li>
+</ul>
+<h2 id="Kotlin特点"><a href="#Kotlin特点" class="headerlink" title="Kotlin特点"></a>Kotlin特点</h2><ul>
+<li>简单易用</li>
+<li>安全</li>
+<li>互操作性</li>
+<li>工具友好</li>
+</ul>
+<p>以上是文章摘要 <span id="more"></span> 以下是余下全文 </p>
+<h2 id="Kotlin构建流程"><a href="#Kotlin构建流程" class="headerlink" title="Kotlin构建流程"></a>Kotlin构建流程</h2><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpchbozwzuj30tq0eq75d.jpg" alt="Kotlin与Java构建流程"></p>
+<h2 id="Kotlin必备基础"><a href="#Kotlin必备基础" class="headerlink" title="Kotlin必备基础"></a>Kotlin必备基础</h2><h3 id="Kotlin基本数值类型"><a href="#Kotlin基本数值类型" class="headerlink" title="Kotlin基本数值类型"></a>Kotlin基本数值类型</h3><p>Kotlin的基本数值类型包括Byte、Short、Int、Long、Float、Double等。<em>不同于Java</em>的是，字符不属于数值类型，是一个独立的数据类型。</p>
+<blockquote>
+<p>对于整数，存在四种具有不同大小和值范围的类型</p>
+</blockquote>
+<h3 id="Kotlin-数组"><a href="#Kotlin-数组" class="headerlink" title="Kotlin 数组"></a>Kotlin 数组</h3><h3 id="Kotlin集合"><a href="#Kotlin集合" class="headerlink" title="Kotlin集合"></a>Kotlin集合</h3><p>Kotlin标准库提供了一整套用于管理集合的工具，集合是可变数量（可能为零）的一组条目，各种结合对于解决为题都具有重要意义，并且经常用到。</p>
+<ul>
+<li>List是一个有序集合，可通过索引（反应元素位置的整数）访问元素。元素可以在list中出现多次。列表的一个示例就是一句话：有一组字、这些字的顺序很重要并且字可以重复。</li>
+<li>Set是唯一元素的集合。它反应了集合（Set）的数学抽象：一组无重复的对象。一般来说set中元素的顺序并不重要。例如，字母表是字母的集合（Set）。</li>
+<li>Map（或者字典）是一组键值对。键是唯一的，每个键都刚好映射到一个值，值可以重复。</li>
+</ul>
+<h4 id="集合的可变性与不可变性"><a href="#集合的可变性与不可变性" class="headerlink" title="集合的可变性与不可变性"></a>集合的可变性与不可变性</h4><p>那什么叫Kotlin集合的可变性与不可变性呢？在Kotlin中存在两种意义上的集合，一种是可以修改的一种是不可修改的<br><em>不可变集合</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//list</span><br><span class="line">val stringList = listOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringList)</span><br><span class="line">//set</span><br><span class="line">val stringSet = setOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringSet)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><em>可变集合</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">val numbers = mutableListOf(1,2,3,4)</span><br><span class="line">numbers.add(5)</span><br><span class="line">numbers.removeAt(1)</span><br><span class="line">numbers[0] = 0</span><br><span class="line">println(numbers)</span><br></pre></td></tr></table></figure>
+
+<h5 id="原理探索"><a href="#原理探索" class="headerlink" title="原理探索"></a>原理探索</h5><ul>
+<li>Q1：两个具有相同键值对，但顺序不同的map相等吗？为什么？<br>  相等，map的equals方法</li>
+<li>Q2：两个具有相同元素，但单顺序不同的list相等吗？为什么？<br>  不相等</li>
+</ul>
+<h3 id="Kotlin方法与lambda表达式"><a href="#Kotlin方法与lambda表达式" class="headerlink" title="Kotlin方法与lambda表达式"></a>Kotlin方法与lambda表达式</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法可以在文件中直接定义 </p>
+<p>成员方法 在class类中定义</p>
+<p>静态类方法 可以用通过companion object来实现</p>
+<p>静态类 使用修饰符object而不是class</p>
+<p>单表达式方法，当方法返回单个表达式时，恶意省略花括号并且在 = 符号之后指定代码体即可</p>
+<p>可变参数方法 使用vararg 关键字修饰参数</p>
+<h4 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h4><p>对比<br>view.setOnClickListener(new View.OnClickListener(){<br>    @Override<br>    public void onClick(View v){<br>        Toast.makeText(v.getContext(),”Lambda简洁之道”,Toast.LENGTH.LONG).show();<br>    }<br>});</p>
+<p>VS</p>
+<p>view.setOnClickListener{v -&gt; Toast.makeText(v.context,”Lambda简洁之道”,Toast.LENGTH.LONG).show() }</p>
+<p>Lambda表达式的特点：</p>
+<ul>
+<li>是匿名方法</li>
+<li>可传递</li>
+</ul>
+<p>Lambda语法：<br>无参数的情况<br>val/var 变量名 = { 操作的代码 }</p>
+<p>有参数的情况<br>val/var 变量名: (参数类型，参数类型，…) -&gt; 返回值类型 = { 参数1，参数2，… -&gt; 操作的代码 }<br>等价于<br>val/var 变量名 = {参数1：参数类型，参数2：参数类型,… -&gt; 操作的代码}</p>
+<p>it:</p>
+<ul>
+<li>it并不是Kotlin中的一个关键字（保留字）</li>
+<li>it是在当一个高阶方法中Lambda表达式的参数只有一个的时候可以使用it来使用此参数</li>
+<li>it可表示为单个参数的隐式名称，是Kotlin语言约定的</li>
+</ul>
+<h5 id="Kotlin方法进阶"><a href="#Kotlin方法进阶" class="headerlink" title="Kotlin方法进阶"></a>Kotlin方法进阶</h5><p>高阶方法</p>
+<p>闭包</p>
+<p>匿名方法</p>
+<p>方法字面值</p>
+<h3 id="Kotlin类与接口"><a href="#Kotlin类与接口" class="headerlink" title="Kotlin类与接口"></a>Kotlin类与接口</h3><h3 id="Kotlin泛型"><a href="#Kotlin泛型" class="headerlink" title="Kotlin泛型"></a>Kotlin泛型</h3><h3 id="Kotlin注解"><a href="#Kotlin注解" class="headerlink" title="Kotlin注解"></a>Kotlin注解</h3><h3 id="Kotlin扩展"><a href="#Kotlin扩展" class="headerlink" title="Kotlin扩展"></a>Kotlin扩展</h3><p>​    </p>
+]]></content>
+      <categories>
+        <category>Kotlin</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Kotlin</tag>
       </tags>
   </entry>
   <entry>
