@@ -26,6 +26,136 @@
       </tags>
   </entry>
   <entry>
+    <title>Kotlin的应用</title>
+    <url>/2021/04/08/Kotlin%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="Kotlin概述"><a href="#Kotlin概述" class="headerlink" title="Kotlin概述"></a>Kotlin概述</h2><ul>
+<li>一种在Java虚拟机上运行的静态类型编程语言</li>
+<li>可以和Java代码相互运作</li>
+<li>容易在Android项目中替代Java或者同Java一起使用</li>
+</ul>
+<h2 id="Kotlin特点"><a href="#Kotlin特点" class="headerlink" title="Kotlin特点"></a>Kotlin特点</h2><ul>
+<li>简单易用</li>
+<li>安全</li>
+<li>互操作性</li>
+<li>工具友好</li>
+</ul>
+<p>以上是文章摘要 <span id="more"></span> 以下是余下全文 </p>
+<h2 id="Kotlin构建流程"><a href="#Kotlin构建流程" class="headerlink" title="Kotlin构建流程"></a>Kotlin构建流程</h2><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpchbozwzuj30tq0eq75d.jpg" alt="Kotlin与Java构建流程"></p>
+<h2 id="Kotlin必备基础"><a href="#Kotlin必备基础" class="headerlink" title="Kotlin必备基础"></a>Kotlin必备基础</h2><h3 id="Kotlin基本数值类型"><a href="#Kotlin基本数值类型" class="headerlink" title="Kotlin基本数值类型"></a>Kotlin基本数值类型</h3><p>Kotlin的基本数值类型包括Byte、Short、Int、Long、Float、Double等。<em>不同于Java</em>的是，字符不属于数值类型，是一个独立的数据类型。</p>
+<blockquote>
+<p>对于整数，存在四种具有不同大小和值范围的类型</p>
+</blockquote>
+<h3 id="Kotlin-数组"><a href="#Kotlin-数组" class="headerlink" title="Kotlin 数组"></a>Kotlin 数组</h3><h3 id="Kotlin集合"><a href="#Kotlin集合" class="headerlink" title="Kotlin集合"></a>Kotlin集合</h3><p>Kotlin标准库提供了一整套用于管理集合的工具，集合是可变数量（可能为零）的一组条目，各种结合对于解决为题都具有重要意义，并且经常用到。</p>
+<ul>
+<li>List是一个有序集合，可通过索引（反应元素位置的整数）访问元素。元素可以在list中出现多次。列表的一个示例就是一句话：有一组字、这些字的顺序很重要并且字可以重复。</li>
+<li>Set是唯一元素的集合。它反应了集合（Set）的数学抽象：一组无重复的对象。一般来说set中元素的顺序并不重要。例如，字母表是字母的集合（Set）。</li>
+<li>Map（或者字典）是一组键值对。键是唯一的，每个键都刚好映射到一个值，值可以重复。</li>
+</ul>
+<h4 id="集合的可变性与不可变性"><a href="#集合的可变性与不可变性" class="headerlink" title="集合的可变性与不可变性"></a>集合的可变性与不可变性</h4><p>那什么叫Kotlin集合的可变性与不可变性呢？在Kotlin中存在两种意义上的集合，一种是可以修改的一种是不可修改的<br><em>不可变集合</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//list</span><br><span class="line">val stringList = listOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringList)</span><br><span class="line">//set</span><br><span class="line">val stringSet = setOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringSet)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><em>可变集合</em></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">val numbers = mutableListOf(1,2,3,4)</span><br><span class="line">numbers.add(5)</span><br><span class="line">numbers.removeAt(1)</span><br><span class="line">numbers[0] = 0</span><br><span class="line">println(numbers)</span><br></pre></td></tr></table></figure>
+
+<h5 id="原理探索"><a href="#原理探索" class="headerlink" title="原理探索"></a>原理探索</h5><ul>
+<li>Q1：两个具有相同键值对，但顺序不同的map相等吗？为什么？<br>  相等，map的equals方法</li>
+<li>Q2：两个具有相同元素，但单顺序不同的list相等吗？为什么？<br>  不相等</li>
+</ul>
+<h3 id="Kotlin方法与lambda表达式"><a href="#Kotlin方法与lambda表达式" class="headerlink" title="Kotlin方法与lambda表达式"></a>Kotlin方法与lambda表达式</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法可以在文件中直接定义 </p>
+<p>成员方法 在class类中定义</p>
+<p>静态类方法 可以用通过companion object来实现</p>
+<p>静态类 使用修饰符object而不是class</p>
+<p>单表达式方法，当方法返回单个表达式时，恶意省略花括号并且在 = 符号之后指定代码体即可</p>
+<p>可变参数方法 使用vararg 关键字修饰参数</p>
+<h4 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h4><p>对比<br>view.setOnClickListener(new View.OnClickListener(){<br>    @Override<br>    public void onClick(View v){<br>        Toast.makeText(v.getContext(),”Lambda简洁之道”,Toast.LENGTH.LONG).show();<br>    }<br>});</p>
+<p>VS</p>
+<p>view.setOnClickListener{v -&gt; Toast.makeText(v.context,”Lambda简洁之道”,Toast.LENGTH.LONG).show() }</p>
+<p>Lambda表达式的特点：</p>
+<ul>
+<li>是匿名方法</li>
+<li>可传递</li>
+</ul>
+<p>Lambda语法：<br>无参数的情况<br>val/var 变量名 = { 操作的代码 }</p>
+<p>有参数的情况<br>val/var 变量名: (参数类型，参数类型，…) -&gt; 返回值类型 = { 参数1，参数2，… -&gt; 操作的代码 }<br>等价于<br>val/var 变量名 = {参数1：参数类型，参数2：参数类型,… -&gt; 操作的代码}</p>
+<p>it:</p>
+<ul>
+<li>it并不是Kotlin中的一个关键字（保留字）</li>
+<li>it是在当一个高阶方法中Lambda表达式的参数只有一个的时候可以使用it来使用此参数</li>
+<li>it可表示为单个参数的隐式名称，是Kotlin语言约定的</li>
+</ul>
+<h5 id="Kotlin方法进阶"><a href="#Kotlin方法进阶" class="headerlink" title="Kotlin方法进阶"></a>Kotlin方法进阶</h5><p>高阶方法</p>
+<p>闭包</p>
+<p>匿名方法</p>
+<p>方法字面值</p>
+<h3 id="Kotlin类与接口"><a href="#Kotlin类与接口" class="headerlink" title="Kotlin类与接口"></a>Kotlin类与接口</h3><h3 id="Kotlin泛型"><a href="#Kotlin泛型" class="headerlink" title="Kotlin泛型"></a>Kotlin泛型</h3><h3 id="Kotlin注解"><a href="#Kotlin注解" class="headerlink" title="Kotlin注解"></a>Kotlin注解</h3><h3 id="Kotlin扩展"><a href="#Kotlin扩展" class="headerlink" title="Kotlin扩展"></a>Kotlin扩展</h3><p>​    </p>
+]]></content>
+      <categories>
+        <category>Kotlin</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Kotlin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lunix指令入门</title>
+    <url>/2021/10/18/Linux%E6%8C%87%E4%BB%A4%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="目录结构和文件管理指令"><a href="#目录结构和文件管理指令" class="headerlink" title="目录结构和文件管理指令"></a>目录结构和文件管理指令</h3><h4 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a>Linux指令</h4><h5 id="问题一：-rm-rf-指令的作用是？"><a href="#问题一：-rm-rf-指令的作用是？" class="headerlink" title="问题一： rm / rf 指令的作用是？"></a>问题一： rm / rf 指令的作用是？</h5><blockquote>
+<p>什么是Shell？</p>
+<p>Shell把输入的指令，传递给系统去执行。Shell是一个命令行的用户界面。</p>
+</blockquote>
+<p>目标文件的绝对路径（Absolute path），或完全路径（full path）路径</p>
+<p>从/开始，每一层都是一级子目录，知道定位到目标文件为止。</p>
+<p>相对路径（Relative path）是以工作目录为基点的路径</p>
+<ul>
+<li>当用户在/usr目录下的时候，rm文件的相对路径就是bin/rm</li>
+<li>如果用户在/usr/bin目录下的时候，rm文件的路径就是./rm或者rm，用.代表当前目录</li>
+<li>如果用户在/usr/bin/somedir下，那么rm的相对路径就是../rm，用..代表上一级目录</li>
+</ul>
+<blockquote>
+<p>使用cd （change directory）指令切换工作目录的几个注意事项：</p>
+<ul>
+<li>输入cd，不带任何参数会切换到用户目录，Linux中通常是/home/{用户名}</li>
+<li>输入cd . 什么都不会发生，因为.代表当前目录</li>
+<li>输入cd .. 会回退一级目录，因为..代表上一级目录</li>
+<li>输入pwd，（print working directory）打印当前工作目录</li>
+</ul>
+</blockquote>
+<h5 id="几张常见的文件类型"><a href="#几张常见的文件类型" class="headerlink" title="几张常见的文件类型"></a>几张常见的文件类型</h5><p>常见的文件类型有以下7种：</p>
+<p>普通文件、目录文件、可执行文件、管道文件、Socket文件、软链接文件、硬链接文件</p>
+<h6 id="创建删除文件"><a href="#创建删除文件" class="headerlink" title="创建删除文件"></a>创建删除文件</h6><ul>
+<li>使用ls -f 当前文件目录下的文件和它的类型</li>
+<li>使用touch a.txt 创建a.txt文件</li>
+<li>使用man touch查看touch说明书</li>
+<li>使用mkdir hello创建文件夹</li>
+<li>使用rm a.txt 删除a.txt文件</li>
+<li>使用rm -r hello 删除hello目录文件</li>
+<li>使用mkdir -p hello/world 创建多级文件夹</li>
+</ul>
+<h6 id="查阅文件内容"><a href="#查阅文件内容" class="headerlink" title="查阅文件内容"></a>查阅文件内容</h6><ul>
+<li>使用cat指令快速查看/etc/hosts文件</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>源码</tag>
+        <tag>计算机基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>“深入理解AQS和CAS原理”</title>
+    <url>/2020/09/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3AQS%E5%92%8CCAS%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Launcher启动与ActivityThread深入分析</title>
     <url>/2021/04/12/Launcher%E5%90%AF%E5%8A%A8%E4%B8%8EActivityThread%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<h4 id="知识要求"><a href="#知识要求" class="headerlink" title="知识要求"></a>知识要求</h4><ol>
@@ -152,6 +282,76 @@
       </tags>
   </entry>
   <entry>
+    <title>计算机组成原理</title>
+    <url>/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h5 id="不支持递归程序的语言如何实现递归程序？"><a href="#不支持递归程序的语言如何实现递归程序？" class="headerlink" title="不支持递归程序的语言如何实现递归程序？"></a>不支持递归程序的语言如何实现递归程序？</h5><blockquote>
+<p>首先看for循环是如何执行的</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">1</span>,s=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">  s+=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="将for循环用底层的指令实现："><a href="#将for循环用底层的指令实现：" class="headerlink" title="将for循环用底层的指令实现："></a>将for循环用底层的指令实现：</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># int i=1,s=0;</span></span><br><span class="line"><span class="comment"># 对应Java代码，我们首先将1和0存储到两个地址</span></span><br><span class="line"><span class="comment"># 这两个地址我们用$i和$s表示</span></span><br><span class="line">store <span class="comment">#1-&gt;$i//将数字1存入i的地址</span></span><br><span class="line">store <span class="comment">#0-&gt;$s//将数字0存入s的地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#接下来循环要开始了，我们在这里预留一个loop标签</span></span><br><span class="line"><span class="comment">#loop是一个自定义标签，它代表指令的相应位置</span></span><br><span class="line"><span class="comment">#后续我们可以用jump指令跳转回这个位置实现循环</span></span><br><span class="line">loop: <span class="comment">#循环标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#for...i&lt;=100</span></span><br><span class="line"><span class="comment">#接下里我们开始实现循环控制</span></span><br><span class="line"><span class="comment">#我们先进行i&lt;=100的比较</span></span><br><span class="line"><span class="comment">#我们先将变量i的地址，也就是$i导入寄存器R0</span></span><br><span class="line">load <span class="variable">$i</span>-&gt;R0</span><br><span class="line"><span class="comment">#然后我们用cmp比较指令R0和数字100</span></span><br><span class="line">cmp R0 <span class="comment">#100//比较R0和数字100</span></span><br><span class="line"><span class="comment">#注意指令不会有返回值，它会进行计算，然后改变机器的状态（也就是寄存器）</span></span><br><span class="line"><span class="comment">#比较后，有几个特殊的寄存器会保存比较的结果</span></span><br><span class="line"><span class="comment">#然后我们用ja（就是jump above的意思），如果比较的结果R0比100大</span></span><br><span class="line"><span class="comment">#那么我们就跳转到end标签，实现循环的跳出</span></span><br><span class="line">ja end</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果R0&lt;100，那么ja end没有生效，这是我们处理s+=i</span></span><br><span class="line"><span class="comment">#首先我们把变量s所在地址的数据导入寄存器R1</span></span><br><span class="line">load <span class="variable">$s</span>-&gt;R1</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后我们把寄存器R0和R1加和，把结果存储到结存器R2</span></span><br><span class="line">add R0 R1 R2</span><br><span class="line"></span><br><span class="line"><span class="comment">#这是，我们把寄存器R2的值存入变量s所在的地址</span></span><br><span class="line">store R2-&gt;<span class="variable">$s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刚才我们完成了一次循环</span></span><br><span class="line"><span class="comment">#我们还需要维护变量i的自增</span></span><br><span class="line"><span class="comment">#现在i的值在R0中，我们首先将整数1寄到R0上</span></span><br><span class="line">add R0 <span class="comment">#1 R0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#再把R0的值存入i所在的内存地址</span></span><br><span class="line">store R0-&gt;<span class="variable">$i</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这是我们的循环已经全部执行完成，我们需要跳转回上面loop标签所在的位置</span></span><br><span class="line"><span class="comment">#继续循环</span></span><br><span class="line">jump loop</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">end：</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一般情况下CPU会预读下一条指令，所以我们会在jump添加nop指令，让cpu空转一个周期</p>
+</blockquote>
+<h6 id="条件控制程序"><a href="#条件控制程序" class="headerlink" title="条件控制程序"></a>条件控制程序</h6><p>if-else 是自上向下的执行逻辑</p>
+<p>switch-case 是精准匹配算法</p>
+<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><p><strong>变量</strong>是一个内存地址，只需要分配内存</p>
+</li>
+<li><p><strong>循环控制</strong>可以用跳转加判断实现</p>
+</li>
+<li><p><strong>条件控制</strong>也可以用跳转加判断实现</p>
+<p>只不过如果是switch-case还需要一定的数学计算</p>
+</li>
+<li><p><strong>函数</strong>调用需要压栈参数、返回值和返回地址</p>
+</li>
+</ul>
+</blockquote>
+<h6 id="类型（class）如何实现"><a href="#类型（class）如何实现" class="headerlink" title="类型（class）如何实现"></a>类型（class）如何实现</h6><p>当我们调用一个class 的方法的时候，本质上是执行了一个函数，和函数调用是一致的</p>
+<ul>
+<li>把返回值和返回地址压栈</li>
+<li>压栈参数</li>
+<li>执行跳转</li>
+</ul>
+<h5 id="假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？"><a href="#假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？" class="headerlink" title="假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？"></a>假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//求斐波那契第n项的值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>||n==<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fib(n-<span class="number">1</span>)+fib(n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>伪代码，实现一个栈</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fib(n)&#123;</span><br><span class="line">	stack = new Stack();</span><br><span class="line">	</span><br><span class="line">	//构造Stack</span><br><span class="line">	//stack中每一项是一个Record</span><br><span class="line">	//Record第一项是数据（参数或者返回值）</span><br><span class="line">	//Record第二项是递归方向（down=1代表向下，up=2代表向上）</span><br><span class="line">	stack.push((n,down));</span><br><span class="line">	</span><br><span class="line">	//stack中只有一项的时候递归停止</span><br><span class="line">	while(stack.size()&gt;1)&#123;</span><br><span class="line">		(n.phase) = stack.pop();</span><br><span class="line">		</span><br><span class="line">		if(phase==down)&#123;</span><br><span class="line">			if(n==1||n==2)&#123;</span><br><span class="line">				stack.push((1,-));</span><br><span class="line">				continue;</span><br><span class="line">			&#125;</span><br><span class="line">			stack.push((n-1,down));</span><br><span class="line">			stack.push((n-1,up));</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			last1 = stack.pop();</span><br><span class="line">			last2 = stack.pop();</span><br><span class="line">			stack.push((last1[0]+last2[0],up));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return stack.pop()[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="SSD、内存和L1-Cache相比速度差多少倍？"><a href="#SSD、内存和L1-Cache相比速度差多少倍？" class="headerlink" title="SSD、内存和L1 Cache相比速度差多少倍？"></a>SSD、内存和L1 Cache相比速度差多少倍？</h5><h6 id="为什么会有存储器分级策略？"><a href="#为什么会有存储器分级策略？" class="headerlink" title="为什么会有存储器分级策略？"></a>为什么会有存储器分级策略？</h6><p>因为需求的各种限制，所以要给存储器分级。</p>
+<p>存储器分级策略：</p>
+<ul>
+<li><p>根据数据的使用频率使用不同的存储器</p>
+<p>高频率使用的数据，读写越快越好，因此用最贵的材料，放到离CPU最近的位置；使用频率越低的数据，我们放到离CPU越远的位置，用越便宜的材料。</p>
+<p>存储器分成这么几个级别：寄存器-&gt; L1 Cache -&gt; L2 Cache -&gt; L3 Cache -&gt; 内存 -&gt; 硬盘/SSD</p>
+<p>寄存器：存储的速度越快，能耗越高、产热越大，花费也是最贵的。 速度一般是1/2时钟信号周期之内</p>
+<p>L1 Cache： 相比寄存器，位置距离CPU核心更远，造价更低。通常L1-Cache大小在几十个Kb到几百个Kb不等，读写速度在2~4个CPU时钟周期</p>
+<p>L2 Cache：位置比L1-Cache距离CPU核心更远，它的大小比L1-Cache更大，具体大小要看CPU型号，有2M的，有更小或者更大的，速度在10~20个CPU时钟周期</p>
+<p>L3-Cache：位置比L2-Cache距离CPU核心更远，大小通常比L2-Cache更大，读写速度在20~60个CPU周期</p>
+<p>内存：内存的主要材料是半导体硅，位置距离CPU有一段距离，需要用总线和CPU连接</p>
+<p>硬盘/SSD：它的优点在于断电后数据还在，内存的读写速度比SSD大概快10~1000倍，硬盘速度比内存慢100W倍左右</p>
+</li>
+</ul>
+<h6 id="缓存中的数据结构是怎样的？"><a href="#缓存中的数据结构是怎样的？" class="headerlink" title="缓存中的数据结构是怎样的？"></a>缓存中的数据结构是怎样的？</h6><h6 id="指令的预读"><a href="#指令的预读" class="headerlink" title="指令的预读"></a>指令的预读</h6><ul>
+<li><strong>CPU执行指令</strong>：一般是2~6个CPU时钟周期</li>
+<li><strong>存储器分级策略</strong>：大概有200~300个时钟周期</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机基础</category>
+      </categories>
+      <tags>
+        <tag>计算机基础</tag>
+        <tag>计算机原理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode 初级</title>
     <url>/2021/09/26/LeetCode_%E5%88%9D%E7%BA%A7/</url>
     <content><![CDATA[<h3 id="LeetCode-初级"><a href="#LeetCode-初级" class="headerlink" title="LeetCode 初级"></a>LeetCode 初级</h3><p><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/</a><br><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/</a><br><a href="https://leetcode-cn.com/leetbook/detail/illustrate-lcof/">https://leetcode-cn.com/leetbook/detail/illustrate-lcof/</a><br><a href="https://leetcode-cn.com/leetbook/detail/dfs/">https://leetcode-cn.com/leetbook/detail/dfs/</a></p>
@@ -165,6 +365,22 @@
 <p>说明： prices数组是无序的 关键点 i + 1天的价格大于 i 天 则在i天买入   如果i + 1天的价格小于i天，则在i天卖出</p>
 <p>另外不能多账户操作 只存在一个账户</p>
 </blockquote>
+<h4 id="03-旋转数组"><a href="#03-旋转数组" class="headerlink" title="03 - 旋转数组"></a>03 - 旋转数组</h4><p>给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。</p>
+<p>进阶：</p>
+<p>尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。<br>你可以使用空间复杂度为 O(1) 的 原地 算法解决这个问题吗？</p>
+<h4 id="04-存在重复元素"><a href="#04-存在重复元素" class="headerlink" title="04 - 存在重复元素"></a>04 - 存在重复元素</h4><p>给定一个整数数组，判断是否存在重复元素。</p>
+<p>如果存在一值在数组中出现至少两次，函数返回 <code>true</code> 。如果数组中每个元素都不相同，则返回 <code>false</code> 。</p>
+<h4 id="05-只出现一次的数字"><a href="#05-只出现一次的数字" class="headerlink" title="05 - 只出现一次的数字"></a>05 - 只出现一次的数字</h4><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
+<p>说明：</p>
+<p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p>
+<h4 id="06-两个数组的交集-II"><a href="#06-两个数组的交集-II" class="headerlink" title="06 - 两个数组的交集 II"></a>06 - 两个数组的交集 II</h4><p>给定两个数组，编写一个函数来计算它们的交集。</p>
+<h4 id="07-加一"><a href="#07-加一" class="headerlink" title="07 - 加一"></a>07 - 加一</h4><p>给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<h4 id="有效的字母异位词"><a href="#有效的字母异位词" class="headerlink" title="有效的字母异位词"></a>有效的字母异位词</h4><p>给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
+<p>注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。</p>
+<h4 id="验证回文串"><a href="#验证回文串" class="headerlink" title="验证回文串"></a>验证回文串</h4><p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
+<p><strong>说明：</strong>本题中，我们将空字符串定义为有效的回文串。</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -172,101 +388,6 @@
       <tags>
         <tag>LeetCode</tag>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理</title>
-    <url>/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>计算机基础</category>
-      </categories>
-      <tags>
-        <tag>计算机基础</tag>
-        <tag>计算机原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>“深入理解AQS和CAS原理”</title>
-    <url>/2020/09/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3AQS%E5%92%8CCAS%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java基础</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kotlin的应用</title>
-    <url>/2021/04/08/Kotlin%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="Kotlin概述"><a href="#Kotlin概述" class="headerlink" title="Kotlin概述"></a>Kotlin概述</h2><ul>
-<li>一种在Java虚拟机上运行的静态类型编程语言</li>
-<li>可以和Java代码相互运作</li>
-<li>容易在Android项目中替代Java或者同Java一起使用</li>
-</ul>
-<h2 id="Kotlin特点"><a href="#Kotlin特点" class="headerlink" title="Kotlin特点"></a>Kotlin特点</h2><ul>
-<li>简单易用</li>
-<li>安全</li>
-<li>互操作性</li>
-<li>工具友好</li>
-</ul>
-<p>以上是文章摘要 <span id="more"></span> 以下是余下全文 </p>
-<h2 id="Kotlin构建流程"><a href="#Kotlin构建流程" class="headerlink" title="Kotlin构建流程"></a>Kotlin构建流程</h2><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpchbozwzuj30tq0eq75d.jpg" alt="Kotlin与Java构建流程"></p>
-<h2 id="Kotlin必备基础"><a href="#Kotlin必备基础" class="headerlink" title="Kotlin必备基础"></a>Kotlin必备基础</h2><h3 id="Kotlin基本数值类型"><a href="#Kotlin基本数值类型" class="headerlink" title="Kotlin基本数值类型"></a>Kotlin基本数值类型</h3><p>Kotlin的基本数值类型包括Byte、Short、Int、Long、Float、Double等。<em>不同于Java</em>的是，字符不属于数值类型，是一个独立的数据类型。</p>
-<blockquote>
-<p>对于整数，存在四种具有不同大小和值范围的类型</p>
-</blockquote>
-<h3 id="Kotlin-数组"><a href="#Kotlin-数组" class="headerlink" title="Kotlin 数组"></a>Kotlin 数组</h3><h3 id="Kotlin集合"><a href="#Kotlin集合" class="headerlink" title="Kotlin集合"></a>Kotlin集合</h3><p>Kotlin标准库提供了一整套用于管理集合的工具，集合是可变数量（可能为零）的一组条目，各种结合对于解决为题都具有重要意义，并且经常用到。</p>
-<ul>
-<li>List是一个有序集合，可通过索引（反应元素位置的整数）访问元素。元素可以在list中出现多次。列表的一个示例就是一句话：有一组字、这些字的顺序很重要并且字可以重复。</li>
-<li>Set是唯一元素的集合。它反应了集合（Set）的数学抽象：一组无重复的对象。一般来说set中元素的顺序并不重要。例如，字母表是字母的集合（Set）。</li>
-<li>Map（或者字典）是一组键值对。键是唯一的，每个键都刚好映射到一个值，值可以重复。</li>
-</ul>
-<h4 id="集合的可变性与不可变性"><a href="#集合的可变性与不可变性" class="headerlink" title="集合的可变性与不可变性"></a>集合的可变性与不可变性</h4><p>那什么叫Kotlin集合的可变性与不可变性呢？在Kotlin中存在两种意义上的集合，一种是可以修改的一种是不可修改的<br><em>不可变集合</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//list</span><br><span class="line">val stringList = listOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringList)</span><br><span class="line">//set</span><br><span class="line">val stringSet = setOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringSet)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><em>可变集合</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">val numbers = mutableListOf(1,2,3,4)</span><br><span class="line">numbers.add(5)</span><br><span class="line">numbers.removeAt(1)</span><br><span class="line">numbers[0] = 0</span><br><span class="line">println(numbers)</span><br></pre></td></tr></table></figure>
-
-<h5 id="原理探索"><a href="#原理探索" class="headerlink" title="原理探索"></a>原理探索</h5><ul>
-<li>Q1：两个具有相同键值对，但顺序不同的map相等吗？为什么？<br>  相等，map的equals方法</li>
-<li>Q2：两个具有相同元素，但单顺序不同的list相等吗？为什么？<br>  不相等</li>
-</ul>
-<h3 id="Kotlin方法与lambda表达式"><a href="#Kotlin方法与lambda表达式" class="headerlink" title="Kotlin方法与lambda表达式"></a>Kotlin方法与lambda表达式</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法可以在文件中直接定义 </p>
-<p>成员方法 在class类中定义</p>
-<p>静态类方法 可以用通过companion object来实现</p>
-<p>静态类 使用修饰符object而不是class</p>
-<p>单表达式方法，当方法返回单个表达式时，恶意省略花括号并且在 = 符号之后指定代码体即可</p>
-<p>可变参数方法 使用vararg 关键字修饰参数</p>
-<h4 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h4><p>对比<br>view.setOnClickListener(new View.OnClickListener(){<br>    @Override<br>    public void onClick(View v){<br>        Toast.makeText(v.getContext(),”Lambda简洁之道”,Toast.LENGTH.LONG).show();<br>    }<br>});</p>
-<p>VS</p>
-<p>view.setOnClickListener{v -&gt; Toast.makeText(v.context,”Lambda简洁之道”,Toast.LENGTH.LONG).show() }</p>
-<p>Lambda表达式的特点：</p>
-<ul>
-<li>是匿名方法</li>
-<li>可传递</li>
-</ul>
-<p>Lambda语法：<br>无参数的情况<br>val/var 变量名 = { 操作的代码 }</p>
-<p>有参数的情况<br>val/var 变量名: (参数类型，参数类型，…) -&gt; 返回值类型 = { 参数1，参数2，… -&gt; 操作的代码 }<br>等价于<br>val/var 变量名 = {参数1：参数类型，参数2：参数类型,… -&gt; 操作的代码}</p>
-<p>it:</p>
-<ul>
-<li>it并不是Kotlin中的一个关键字（保留字）</li>
-<li>it是在当一个高阶方法中Lambda表达式的参数只有一个的时候可以使用it来使用此参数</li>
-<li>it可表示为单个参数的隐式名称，是Kotlin语言约定的</li>
-</ul>
-<h5 id="Kotlin方法进阶"><a href="#Kotlin方法进阶" class="headerlink" title="Kotlin方法进阶"></a>Kotlin方法进阶</h5><p>高阶方法</p>
-<p>闭包</p>
-<p>匿名方法</p>
-<p>方法字面值</p>
-<h3 id="Kotlin类与接口"><a href="#Kotlin类与接口" class="headerlink" title="Kotlin类与接口"></a>Kotlin类与接口</h3><h3 id="Kotlin泛型"><a href="#Kotlin泛型" class="headerlink" title="Kotlin泛型"></a>Kotlin泛型</h3><h3 id="Kotlin注解"><a href="#Kotlin注解" class="headerlink" title="Kotlin注解"></a>Kotlin注解</h3><h3 id="Kotlin扩展"><a href="#Kotlin扩展" class="headerlink" title="Kotlin扩展"></a>Kotlin扩展</h3><p>​    </p>
-]]></content>
-      <categories>
-        <category>Kotlin</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Kotlin</tag>
       </tags>
   </entry>
   <entry>

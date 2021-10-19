@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="不支持递归程序的语言如何实现递归程序？ 首先看for循环是如何执行的  1234int i&#x3D;1,s&#x3D;0;for(;i&lt;&#x3D;100;i++)&amp;#123;  s+&#x3D;i;&amp;#125;  将for循环用底层的指令实现：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# in">
+<meta property="og:type" content="article">
 <meta property="og:title" content="计算机组成原理">
 <meta property="og:url" content="http://example.com/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Cheen Xuan&#39;s Blog">
+<meta property="og:description" content="不支持递归程序的语言如何实现递归程序？ 首先看for循环是如何执行的  1234int i&#x3D;1,s&#x3D;0;for(;i&lt;&#x3D;100;i++)&amp;#123;  s+&#x3D;i;&amp;#125;  将for循环用底层的指令实现：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# in">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-24T07:48:17.000Z">
-<meta property="article:modified_time" content="2021-09-24T07:56:34.000Z">
+<meta property="article:modified_time" content="2021-10-11T09:50:12.720Z">
 <meta property="article:author" content="Cheen Xuan">
 <meta property="article:tag" content="计算机基础">
 <meta property="article:tag" content="计算机原理">
@@ -125,12 +127,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -213,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-24 15:48:17 / 修改时间：15:56:34" itemprop="dateCreated datePublished" datetime="2021-09-24T15:48:17+08:00">2021-09-24</time>
+              <time title="创建时间：2021-09-24 15:48:17" itemprop="dateCreated datePublished" datetime="2021-09-24T15:48:17+08:00">2021-09-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-11 17:50:12" itemprop="dateModified" datetime="2021-10-11T17:50:12+08:00">2021-10-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -254,14 +262,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -273,7 +281,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h5 id="不支持递归程序的语言如何实现递归程序？"><a href="#不支持递归程序的语言如何实现递归程序？" class="headerlink" title="不支持递归程序的语言如何实现递归程序？"></a>不支持递归程序的语言如何实现递归程序？</h5><blockquote>
+<p>首先看for循环是如何执行的</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">1</span>,s=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">  s+=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="将for循环用底层的指令实现："><a href="#将for循环用底层的指令实现：" class="headerlink" title="将for循环用底层的指令实现："></a>将for循环用底层的指令实现：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int i=1,s=0;</span></span><br><span class="line"><span class="comment"># 对应Java代码，我们首先将1和0存储到两个地址</span></span><br><span class="line"><span class="comment"># 这两个地址我们用$i和$s表示</span></span><br><span class="line">store <span class="comment">#1-&gt;$i//将数字1存入i的地址</span></span><br><span class="line">store <span class="comment">#0-&gt;$s//将数字0存入s的地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#接下来循环要开始了，我们在这里预留一个loop标签</span></span><br><span class="line"><span class="comment">#loop是一个自定义标签，它代表指令的相应位置</span></span><br><span class="line"><span class="comment">#后续我们可以用jump指令跳转回这个位置实现循环</span></span><br><span class="line">loop: <span class="comment">#循环标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#for...i&lt;=100</span></span><br><span class="line"><span class="comment">#接下里我们开始实现循环控制</span></span><br><span class="line"><span class="comment">#我们先进行i&lt;=100的比较</span></span><br><span class="line"><span class="comment">#我们先将变量i的地址，也就是$i导入寄存器R0</span></span><br><span class="line">load <span class="variable">$i</span>-&gt;R0</span><br><span class="line"><span class="comment">#然后我们用cmp比较指令R0和数字100</span></span><br><span class="line">cmp R0 <span class="comment">#100//比较R0和数字100</span></span><br><span class="line"><span class="comment">#注意指令不会有返回值，它会进行计算，然后改变机器的状态（也就是寄存器）</span></span><br><span class="line"><span class="comment">#比较后，有几个特殊的寄存器会保存比较的结果</span></span><br><span class="line"><span class="comment">#然后我们用ja（就是jump above的意思），如果比较的结果R0比100大</span></span><br><span class="line"><span class="comment">#那么我们就跳转到end标签，实现循环的跳出</span></span><br><span class="line">ja end</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果R0&lt;100，那么ja end没有生效，这是我们处理s+=i</span></span><br><span class="line"><span class="comment">#首先我们把变量s所在地址的数据导入寄存器R1</span></span><br><span class="line">load <span class="variable">$s</span>-&gt;R1</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后我们把寄存器R0和R1加和，把结果存储到结存器R2</span></span><br><span class="line">add R0 R1 R2</span><br><span class="line"></span><br><span class="line"><span class="comment">#这是，我们把寄存器R2的值存入变量s所在的地址</span></span><br><span class="line">store R2-&gt;<span class="variable">$s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刚才我们完成了一次循环</span></span><br><span class="line"><span class="comment">#我们还需要维护变量i的自增</span></span><br><span class="line"><span class="comment">#现在i的值在R0中，我们首先将整数1寄到R0上</span></span><br><span class="line">add R0 <span class="comment">#1 R0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#再把R0的值存入i所在的内存地址</span></span><br><span class="line">store R0-&gt;<span class="variable">$i</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这是我们的循环已经全部执行完成，我们需要跳转回上面loop标签所在的位置</span></span><br><span class="line"><span class="comment">#继续循环</span></span><br><span class="line">jump loop</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">end：</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一般情况下CPU会预读下一条指令，所以我们会在jump添加nop指令，让cpu空转一个周期</p>
+</blockquote>
+<h6 id="条件控制程序"><a href="#条件控制程序" class="headerlink" title="条件控制程序"></a>条件控制程序</h6><p>if-else 是自上向下的执行逻辑</p>
+<p>switch-case 是精准匹配算法</p>
+<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><p><strong>变量</strong>是一个内存地址，只需要分配内存</p>
+</li>
+<li><p><strong>循环控制</strong>可以用跳转加判断实现</p>
+</li>
+<li><p><strong>条件控制</strong>也可以用跳转加判断实现</p>
+<p>只不过如果是switch-case还需要一定的数学计算</p>
+</li>
+<li><p><strong>函数</strong>调用需要压栈参数、返回值和返回地址</p>
+</li>
+</ul>
+</blockquote>
+<h6 id="类型（class）如何实现"><a href="#类型（class）如何实现" class="headerlink" title="类型（class）如何实现"></a>类型（class）如何实现</h6><p>当我们调用一个class 的方法的时候，本质上是执行了一个函数，和函数调用是一致的</p>
+<ul>
+<li>把返回值和返回地址压栈</li>
+<li>压栈参数</li>
+<li>执行跳转</li>
+</ul>
+<h5 id="假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？"><a href="#假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？" class="headerlink" title="假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？"></a>假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求斐波那契第n项的值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>||n==<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fib(n-<span class="number">1</span>)+fib(n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>伪代码，实现一个栈</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">fib(n)&#123;</span><br><span class="line">	stack = new Stack();</span><br><span class="line">	</span><br><span class="line">	//构造Stack</span><br><span class="line">	//stack中每一项是一个Record</span><br><span class="line">	//Record第一项是数据（参数或者返回值）</span><br><span class="line">	//Record第二项是递归方向（down=1代表向下，up=2代表向上）</span><br><span class="line">	stack.push((n,down));</span><br><span class="line">	</span><br><span class="line">	//stack中只有一项的时候递归停止</span><br><span class="line">	while(stack.size()&gt;1)&#123;</span><br><span class="line">		(n.phase) = stack.pop();</span><br><span class="line">		</span><br><span class="line">		if(phase==down)&#123;</span><br><span class="line">			if(n==1||n==2)&#123;</span><br><span class="line">				stack.push((1,-));</span><br><span class="line">				continue;</span><br><span class="line">			&#125;</span><br><span class="line">			stack.push((n-1,down));</span><br><span class="line">			stack.push((n-1,up));</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			last1 = stack.pop();</span><br><span class="line">			last2 = stack.pop();</span><br><span class="line">			stack.push((last1[0]+last2[0],up));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return stack.pop()[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="SSD、内存和L1-Cache相比速度差多少倍？"><a href="#SSD、内存和L1-Cache相比速度差多少倍？" class="headerlink" title="SSD、内存和L1 Cache相比速度差多少倍？"></a>SSD、内存和L1 Cache相比速度差多少倍？</h5><h6 id="为什么会有存储器分级策略？"><a href="#为什么会有存储器分级策略？" class="headerlink" title="为什么会有存储器分级策略？"></a>为什么会有存储器分级策略？</h6><p>因为需求的各种限制，所以要给存储器分级。</p>
+<p>存储器分级策略：</p>
+<ul>
+<li><p>根据数据的使用频率使用不同的存储器</p>
+<p>高频率使用的数据，读写越快越好，因此用最贵的材料，放到离CPU最近的位置；使用频率越低的数据，我们放到离CPU越远的位置，用越便宜的材料。</p>
+<p>存储器分成这么几个级别：寄存器-&gt; L1 Cache -&gt; L2 Cache -&gt; L3 Cache -&gt; 内存 -&gt; 硬盘/SSD</p>
+<p>寄存器：存储的速度越快，能耗越高、产热越大，花费也是最贵的。 速度一般是1/2时钟信号周期之内</p>
+<p>L1 Cache： 相比寄存器，位置距离CPU核心更远，造价更低。通常L1-Cache大小在几十个Kb到几百个Kb不等，读写速度在2~4个CPU时钟周期</p>
+<p>L2 Cache：位置比L1-Cache距离CPU核心更远，它的大小比L1-Cache更大，具体大小要看CPU型号，有2M的，有更小或者更大的，速度在10~20个CPU时钟周期</p>
+<p>L3-Cache：位置比L2-Cache距离CPU核心更远，大小通常比L2-Cache更大，读写速度在20~60个CPU周期</p>
+<p>内存：内存的主要材料是半导体硅，位置距离CPU有一段距离，需要用总线和CPU连接</p>
+<p>硬盘/SSD：它的优点在于断电后数据还在，内存的读写速度比SSD大概快10~1000倍，硬盘速度比内存慢100W倍左右</p>
+</li>
+</ul>
+<h6 id="缓存中的数据结构是怎样的？"><a href="#缓存中的数据结构是怎样的？" class="headerlink" title="缓存中的数据结构是怎样的？"></a>缓存中的数据结构是怎样的？</h6><h6 id="指令的预读"><a href="#指令的预读" class="headerlink" title="指令的预读"></a>指令的预读</h6><ul>
+<li><strong>CPU执行指令</strong>：一般是2~6个CPU时钟周期</li>
+<li><strong>存储器分级策略</strong>：大概有200~300个时钟周期</li>
+</ul>
+
     </div>
 
     
@@ -365,6 +431,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E6%94%AF%E6%8C%81%E9%80%92%E5%BD%92%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%AF%AD%E8%A8%80%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%80%92%E5%BD%92%E7%A8%8B%E5%BA%8F%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">不支持递归程序的语言如何实现递归程序？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%86for%E5%BE%AA%E7%8E%AF%E7%94%A8%E5%BA%95%E5%B1%82%E7%9A%84%E6%8C%87%E4%BB%A4%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">将for循环用底层的指令实现：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">条件控制程序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%EF%BC%88class%EF%BC%89%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">类型（class）如何实现</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E4%BD%A0%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E4%B8%8D%E6%94%AF%E6%8C%81%E9%80%92%E5%BD%92%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%A6%81%E6%B1%82%E7%94%A8%E6%A0%88%E6%9D%A5%E6%A8%A1%E6%8B%9F%E4%B8%8B%E9%9D%A2%E8%BF%99%E4%B8%AA%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%B1%82%E7%AC%ACn%E9%A1%B9%E7%9A%84%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E8%BD%AC%E6%8D%A2%E6%88%90%E7%AD%89%E4%BB%B7%E7%9A%84%E5%9F%BA%E4%BA%8E%E6%A0%88%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SSD%E3%80%81%E5%86%85%E5%AD%98%E5%92%8CL1-Cache%E7%9B%B8%E6%AF%94%E9%80%9F%E5%BA%A6%E5%B7%AE%E5%A4%9A%E5%B0%91%E5%80%8D%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">SSD、内存和L1 Cache相比速度差多少倍？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89%E5%AD%98%E5%82%A8%E5%99%A8%E5%88%86%E7%BA%A7%E7%AD%96%E7%95%A5%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">为什么会有存储器分级策略？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">缓存中的数据结构是怎样的？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E9%A2%84%E8%AF%BB"><span class="nav-number">3.3.</span> <span class="nav-text">指令的预读</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -380,14 +447,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -435,13 +502,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">19k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">17 分钟</span>
 </div>
 
         
