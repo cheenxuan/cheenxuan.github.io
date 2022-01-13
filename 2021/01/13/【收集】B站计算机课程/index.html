@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="互联网让信息更容易触达，但是由于信息过于庞大，筛选出有价值的信息所花费的精力也会很大。 众所周知，B 站是一个学习的网站，很多人在 B 站上大学、考研、学编程，但 B 站的视频资源那更是五花八门，要从里面选择合适学习视频不是那么容易，而且观看人数多，并不意味着是好的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【收集】B站计算机课程">
+<meta property="og:url" content="http://example.com/2021/01/13/%E3%80%90%E6%94%B6%E9%9B%86%E3%80%91B%E7%AB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Cheen Xuan&#39;s Blog">
+<meta property="og:description" content="互联网让信息更容易触达，但是由于信息过于庞大，筛选出有价值的信息所花费的精力也会很大。 众所周知，B 站是一个学习的网站，很多人在 B 站上大学、考研、学编程，但 B 站的视频资源那更是五花八门，要从里面选择合适学习视频不是那么容易，而且观看人数多，并不意味着是好的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141331529.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141333238.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141334302.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336419.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336518.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141338903.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141340606.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141342759.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141343109.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141344765.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141346572.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347265.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347344.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141348651.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141350101.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141351123.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352151.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352217.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141353198.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141355330.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356307.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356389.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141358812.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.jpeg">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141359545.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141400563.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141401633.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141403647.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404176.jpeg">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404689.png">
+<meta property="article:published_time" content="2021-01-13T06:12:29.000Z">
+<meta property="article:modified_time" content="2022-01-13T06:24:02.167Z">
+<meta property="article:author" content="Cheen Xuan">
+<meta property="article:tag" content="收集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.png">
+
+<link rel="canonical" href="http://example.com/2021/01/13/%E3%80%90%E6%94%B6%E9%9B%86%E3%80%91B%E7%AB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【收集】B站计算机课程 | Cheen Xuan's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cheen Xuan's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/cheenxuan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/13/%E3%80%90%E6%94%B6%E9%9B%86%E3%80%91B%E7%AB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header_icon.jpeg">
+      <meta itemprop="name" content="Cheen Xuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cheen Xuan's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【收集】B站计算机课程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-13 14:12:29" itemprop="dateCreated datePublished" datetime="2021-01-13T14:12:29+08:00">2021-01-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-13 14:24:02" itemprop="dateModified" datetime="2022-01-13T14:24:02+08:00">2022-01-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%94%B6%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">收集</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/01/13/%E3%80%90%E6%94%B6%E9%9B%86%E3%80%91B%E7%AB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE%E7%A8%8B/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/01/13/【收集】B站计算机课程/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>互联网让信息更容易触达，但是由于信息过于庞大，筛选出有价值的信息所花费的精力也会很大。</p>
+<p>众所周知，B 站是一个学习的网站，很多人在 B 站上大学、考研、学编程，但 B 站的视频资源那更是五花八门，要从里面选择合适学习视频不是那么容易，而且观看人数多，并不意味着是好的。</p>
+<span id="more"></span>
+
+<p>周末我从 B 站 搜集了些关于学习计算机的视频了，也跟身边的朋友交流一番，特此筛选了下面这些课程的视频，分享给大家。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.png" alt="img"></p>
+<hr>
+<h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><h5 id="计算机网络微课堂"><a href="#计算机网络微课堂" class="headerlink" title="计算机网络微课堂"></a>计算机网络微课堂</h5><p>《计算机网络微课堂》这个视频是湖南科技大学老师制作的，PPT 的动图是我见过做的最用心的了，一看就懂的佳作，而且也适合考研人，因为每个视频末尾都有往年的考题分析。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141331529.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1c4411d7jb?p=1</code></p>
+<h5 id="计算机网络（谢希仁第七版）-方老师"><a href="#计算机网络（谢希仁第七版）-方老师" class="headerlink" title="计算机网络（谢希仁第七版）- 方老师"></a>计算机网络（谢希仁第七版）- 方老师</h5><p>大学学习计算机网络配套的教材是谢希仁的，如果想根据此教材看视频学习的，可以看方老师讲解的计算机网络，<strong>看方老师的视频，你会觉得是一位漂亮的小姐姐在跟你讲课</strong>，方老师不仅颜值高，而且声音也甜，当然最重要是课程质量得到了很多人的认可。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141333238.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1yE411G7Ma?p=1</code></p>
+<h5 id="Wireshark-抓包-从入门到入坟"><a href="#Wireshark-抓包-从入门到入坟" class="headerlink" title="Wireshark 抓包 从入门到入坟"></a>Wireshark 抓包 从入门到入坟</h5><p>在工作中，分析网络数据的时候，必然离不开 Wireshark 工具，如果想学习 Wireshark 抓包的朋友，可以快速看看这个视频，当你有一定的计算机网络基础后，看这个课程会很快的。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141334302.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1X5411x7R4?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336419.png" alt="img"></p>
+<p><strong>▊《*<em>**HTTP/2 in Action 中文版**</em>*》</strong></p>
+<p>【美】Barry，Pollard 著</p>
+<p>郑维智 译</p>
+<ul>
+<li>HTTP20 年重大标准升级</li>
+<li>Web 性能大提升</li>
+<li>包括流量控制等高级案例</li>
+</ul>
+<p>本书以易于理解、方便上手的方式，使用贴近用户的实例来解释 HTTP/2 协议。本书首先介绍为什么要升级到 HTTP/2 以及升级的方法 ；然后逐步深入，详细解释了 HTTP/2 协议本身及其对 Web 开发的影响 ；之后介绍了部分高级内容，如流状态、HPACK 等 ；最后探讨了 HTTP 的未来。本书对于 Web 开发者和运维工程师来说是一本很有价值的参考书。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336518.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h5 id="操作系统-清华大学"><a href="#操作系统-清华大学" class="headerlink" title="操作系统 - 清华大学"></a>操作系统 - 清华大学</h5><p>B 站关于操作系统课程资源很多，我在里面也看了不同老师讲的课程，觉得比较好的入门级课程是《<strong>操作系统 - 清华大学</strong>》，该课程由清华大学老师向勇和陈渝授课，虽然我们上不了清华大学，但是至少我们可以在网上选择听清华大学的课嘛。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141338903.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1js411b7vg?from=search&amp;seid=2361361014547524697</code></p>
+<h5 id="操作系统-哈工大"><a href="#操作系统-哈工大" class="headerlink" title="操作系统 - 哈工大"></a>操作系统 - 哈工大</h5><p>清华大学的操作系统视频课讲的比较精炼，涉及到的内容没有那么细，《<strong>操作系统 - 哈工大</strong>》李治军老师授课的视频课程相对就会比较细节，老师会用 Linux 内核代码的角度带你进一步理解操作系统，也会用生活小例子帮助你理解。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141340606.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1d4411v7u7?from=search&amp;seid=2361361014547524697</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141342759.png" alt="img"></p>
+<p><strong>▊《BPF 之巅：洞悉 Linux 系统和应用性能》</strong></p>
+<p>【美】Brendan Gregg 著</p>
+<p>孙宇聪 吕宏利 刘晓舟 译</p>
+<ul>
+<li>经典书《性能之巅》再续新篇</li>
+<li>震撼全球的 Gregg 大师新作</li>
+<li>深度理解 Linux 系统性能优化</li>
+</ul>
+<p>本书关注 Linux 系统性能和应用程序性能的调优，学习如何分析 CPU、内存、存储设备、文件系统、网络、编程语言、应用程序、容器、虚拟机管理器、安全及内核，由浅入深了解基础、进阶工具的使用，收集更有用更深入的技术信息。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141343109.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="计算机组成"><a href="#计算机组成" class="headerlink" title="计算机组成"></a>计算机组成</h3><h5 id="计算机组成原理-快速复习"><a href="#计算机组成原理-快速复习" class="headerlink" title="计算机组成原理 - 快速复习"></a>计算机组成原理 - 快速复习</h5><p>对于非科班出身的朋友，想快速学习计算机组成原理，推荐这个视频，因为这个视频精炼总结出了跟程序员有关的计算机原理知识，篇幅不会太长，一天就可以搞定。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141344765.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1rV411k7Xf?p=1</code></p>
+<h4 id="计算机组成原理（唐朔飞）"><a href="#计算机组成原理（唐朔飞）" class="headerlink" title="计算机组成原理（唐朔飞）"></a>计算机组成原理（唐朔飞）</h4><p>如果想系统学习计算机组成原理，可以看哈工大这门计算机原理课，依据的教材正是大学配套的书。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141346572.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1WW411Q7PF?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347265.png" alt="img"></p>
+<p><strong>▊《编码：隐匿在计算机软硬件背后的语言》</strong></p>
+<p>【美】Charles Petzold 著</p>
+<p>左飞，薛佟佟 译</p>
+<ul>
+<li>永不褪色的计算机科学经典著作</li>
+<li>用最简单的语言讲述最专业的知识</li>
+</ul>
+<p>这是一本讲述计算机工作原理的书。不过，你千万不要因为 “工作原理” 之类的字眼就武断地认为，它是晦涩而难懂的。作者用丰富的想象和清晰的笔墨将看似繁杂的理论阐述得通俗易懂，你丝毫不会感到枯燥和生硬。更重要的是，你会因此而获得对计算机工作原理较深刻的理解。这种理解不是抽象层面上的，而是具有一定深度的，这种深度甚至不逊于 “电气工程师” 和“程序员”的理解。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347344.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><h5 id="SQL-进阶教程"><a href="#SQL-进阶教程" class="headerlink" title="SQL 进阶教程"></a>SQL 进阶教程</h5><p>无意间在 B 站发现一个学习 SQL 很牛逼的视频，主讲人是外国的工程师，这门课程适合初学者和进阶，这位工程师全程以「实战」的方式来授课，案例经典，课程真的通熟易懂，很简练。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141348651.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1UE41147KC?p=1</code></p>
+<h5 id="MySQL-高级教程"><a href="#MySQL-高级教程" class="headerlink" title="MySQL 高级教程"></a>MySQL 高级教程</h5><p>如果你想学习 MySQL 底层原理，这个视频是个不错的选择。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141350101.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1CZ4y1M7MQ?p=1</code></p>
+<h5 id="Redis-教程"><a href="#Redis-教程" class="headerlink" title="Redis 教程"></a>Redis 教程</h5><p>学习 Redis 的同学，可以看看这个视频，每一个视频都很详细了说明了对应的知识点，而且不仅只是说了基础应用，还涉及了底层原理和互联网场景面试的知识点。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141351123.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1S54y1R7SB?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352151.png" alt="img"></p>
+<p><strong>▊《高性能 MySQL（第 3 版）》</strong></p>
+<p>【美】Baron Schwartz,Peter Zaitsev,Vadim Tkachenko 著</p>
+<p>宁海元 周振兴 彭立勋 翟卫祥 等 译</p>
+<ul>
+<li>MySQL 圣经级著作</li>
+<li>领域排头、畅行全球、天团献译、从业必收</li>
+</ul>
+<p>MySQL 领域经典之作，拥有广泛的影响力。每一章均别具匠心，力求理论与实践的精确平衡，且布满无价之宝，有时甚至越过 MySQL 舞台，完全适用于任一数据库。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352217.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="算法与数据结构"><a href="#算法与数据结构" class="headerlink" title="算法与数据结构"></a>算法与数据结构</h3><h5 id="浙江大学"><a href="#浙江大学" class="headerlink" title="浙江大学"></a>浙江大学</h5><p>强烈推荐浙江大学的算法与数据结构课程，该课程非常系统，也很经典，适合小白入门算法。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141353198.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1JW411i731?p=1</code></p>
+<h5 id="左程云"><a href="#左程云" class="headerlink" title="左程云"></a>左程云</h5><p>这个视频主要是左神讲解国内互联网大厂的高频面试题，是一个突击的好资源。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141355330.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV15D4y1X7Tt?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356307.png" alt="img"></p>
+<p><strong>▊《labuladong 的算法小抄》</strong></p>
+<p>付东来（@labuladong） 著</p>
+<ul>
+<li>GitHub 68.8k star 的硬核算法教程</li>
+<li>labuladong 带你挑战力扣算法题</li>
+<li>挑战 BAT 等大厂 Offer</li>
+</ul>
+<p>本书专攻算法刷题，训练算法思维，应对算法笔试。注重用套路和框架思维解决问题，以不变应万变。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356389.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="C-编程"><a href="#C-编程" class="headerlink" title="C++ 编程"></a>C++ 编程</h3><h5 id="侯捷老师全家桶"><a href="#侯捷老师全家桶" class="headerlink" title="侯捷老师全家桶"></a>侯捷老师全家桶</h5><p>学习 C++ 直接跟着侯捷老师一系列视频学下去就对了，相信很多人都是看侯捷老师视频长大的。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141358812.png" alt="img"></p>
+<p>[侯捷] C++ 面向对象高级编程：<code>https://www.bilibili.com/video/BV14s411E772?p=1</code></p>
+<p>[侯捷] C++11 新特性：<code>https://www.bilibili.com/video/BV1p4411v7Dh?p=1</code></p>
+<p>[侯捷] C++ 内存管理：<code>https://www.bilibili.com/video/BV1Kb411B7N8?p=1</code></p>
+<p>[侯捷] C++ STL 源码分析：<code>https://www.bilibili.com/video/BV1db411q7B8?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.jpeg" alt="img"></p>
+<p><strong>▊《*<em>**C++ Primer（中文版 第 5 版）**</em>*》</strong></p>
+<p>【美】Stanley B. Lippman，Josée Lajoie，Barbara E. Moo 著</p>
+<p>王刚，杨巨峰 译</p>
+<ul>
+<li>畅行全球 20 年的 C++ 入门必读经典</li>
+<li>行业大师标杆之作，全球读者千万</li>
+<li>全面采用新标技术，翻译团队强大</li>
+</ul>
+<p>本书可以帮助你全面了解 2011 版本 C++ 标准的内容。无论初学或老手既可用来理解 C++11 规则背后的原理，也可用其新语言特性与标准库来快速构建健壮程序。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141359545.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h5 id="Java-入门"><a href="#Java-入门" class="headerlink" title="Java 入门"></a>Java 入门</h5><p>不知道大家有没有听过高淇老师，我在读大学的时候，那时候看的是高淇老师，讲课的方式很幽默风趣的，这个视频是入门 Java ，一共 300 集，每一集平均 20 分钟，是个干货视频。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141400563.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1dW411Q7mY?p=1</code></p>
+<h5 id="Java-常见应用"><a href="#Java-常见应用" class="headerlink" title="Java 常见应用"></a>Java 常见应用</h5><p>这个视频是 Java 的重点知识整合，是偏向应用类的，比如反射、RPC、SOCKET、文件、JSON、二维码、MAIL、加密等。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141401633.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1k4411W7xq?p=1</code></p>
+<h5 id="Java-SSM-框架视频"><a href="#Java-SSM-框架视频" class="headerlink" title="Java SSM 框架视频"></a>Java SSM 框架视频</h5><p>这个视频面向的是 Java Web 的，源码级别的方式讲解了 spring、springmvc、mybatis。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141403647.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1uE411C7CW?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404176.jpeg" alt="img"></p>
+<p>**▊《*<em>Java 无难事：详解 Java 编程核心思想与技术*<em>》</em></em></p>
+<p>孙鑫 著</p>
+<ul>
+<li>系统讲解 Java 开发核心知识</li>
+<li>由浅入深轻松掌握</li>
+<li>知识点对应视频二维码，随看随学</li>
+</ul>
+<p>本书讲解了依赖注入（IoC/DI）容器、面向切面编程（AOP）、对象关系映射（ORM）框架的实现原理，同时还给出了并发编程领域中经常用到的线程池的实现。涵盖了从 Java 5 到 Java 11 的所有重要新特性。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404689.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>春节也快来临了，是一个<strong>悄悄发育的好机会</strong>，所以就给大家找了些 B 站学习编程的不错的视频，这些视频仅供大家参考。</p>
+<p>但是大多数视频都是比较基础入门系列的课程，如果想深入继续学习，那必然离不开书了，视频只是做一个辅助学习的作用，所以最好方式就是书和视频搭配使用。</p>
+<p>可能 B 站还有很多优质的视频我没有发现，<strong>欢迎大家分享出你在 B 站发现的优质好课</strong>。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%94%B6%E9%9B%86/" rel="tag"><i class="fa fa-tag"></i> 收集</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="prev" title="计算机网络">
+      <i class="fa fa-chevron-left"></i> 计算机网络
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/13/ADB-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="ADB 常用命令">
+      ADB 常用命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BE%AE%E8%AF%BE%E5%A0%82"><span class="nav-number">1.0.1.</span> <span class="nav-text">计算机网络微课堂</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E8%B0%A2%E5%B8%8C%E4%BB%81%E7%AC%AC%E4%B8%83%E7%89%88%EF%BC%89-%E6%96%B9%E8%80%81%E5%B8%88"><span class="nav-number">1.0.2.</span> <span class="nav-text">计算机网络（谢希仁第七版）- 方老师</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Wireshark-%E6%8A%93%E5%8C%85-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9D%9F"><span class="nav-number">1.0.3.</span> <span class="nav-text">Wireshark 抓包 从入门到入坟</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6"><span class="nav-number">2.0.1.</span> <span class="nav-text">操作系统 - 清华大学</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%93%88%E5%B7%A5%E5%A4%A7"><span class="nav-number">2.0.2.</span> <span class="nav-text">操作系统 - 哈工大</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">计算机组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E5%BF%AB%E9%80%9F%E5%A4%8D%E4%B9%A0"><span class="nav-number">3.0.1.</span> <span class="nav-text">计算机组成原理 - 快速复习</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%EF%BC%88%E5%94%90%E6%9C%94%E9%A3%9E%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">计算机组成原理（唐朔飞）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SQL-%E8%BF%9B%E9%98%B6%E6%95%99%E7%A8%8B"><span class="nav-number">4.0.1.</span> <span class="nav-text">SQL 进阶教程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL-%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B"><span class="nav-number">4.0.2.</span> <span class="nav-text">MySQL 高级教程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Redis-%E6%95%99%E7%A8%8B"><span class="nav-number">4.0.3.</span> <span class="nav-text">Redis 教程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">算法与数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6"><span class="nav-number">5.0.1.</span> <span class="nav-text">浙江大学</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A6%E7%A8%8B%E4%BA%91"><span class="nav-number">5.0.2.</span> <span class="nav-text">左程云</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E7%BC%96%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">C++ 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BE%AF%E6%8D%B7%E8%80%81%E5%B8%88%E5%85%A8%E5%AE%B6%E6%A1%B6"><span class="nav-number">6.0.1.</span> <span class="nav-text">侯捷老师全家桶</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">7.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-%E5%85%A5%E9%97%A8"><span class="nav-number">7.0.1.</span> <span class="nav-text">Java 入门</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8"><span class="nav-number">7.0.2.</span> <span class="nav-text">Java 常见应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-SSM-%E6%A1%86%E6%9E%B6%E8%A7%86%E9%A2%91"><span class="nav-number">7.0.3.</span> <span class="nav-text">Java SSM 框架视频</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">8.</span> <span class="nav-text">最后</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cheen Xuan"
+      src="/images/header_icon.jpeg">
+  <p class="site-author-name" itemprop="name">Cheen Xuan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cheenxuan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cheenxuan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cheen Xuan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">24k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">22 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cheenxuan.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://example.com/2021/01/13/%E3%80%90%E6%94%B6%E9%9B%86%E3%80%91B%E7%AB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE%E7%A8%8B/";
+    this.page.identifier = "2021/01/13/【收集】B站计算机课程/";
+    this.page.title = "【收集】B站计算机课程";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://cheenxuan.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+  
+
+</body>
+</html>

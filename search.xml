@@ -10,6 +10,8 @@
 <li>单Activity开发模式</li>
 <li>Fragment性能优化之懒加载方案</li>
 </ol>
+ <span id="more"></span> 
+
 <h4 id="FragmentTransaction的4种提交方式"><a href="#FragmentTransaction的4种提交方式" class="headerlink" title="FragmentTransaction的4种提交方式"></a>FragmentTransaction的4种提交方式</h4><ul>
 <li>commit()：如果在宿主执行了onSaveInstanceState之后再执行该操作，会抛出异常。属于异步事务</li>
 <li>commitAllowingStateLoss()：如果在宿主执行了onSaveInstanceState之后再执行该操作，不会去检查宿主状态，不会抛出异常。但该操作不会被Activity记录，恢复时也就没办法恢复这些提交操作，所以该操作使用不重要的事务。同属于异步事务。</li>
@@ -111,6 +113,8 @@
 <li>如果用户在/usr/bin目录下的时候，rm文件的路径就是./rm或者rm，用.代表当前目录</li>
 <li>如果用户在/usr/bin/somedir下，那么rm的相对路径就是../rm，用..代表上一级目录</li>
 </ul>
+<span id="more"></span>
+
 <blockquote>
 <p>使用cd （change directory）指令切换工作目录的几个注意事项：</p>
 <ul>
@@ -132,9 +136,66 @@
 <li>使用mkdir -p hello/world 创建多级文件夹</li>
 </ul>
 <h6 id="查阅文件内容"><a href="#查阅文件内容" class="headerlink" title="查阅文件内容"></a>查阅文件内容</h6><ul>
-<li>使用cat指令快速查看/etc/hosts文件</li>
+<li><p>使用cat指令快速查看/etc/hosts文件</p>
+</li>
+<li><p>使用more指令</p>
+</li>
+<li><p>使用less指令</p>
+</li>
+<li><p>使用head和tail指令，用来读取一个文件的头部或者尾部N行，看一个实时nginx日志，使用tail -f文件名</p>
+</li>
+<li><p>使用grep 查看一个指定ip的nginx日志，或者查看一段时间内的nginx日志，</p>
+<p>实例： grep 80.82.207.86 ./nginx_log.txt</p>
+<p>实例：grep 19/May/2015 10:05 ./nginx_log.txt</p>
+</li>
 </ul>
-]]></content>
+<h6 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h6><ul>
+<li><p>使用which指令，查询一个指令文件所在的位置</p>
+</li>
+<li><p>使用find指令，通用的指令查找文件</p>
+<p>实例：find / -iname “*.txt”</p>
+</li>
+</ul>
+<h4 id="进程、重定向和管道指令"><a href="#进程、重定向和管道指令" class="headerlink" title="进程、重定向和管道指令"></a>进程、重定向和管道指令</h4><h5 id="xargs指令的作用？"><a href="#xargs指令的作用？" class="headerlink" title="xargs指令的作用？"></a>xargs指令的作用？</h5><p>xargs指令从标准数据流中构造并执行一行行的指令</p>
+<p>从输入流获取字符串，然后利用空白、换行符等切割字符串，这些字符串的基础上构造指令，最后一行行执行这些指令</p>
+<ul>
+<li>作用：支持模板化的生成指令</li>
+</ul>
+<h5 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h5><p>应用的可执行文件是放在文件系统里，把可执行文件启动在操作系统里（具体来说是内存中）形成一个应用的副本，这个副本就是进程</p>
+<blockquote>
+<p>什么是进程？</p>
+<ul>
+<li>回答：进程是应用的执行副本</li>
+<li>不要回答：进程是操作系统分配资源的最小单位</li>
+<li>前者是定义，后者是作用</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>使用ps 查看当前的进程</p>
+<p>不带任何参数的ps指令显示的是同一个电传打字机（TTY上）的进程</p>
+</li>
+<li><p>使用ps -e查看所有进程</p>
+</li>
+<li><p>使用ps -ef 查看所有进程</p>
+</li>
+<li><p>使用ps aux指令所有进程</p>
+</li>
+</ul>
+<h5 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h5><p>管道（Pipeline）的作用是在命令和命令之间，传递数据</p>
+<h5 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h5><ul>
+<li><p>使用ls -l &gt; out 将ls -l的结果重定向到out文件中</p>
+<p>其中&gt;是覆盖重定向，使用&gt;&gt;为追加重定向</p>
+</li>
+</ul>
+<h5 id="管道的作用和分类"><a href="#管道的作用和分类" class="headerlink" title="管道的作用和分类"></a>管道的作用和分类</h5><blockquote>
+<p>将一个进程输出流重定向到另一个进程的输入流</p>
+<ul>
+<li>管道和重定向很像，但是管道是一个连接一个进行计算</li>
+<li>重定向是将一个文件的内容定向到另一个文件，这二者经常会结合使用</li>
+</ul>
+</blockquote>
+<p>管道是FIFO和排队场景一样，先排队的先获得，先流入管道文件的数据，也会先流出去传递给管道下游的进程。</p>
+<h4 id="用户和权限管理指令"><a href="#用户和权限管理指令" class="headerlink" title="用户和权限管理指令"></a>用户和权限管理指令</h4><h5 id="请简述Linux权限划分的原则？"><a href="#请简述Linux权限划分的原则？" class="headerlink" title="请简述Linux权限划分的原则？"></a>请简述Linux权限划分的原则？</h5>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -289,6 +350,8 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">1</span>,s=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">  s+=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+ <span id="more"></span> 
+
 <h6 id="将for循环用底层的指令实现："><a href="#将for循环用底层的指令实现：" class="headerlink" title="将for循环用底层的指令实现："></a>将for循环用底层的指令实现：</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># int i=1,s=0;</span></span><br><span class="line"><span class="comment"># 对应Java代码，我们首先将1和0存储到两个地址</span></span><br><span class="line"><span class="comment"># 这两个地址我们用$i和$s表示</span></span><br><span class="line">store <span class="comment">#1-&gt;$i//将数字1存入i的地址</span></span><br><span class="line">store <span class="comment">#0-&gt;$s//将数字0存入s的地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#接下来循环要开始了，我们在这里预留一个loop标签</span></span><br><span class="line"><span class="comment">#loop是一个自定义标签，它代表指令的相应位置</span></span><br><span class="line"><span class="comment">#后续我们可以用jump指令跳转回这个位置实现循环</span></span><br><span class="line">loop: <span class="comment">#循环标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#for...i&lt;=100</span></span><br><span class="line"><span class="comment">#接下里我们开始实现循环控制</span></span><br><span class="line"><span class="comment">#我们先进行i&lt;=100的比较</span></span><br><span class="line"><span class="comment">#我们先将变量i的地址，也就是$i导入寄存器R0</span></span><br><span class="line">load <span class="variable">$i</span>-&gt;R0</span><br><span class="line"><span class="comment">#然后我们用cmp比较指令R0和数字100</span></span><br><span class="line">cmp R0 <span class="comment">#100//比较R0和数字100</span></span><br><span class="line"><span class="comment">#注意指令不会有返回值，它会进行计算，然后改变机器的状态（也就是寄存器）</span></span><br><span class="line"><span class="comment">#比较后，有几个特殊的寄存器会保存比较的结果</span></span><br><span class="line"><span class="comment">#然后我们用ja（就是jump above的意思），如果比较的结果R0比100大</span></span><br><span class="line"><span class="comment">#那么我们就跳转到end标签，实现循环的跳出</span></span><br><span class="line">ja end</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果R0&lt;100，那么ja end没有生效，这是我们处理s+=i</span></span><br><span class="line"><span class="comment">#首先我们把变量s所在地址的数据导入寄存器R1</span></span><br><span class="line">load <span class="variable">$s</span>-&gt;R1</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后我们把寄存器R0和R1加和，把结果存储到结存器R2</span></span><br><span class="line">add R0 R1 R2</span><br><span class="line"></span><br><span class="line"><span class="comment">#这是，我们把寄存器R2的值存入变量s所在的地址</span></span><br><span class="line">store R2-&gt;<span class="variable">$s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刚才我们完成了一次循环</span></span><br><span class="line"><span class="comment">#我们还需要维护变量i的自增</span></span><br><span class="line"><span class="comment">#现在i的值在R0中，我们首先将整数1寄到R0上</span></span><br><span class="line">add R0 <span class="comment">#1 R0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#再把R0的值存入i所在的内存地址</span></span><br><span class="line">store R0-&gt;<span class="variable">$i</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这是我们的循环已经全部执行完成，我们需要跳转回上面loop标签所在的位置</span></span><br><span class="line"><span class="comment">#继续循环</span></span><br><span class="line">jump loop</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">end：</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -355,6 +418,10 @@
     <title>LeetCode 初级</title>
     <url>/2021/09/26/LeetCode_%E5%88%9D%E7%BA%A7/</url>
     <content><![CDATA[<h3 id="LeetCode-初级"><a href="#LeetCode-初级" class="headerlink" title="LeetCode 初级"></a>LeetCode 初级</h3><p><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/</a><br><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/</a><br><a href="https://leetcode-cn.com/leetbook/detail/illustrate-lcof/">https://leetcode-cn.com/leetbook/detail/illustrate-lcof/</a><br><a href="https://leetcode-cn.com/leetbook/detail/dfs/">https://leetcode-cn.com/leetbook/detail/dfs/</a></p>
+<span id="more"></span>
+
+
+
 <h4 id="01-删除排序数组中的重复项"><a href="#01-删除排序数组中的重复项" class="headerlink" title="01 - 删除排序数组中的重复项"></a>01 - 删除排序数组中的重复项</h4><p>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
 <blockquote>
 <p>说明：首先数组是一个有序数组</p>
@@ -636,6 +703,239 @@
       <tags>
         <tag>计算机基础</tag>
         <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【收集】B站计算机课程</title>
+    <url>/2021/01/13/%E3%80%90%E6%94%B6%E9%9B%86%E3%80%91B%E7%AB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE%E7%A8%8B/</url>
+    <content><![CDATA[<p>互联网让信息更容易触达，但是由于信息过于庞大，筛选出有价值的信息所花费的精力也会很大。</p>
+<p>众所周知，B 站是一个学习的网站，很多人在 B 站上大学、考研、学编程，但 B 站的视频资源那更是五花八门，要从里面选择合适学习视频不是那么容易，而且观看人数多，并不意味着是好的。</p>
+<span id="more"></span>
+
+<p>周末我从 B 站 搜集了些关于学习计算机的视频了，也跟身边的朋友交流一番，特此筛选了下面这些课程的视频，分享给大家。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.png" alt="img"></p>
+<hr>
+<h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><h5 id="计算机网络微课堂"><a href="#计算机网络微课堂" class="headerlink" title="计算机网络微课堂"></a>计算机网络微课堂</h5><p>《计算机网络微课堂》这个视频是湖南科技大学老师制作的，PPT 的动图是我见过做的最用心的了，一看就懂的佳作，而且也适合考研人，因为每个视频末尾都有往年的考题分析。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141331529.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1c4411d7jb?p=1</code></p>
+<h5 id="计算机网络（谢希仁第七版）-方老师"><a href="#计算机网络（谢希仁第七版）-方老师" class="headerlink" title="计算机网络（谢希仁第七版）- 方老师"></a>计算机网络（谢希仁第七版）- 方老师</h5><p>大学学习计算机网络配套的教材是谢希仁的，如果想根据此教材看视频学习的，可以看方老师讲解的计算机网络，<strong>看方老师的视频，你会觉得是一位漂亮的小姐姐在跟你讲课</strong>，方老师不仅颜值高，而且声音也甜，当然最重要是课程质量得到了很多人的认可。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141333238.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1yE411G7Ma?p=1</code></p>
+<h5 id="Wireshark-抓包-从入门到入坟"><a href="#Wireshark-抓包-从入门到入坟" class="headerlink" title="Wireshark 抓包 从入门到入坟"></a>Wireshark 抓包 从入门到入坟</h5><p>在工作中，分析网络数据的时候，必然离不开 Wireshark 工具，如果想学习 Wireshark 抓包的朋友，可以快速看看这个视频，当你有一定的计算机网络基础后，看这个课程会很快的。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141334302.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1X5411x7R4?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336419.png" alt="img"></p>
+<p><strong>▊《*<em>**HTTP/2 in Action 中文版**</em>*》</strong></p>
+<p>【美】Barry，Pollard 著</p>
+<p>郑维智 译</p>
+<ul>
+<li>HTTP20 年重大标准升级</li>
+<li>Web 性能大提升</li>
+<li>包括流量控制等高级案例</li>
+</ul>
+<p>本书以易于理解、方便上手的方式，使用贴近用户的实例来解释 HTTP/2 协议。本书首先介绍为什么要升级到 HTTP/2 以及升级的方法 ；然后逐步深入，详细解释了 HTTP/2 协议本身及其对 Web 开发的影响 ；之后介绍了部分高级内容，如流状态、HPACK 等 ；最后探讨了 HTTP 的未来。本书对于 Web 开发者和运维工程师来说是一本很有价值的参考书。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336518.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h5 id="操作系统-清华大学"><a href="#操作系统-清华大学" class="headerlink" title="操作系统 - 清华大学"></a>操作系统 - 清华大学</h5><p>B 站关于操作系统课程资源很多，我在里面也看了不同老师讲的课程，觉得比较好的入门级课程是《<strong>操作系统 - 清华大学</strong>》，该课程由清华大学老师向勇和陈渝授课，虽然我们上不了清华大学，但是至少我们可以在网上选择听清华大学的课嘛。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141338903.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1js411b7vg?from=search&amp;seid=2361361014547524697</code></p>
+<h5 id="操作系统-哈工大"><a href="#操作系统-哈工大" class="headerlink" title="操作系统 - 哈工大"></a>操作系统 - 哈工大</h5><p>清华大学的操作系统视频课讲的比较精炼，涉及到的内容没有那么细，《<strong>操作系统 - 哈工大</strong>》李治军老师授课的视频课程相对就会比较细节，老师会用 Linux 内核代码的角度带你进一步理解操作系统，也会用生活小例子帮助你理解。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141340606.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1d4411v7u7?from=search&amp;seid=2361361014547524697</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141342759.png" alt="img"></p>
+<p><strong>▊《BPF 之巅：洞悉 Linux 系统和应用性能》</strong></p>
+<p>【美】Brendan Gregg 著</p>
+<p>孙宇聪 吕宏利 刘晓舟 译</p>
+<ul>
+<li>经典书《性能之巅》再续新篇</li>
+<li>震撼全球的 Gregg 大师新作</li>
+<li>深度理解 Linux 系统性能优化</li>
+</ul>
+<p>本书关注 Linux 系统性能和应用程序性能的调优，学习如何分析 CPU、内存、存储设备、文件系统、网络、编程语言、应用程序、容器、虚拟机管理器、安全及内核，由浅入深了解基础、进阶工具的使用，收集更有用更深入的技术信息。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141343109.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="计算机组成"><a href="#计算机组成" class="headerlink" title="计算机组成"></a>计算机组成</h3><h5 id="计算机组成原理-快速复习"><a href="#计算机组成原理-快速复习" class="headerlink" title="计算机组成原理 - 快速复习"></a>计算机组成原理 - 快速复习</h5><p>对于非科班出身的朋友，想快速学习计算机组成原理，推荐这个视频，因为这个视频精炼总结出了跟程序员有关的计算机原理知识，篇幅不会太长，一天就可以搞定。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141344765.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1rV411k7Xf?p=1</code></p>
+<h4 id="计算机组成原理（唐朔飞）"><a href="#计算机组成原理（唐朔飞）" class="headerlink" title="计算机组成原理（唐朔飞）"></a>计算机组成原理（唐朔飞）</h4><p>如果想系统学习计算机组成原理，可以看哈工大这门计算机原理课，依据的教材正是大学配套的书。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141346572.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1WW411Q7PF?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347265.png" alt="img"></p>
+<p><strong>▊《编码：隐匿在计算机软硬件背后的语言》</strong></p>
+<p>【美】Charles Petzold 著</p>
+<p>左飞，薛佟佟 译</p>
+<ul>
+<li>永不褪色的计算机科学经典著作</li>
+<li>用最简单的语言讲述最专业的知识</li>
+</ul>
+<p>这是一本讲述计算机工作原理的书。不过，你千万不要因为 “工作原理” 之类的字眼就武断地认为，它是晦涩而难懂的。作者用丰富的想象和清晰的笔墨将看似繁杂的理论阐述得通俗易懂，你丝毫不会感到枯燥和生硬。更重要的是，你会因此而获得对计算机工作原理较深刻的理解。这种理解不是抽象层面上的，而是具有一定深度的，这种深度甚至不逊于 “电气工程师” 和“程序员”的理解。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347344.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><h5 id="SQL-进阶教程"><a href="#SQL-进阶教程" class="headerlink" title="SQL 进阶教程"></a>SQL 进阶教程</h5><p>无意间在 B 站发现一个学习 SQL 很牛逼的视频，主讲人是外国的工程师，这门课程适合初学者和进阶，这位工程师全程以「实战」的方式来授课，案例经典，课程真的通熟易懂，很简练。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141348651.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1UE41147KC?p=1</code></p>
+<h5 id="MySQL-高级教程"><a href="#MySQL-高级教程" class="headerlink" title="MySQL 高级教程"></a>MySQL 高级教程</h5><p>如果你想学习 MySQL 底层原理，这个视频是个不错的选择。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141350101.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1CZ4y1M7MQ?p=1</code></p>
+<h5 id="Redis-教程"><a href="#Redis-教程" class="headerlink" title="Redis 教程"></a>Redis 教程</h5><p>学习 Redis 的同学，可以看看这个视频，每一个视频都很详细了说明了对应的知识点，而且不仅只是说了基础应用，还涉及了底层原理和互联网场景面试的知识点。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141351123.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1S54y1R7SB?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352151.png" alt="img"></p>
+<p><strong>▊《高性能 MySQL（第 3 版）》</strong></p>
+<p>【美】Baron Schwartz,Peter Zaitsev,Vadim Tkachenko 著</p>
+<p>宁海元 周振兴 彭立勋 翟卫祥 等 译</p>
+<ul>
+<li>MySQL 圣经级著作</li>
+<li>领域排头、畅行全球、天团献译、从业必收</li>
+</ul>
+<p>MySQL 领域经典之作，拥有广泛的影响力。每一章均别具匠心，力求理论与实践的精确平衡，且布满无价之宝，有时甚至越过 MySQL 舞台，完全适用于任一数据库。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352217.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="算法与数据结构"><a href="#算法与数据结构" class="headerlink" title="算法与数据结构"></a>算法与数据结构</h3><h5 id="浙江大学"><a href="#浙江大学" class="headerlink" title="浙江大学"></a>浙江大学</h5><p>强烈推荐浙江大学的算法与数据结构课程，该课程非常系统，也很经典，适合小白入门算法。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141353198.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1JW411i731?p=1</code></p>
+<h5 id="左程云"><a href="#左程云" class="headerlink" title="左程云"></a>左程云</h5><p>这个视频主要是左神讲解国内互联网大厂的高频面试题，是一个突击的好资源。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141355330.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV15D4y1X7Tt?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356307.png" alt="img"></p>
+<p><strong>▊《labuladong 的算法小抄》</strong></p>
+<p>付东来（@labuladong） 著</p>
+<ul>
+<li>GitHub 68.8k star 的硬核算法教程</li>
+<li>labuladong 带你挑战力扣算法题</li>
+<li>挑战 BAT 等大厂 Offer</li>
+</ul>
+<p>本书专攻算法刷题，训练算法思维，应对算法笔试。注重用套路和框架思维解决问题，以不变应万变。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356389.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="C-编程"><a href="#C-编程" class="headerlink" title="C++ 编程"></a>C++ 编程</h3><h5 id="侯捷老师全家桶"><a href="#侯捷老师全家桶" class="headerlink" title="侯捷老师全家桶"></a>侯捷老师全家桶</h5><p>学习 C++ 直接跟着侯捷老师一系列视频学下去就对了，相信很多人都是看侯捷老师视频长大的。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141358812.png" alt="img"></p>
+<p>[侯捷] C++ 面向对象高级编程：<code>https://www.bilibili.com/video/BV14s411E772?p=1</code></p>
+<p>[侯捷] C++11 新特性：<code>https://www.bilibili.com/video/BV1p4411v7Dh?p=1</code></p>
+<p>[侯捷] C++ 内存管理：<code>https://www.bilibili.com/video/BV1Kb411B7N8?p=1</code></p>
+<p>[侯捷] C++ STL 源码分析：<code>https://www.bilibili.com/video/BV1db411q7B8?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.jpeg" alt="img"></p>
+<p><strong>▊《*<em>**C++ Primer（中文版 第 5 版）**</em>*》</strong></p>
+<p>【美】Stanley B. Lippman，Josée Lajoie，Barbara E. Moo 著</p>
+<p>王刚，杨巨峰 译</p>
+<ul>
+<li>畅行全球 20 年的 C++ 入门必读经典</li>
+<li>行业大师标杆之作，全球读者千万</li>
+<li>全面采用新标技术，翻译团队强大</li>
+</ul>
+<p>本书可以帮助你全面了解 2011 版本 C++ 标准的内容。无论初学或老手既可用来理解 C++11 规则背后的原理，也可用其新语言特性与标准库来快速构建健壮程序。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141359545.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h5 id="Java-入门"><a href="#Java-入门" class="headerlink" title="Java 入门"></a>Java 入门</h5><p>不知道大家有没有听过高淇老师，我在读大学的时候，那时候看的是高淇老师，讲课的方式很幽默风趣的，这个视频是入门 Java ，一共 300 集，每一集平均 20 分钟，是个干货视频。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141400563.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1dW411Q7mY?p=1</code></p>
+<h5 id="Java-常见应用"><a href="#Java-常见应用" class="headerlink" title="Java 常见应用"></a>Java 常见应用</h5><p>这个视频是 Java 的重点知识整合，是偏向应用类的，比如反射、RPC、SOCKET、文件、JSON、二维码、MAIL、加密等。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141401633.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1k4411W7xq?p=1</code></p>
+<h5 id="Java-SSM-框架视频"><a href="#Java-SSM-框架视频" class="headerlink" title="Java SSM 框架视频"></a>Java SSM 框架视频</h5><p>这个视频面向的是 Java Web 的，源码级别的方式讲解了 spring、springmvc、mybatis。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141403647.png" alt="img"></p>
+<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1uE411C7CW?p=1</code></p>
+<p><strong>补充阅读</strong></p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404176.jpeg" alt="img"></p>
+<p>**▊《*<em>Java 无难事：详解 Java 编程核心思想与技术*<em>》</em></em></p>
+<p>孙鑫 著</p>
+<ul>
+<li>系统讲解 Java 开发核心知识</li>
+<li>由浅入深轻松掌握</li>
+<li>知识点对应视频二维码，随看随学</li>
+</ul>
+<p>本书讲解了依赖注入（IoC/DI）容器、面向切面编程（AOP）、对象关系映射（ORM）框架的实现原理，同时还给出了并发编程领域中经常用到的线程池的实现。涵盖了从 Java 5 到 Java 11 的所有重要新特性。</p>
+<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404689.png" alt="img"></p>
+<p>（扫码了解本书详情）</p>
+<hr>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>春节也快来临了，是一个<strong>悄悄发育的好机会</strong>，所以就给大家找了些 B 站学习编程的不错的视频，这些视频仅供大家参考。</p>
+<p>但是大多数视频都是比较基础入门系列的课程，如果想深入继续学习，那必然离不开书了，视频只是做一个辅助学习的作用，所以最好方式就是书和视频搭配使用。</p>
+<p>可能 B 站还有很多优质的视频我没有发现，<strong>欢迎大家分享出你在 B 站发现的优质好课</strong>。</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>收集</category>
+      </categories>
+      <tags>
+        <tag>收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ADB 常用命令</title>
+    <url>/2021/02/13/ADB-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><strong>android studio 查看Task中activity</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell dumpsys activity activities</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p><strong>adb版本信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb version</span><br></pre></td></tr></table></figure>
+
+<p><strong>一般输入adb install 后把apk文件拖入大盘cmd中即可</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb install XX文件路径</span><br></pre></td></tr></table></figure>
+
+<p><strong>向android设备中传入文件(失败是因为没有root呢)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push &lt;location&gt; &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>将android设备中的文件导出到本地(测试而已)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb pull &lt;remote&gt; &lt;local&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>过滤出android设备中的所有已经安装的app(包括系统的应用)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -f</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看系统的盘符(android设备中根目录中的各个目录的大小)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell df</span><br></pre></td></tr></table></figure>
+
+<p><strong>模拟按键输入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm input keyevent</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动一个activity</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell am start -n 包名+类名</span><br></pre></td></tr></table></figure>
+
+<p><strong>录制android设备的视频 并存储起来</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell screenrecord /sdcard/demo.mp4</span><br></pre></td></tr></table></figure>
+
+<p><strong>重启设备</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot</span><br></pre></td></tr></table></figure>
+
+<p><strong>卸载某个应用 (-k时表示只卸载应用不删除应用缓存数据)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb uninstall [-k] &lt;包名&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>列出当前电脑上所有正在连接的android设备</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<p><strong>杀死adb进程服务</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<p><strong>开启adb服务   与上条命令搭配使用处理当手机不识别情况或者重启adb</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看端口的占用情况</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb netstat -ano</span><br></pre></td></tr></table></figure>
+
+
+
+<iframe src="https://qiyukf.com/sdk/res/delegate.html?1642053247700" style="border: 0px; margin: 0px; padding: 0px; cursor: default !important; height: 0px; width: 0px;"></iframe>
+]]></content>
+      <categories>
+        <category>Android</category>
+        <category>ADB</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>ADB</tag>
       </tags>
   </entry>
 </search>
