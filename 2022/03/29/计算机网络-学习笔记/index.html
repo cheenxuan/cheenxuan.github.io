@@ -1,949 +1,313 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>ADB 常用命令</title>
-    <url>/2021/02/13/ADB-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><strong>android studio 查看Task中activity</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell dumpsys activity activities</span><br></pre></td></tr></table></figure>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<span id="more"></span>
+<link rel="stylesheet" href="/css/main.css">
 
-<p><strong>adb版本信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb version</span><br></pre></td></tr></table></figure>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<p><strong>一般输入adb install 后把apk文件拖入大盘cmd中即可</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb install XX文件路径</span><br></pre></td></tr></table></figure>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Pisces | Gemini":240,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-<p><strong>向android设备中传入文件(失败是因为没有root呢)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push &lt;location&gt; &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+  <meta name="description" content="计算机网络概述计算机网络在信息时代的作用 计算机网络已经变成了我们生活中不可或缺的一部分，由一种通讯基础设施发展成为一种重要的信息服务基础设施。 中国互联网信息中心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络-学习笔记">
+<meta property="og:url" content="http://example.com/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Cheen Xuan&#39;s Blog">
+<meta property="og:description" content="计算机网络概述计算机网络在信息时代的作用 计算机网络已经变成了我们生活中不可或缺的一部分，由一种通讯基础设施发展成为一种重要的信息服务基础设施。 中国互联网信息中心">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/20220107161659.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/20220112101807.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220112102522431.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220112102904748.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220112104726050.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220113155228451.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220307134318075.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220307140310405.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220307145333125.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220307145509596.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220307145552680.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220307150519828.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220308165918013.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220308170030047.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220308170113614.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220309104236077.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220309151710726.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220311163733012.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220316143411900.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203162227763.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203162249999.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203162251270.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203162250362.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203212222788.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203212223255.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203212224285.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220323134039111.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220323161328559.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220323170742114.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220323170851378.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220325153348093.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220325161537163.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203271214572.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203271226284.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203271249448.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203271250891.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203271420969.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220328133336826.png">
+<meta property="og:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/image-20220328141734114.png">
+<meta property="article:published_time" content="2022-03-29T02:14:17.000Z">
+<meta property="article:modified_time" content="2022-03-29T02:14:17.425Z">
+<meta property="article:author" content="Cheen Xuan">
+<meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/20220107161659.png">
 
-<p><strong>将android设备中的文件导出到本地(测试而已)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb pull &lt;remote&gt; &lt;local&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>过滤出android设备中的所有已经安装的app(包括系统的应用)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -f</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看系统的盘符(android设备中根目录中的各个目录的大小)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell df</span><br></pre></td></tr></table></figure>
-
-<p><strong>模拟按键输入</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm input keyevent</span><br></pre></td></tr></table></figure>
-
-<p><strong>启动一个activity</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell am start -n 包名+类名</span><br></pre></td></tr></table></figure>
-
-<p><strong>录制android设备的视频 并存储起来</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell screenrecord /sdcard/demo.mp4</span><br></pre></td></tr></table></figure>
-
-<p><strong>重启设备</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot</span><br></pre></td></tr></table></figure>
-
-<p><strong>卸载某个应用 (-k时表示只卸载应用不删除应用缓存数据)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb uninstall [-k] &lt;包名&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>列出当前电脑上所有正在连接的android设备</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
-
-<p><strong>杀死adb进程服务</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<p><strong>开启adb服务   与上条命令搭配使用处理当手机不识别情况或者重启adb</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb start-server</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看端口的占用情况</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb netstat -ano</span><br></pre></td></tr></table></figure>
+<link rel="canonical" href="http://example.com/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<iframe src="https://qiyukf.com/sdk/res/delegate.html?1642053247700" style="border: 0px; margin: 0px; padding: 0px; cursor: default !important; height: 0px; width: 0px;"></iframe>
-]]></content>
-      <categories>
-        <category>Android</category>
-        <category>ADB</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>ADB</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Fragment核心知识点</title>
-    <url>/2021/04/15/Fragment%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<h4 id="Fragment综述"><a href="#Fragment综述" class="headerlink" title="Fragment综述"></a>Fragment综述</h4><ol>
-<li>FragmentManager与Activity的关系</li>
-<li>FragmentTransaction的四种提交方式</li>
-<li>Fragment常见问题及解决方案</li>
-<li>单Activity开发模式</li>
-<li>Fragment性能优化之懒加载方案</li>
-</ol>
- <span id="more"></span> 
-
-<h4 id="FragmentTransaction的4种提交方式"><a href="#FragmentTransaction的4种提交方式" class="headerlink" title="FragmentTransaction的4种提交方式"></a>FragmentTransaction的4种提交方式</h4><ul>
-<li>commit()：如果在宿主执行了onSaveInstanceState之后再执行该操作，会抛出异常。属于异步事务</li>
-<li>commitAllowingStateLoss()：如果在宿主执行了onSaveInstanceState之后再执行该操作，不会去检查宿主状态，不会抛出异常。但该操作不会被Activity记录，恢复时也就没办法恢复这些提交操作，所以该操作使用不重要的事务。同属于异步事务。</li>
-<li>commitNow()：会立即执行当前提交的transaction事务。属于同步事务。</li>
-<li>commitNowAllowingStateLoss()：剧本以上两者的特性，即是同步执行，也不会检查宿主的状态，有可能该操作不会被正确恢复。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>源码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Launcher启动与ActivityThread深入分析</title>
-    <url>/2021/04/12/Launcher%E5%90%AF%E5%8A%A8%E4%B8%8EActivityThread%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h4 id="知识要求"><a href="#知识要求" class="headerlink" title="知识要求"></a>知识要求</h4><ol>
-<li>app的启动流程</li>
-<li>具体类在启动中的具体作用</li>
-<li>设计模式与核心设计思想</li>
-<li>目前已知的问题和解决的方案</li>
-</ol>
-<h4 id="从开机到SystemServer系统服务启动"><a href="#从开机到SystemServer系统服务启动" class="headerlink" title="从开机到SystemServer系统服务启动"></a>从开机到SystemServer系统服务启动</h4><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gph2mg8b4oj31110u00wc.jpg"></p>
-<h5 id="手机启动概述"><a href="#手机启动概述" class="headerlink" title="手机启动概述"></a>手机启动概述</h5><p>当手机关机状态时长按电源键开启：主板通电之后，会引导芯片开始执行烧录在存储器里的预设代码，然后加载引导程序到内存中，这里主要是做一些内存检查和硬件参数的初始化等功能。</p>
-<span id="more"></span>
-<h5 id="手机系统启动描述"><a href="#手机系统启动描述" class="headerlink" title="手机系统启动描述"></a>手机系统启动描述</h5><h6 id="开机引导"><a href="#开机引导" class="headerlink" title="开机引导"></a>开机引导</h6><p>开机引导程序执行完成之后，开始加载Linux Kernel的核心代码，这一层主要是加载一些硬件的驱动，比如常用的相机驱动、显示屏驱动、输入驱动、Media服务驱动等。**<em>注意：上层应用想要访问硬件设备的话，都必须通过Hardware Abstract Layer（通常所说的硬件抽象层），硬件抽象层设计主要为了解决各家驱动提供商所提供的驱动标准不统一的问题，这些问题都由硬件抽象层来适配，为上层应用提供统一的API。</em>** </p>
-<h6 id="Linux-Kernel"><a href="#Linux-Kernel" class="headerlink" title="Linux Kernel"></a>Linux Kernel</h6><p>硬件驱动加载完成之后，会创建Linux中的第一个用户进程，也就是init进程(pad=1),然后孵化出adbd进程、logd进程。用于断点调试和log日志输出的两个守护进程。init进程完成之后，它还会孵化出第一个java进程Zygote进程，Zygote进程是承上启下的连接Java世界和Native世界的存在，因为Zygote进程创建成功之后，就会进入Java世界，会调用ZygoteInit.java这个类，在这个类的入口方法，它会创建Android FrameWork进程、系统服务System Server进程。后续所有APP进程都是由Zygote进程孵化而来的，APP进程创建完成之后，都会由ZygoteInit反射调用APP进程的入口类（ActivityThread.java）,从而使得APP得以启动。</p>
-<h6 id="ZygoteInit"><a href="#ZygoteInit" class="headerlink" title="ZygoteInit"></a>ZygoteInit</h6><blockquote>
-<p>ZygoteInit.java是如何被调用的？在Java中class文件是由classLoader加载的，ClassLoader在加载Class文件的时候，也是通过C++来完成的。所以C++想要访问Java文件是非常轻松的。</p>
-</blockquote>
-<p><strong><em>拓展：1.在分析Zygote进程创建之后，会进入Java世界，ZygoteInit.java。那么是如何从C++转到Java的呢？我们知道，Java调用C++可以通过JNI，我们来看下C++如何主动访问Java实例方法和静态方法</em></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//1.从classpath路径下搜索ZygoteInit这个类，并返回该类的Class对象，进程创建完成后会固定加载这个类</span><br><span class="line">jClass clazz = (*env)-&gt;FindClass(env,&quot;com/android/internal/os/ZygoteInit&quot;);</span><br><span class="line">//2.获取类的默认构造方法ID</span><br><span class="line">jmethodID mid_construct = (*env)-&gt;GetMethodID(env,clazz,&quot;&lt;init&gt;&quot;,&quot;()V&quot;);</span><br><span class="line">//3.创建该类的实例</span><br><span class="line">jobject jobj = (*env)-&gt;NewObject(env,clazz,mid_construct);</span><br><span class="line">//4.查找类实例方法的ID</span><br><span class="line">jmethodID mid_instance = (*env)-&gt;GetMethodID(env,clazz,&quot;main&quot;,&quot;(Ljava/lang/String;I)V&quot;);</span><br><span class="line">//5.调用对象的实例方法</span><br><span class="line">jstring str_arg = (*env)-&gt;NewStringUTF(&quot;我是实例方法&quot;);</span><br><span class="line">(*env)-&gt;CallVoidMethod(env,jobj,mid_instance,str_arg,200);</span><br></pre></td></tr></table></figure>
-
-<p>ZygoteInit类Main方法中启动System Server系统服务进程SystemServer.java,在SystemServer中会创建许多我们熟知的系统服务，比如：ActivityManagerService、WindowManagerService、PowerManagerService、InputManagerService等，等所有的系统服务都创建成功之后，就开始执行Launcher的启动流程。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ZygoteInit.java</span><br><span class="line"></span><br><span class="line">public static void main(String argv[])&#123;</span><br><span class="line">    //1.预加载frameworks/base/preloaded-classes和framework_res.apk资源，linux在fork进程时，</span><br><span class="line">    preloadClasses();</span><br><span class="line">    preloadResources();</span><br><span class="line">    preloadSharedLibraries();</span><br><span class="line">    </span><br><span class="line">    //2.启动system_server进程，该进程是framework的核心</span><br><span class="line">    if(argv[1].eqauls(&quot;start-system-server&quot;))&#123;</span><br><span class="line">        startSystemServer();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //3.创建Socket服务</span><br><span class="line">    registerZygoteSocket();</span><br><span class="line">    </span><br><span class="line">    //4.进入阻塞状态，等待连接，用以处理来自AMS申请进程创建的请求</span><br><span class="line">    runSelectLoopMode();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>SystemServer的main方法主要做了以下三件事情，即启动不同类型的系统服务</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SystemServer.java</span><br><span class="line">public static void main(String argv[])&#123;</span><br><span class="line">    //创建系统的服务的管理者</span><br><span class="line">    SystemServiceManager mSystemServiceManager = new SystemServiceManager(mSystemContext);</span><br><span class="line">    //启动引导服务</span><br><span class="line">    startBootstrapServices();</span><br><span class="line">    //启动核心服务</span><br><span class="line">    startCoreServices();</span><br><span class="line">    //启动其他一般服务</span><br><span class="line">    startOtherServices();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h6><blockquote>
-<ol>
-<li>启动引导服务<ol>
-<li>ActivityManagerService.class四大组件调度服务，（Android 10）其中Activity调度交由ATMS</li>
-<li>ActivityTaskManagerService.class Activity调度服务</li>
-<li>PackageManagerService.class 提供安装、卸载扫描管理服务</li>
-<li>PowerManagerService.class 提供电量管理服务</li>
-<li>UriGrantsManagerService.class 权限申请授权服务</li>
-<li>OtaDexoptService.class 字节码优化服务</li>
-<li>一共17个服务</li>
-</ol>
-</li>
-<li>启动核心服务<ol>
-<li>BatteryService.class 提供电池状态管理服务</li>
-<li>WebViewUpdateService.class Webview升级服务</li>
-<li>GPUService.class GPU驱动加载服务</li>
-<li>UsageStatsService.class 应用对系统资源使用记录服务</li>
-<li>一共9个服务</li>
-</ol>
-</li>
-<li>启动其他服务<ol>
-<li>AlarmManagerService.class 提供时钟服务</li>
-<li>NetworkStatsService.class 网络状态服务</li>
-<li>WindowManagerService.class 窗口管理服务</li>
-<li>TelPhonyRegisty.class 电话服务</li>
-<li>ImputManagerService.class 输入服务</li>
-<li>BlutoothService.class 蓝牙服务</li>
-<li>NotificationManagerService.class 通知服务</li>
-<li>AudioService.class 音频服务</li>
-<li>一共90个</li>
-</ol>
-</li>
-</ol>
-</blockquote>
-<h4 id="Launcher应用的进程启动流程"><a href="#Launcher应用的进程启动流程" class="headerlink" title="Launcher应用的进程启动流程"></a>Launcher应用的进程启动流程</h4><h5 id="Launcher启动流程关键类"><a href="#Launcher启动流程关键类" class="headerlink" title="Launcher启动流程关键类"></a>Launcher启动流程关键类</h5><ul>
-<li><pre><code>ActivityManagerService Activity生命周期调度的服务类
-</code></pre>
-</li>
-<li><pre><code>ActivityTaskManagerService  android10之后 由此类接替ActivityManagerService
-</code></pre>
-</li>
-<li><pre><code>RootActivityContainer 主要调用了PackageManagerService去查询手机系统中已经安装了的所有应用，哪一个是符合Launcher标准，得到一个Intent对象，交由ActivityStarter做进一步的启动
-</code></pre>
-</li>
-<li><pre><code>ActivityStarter 做启动之前的各项检查 是否在清单文件中注册、是否存在、此应用是否有权限启动等等。
-</code></pre>
-</li>
-<li><pre><code>ActivityRecord 记录和存储了Activity的信息 Server端对Activity的映射
-</code></pre>
-</li>
-<li><pre><code>TaskRecord 任务栈
-</code></pre>
-</li>
-<li><pre><code>ActivityStack 任务栈管理者
-</code></pre>
-</li>
-<li><pre><code>ActivityStackSuperVisor 
-</code></pre>
-</li>
-<li><pre><code>ProcessList android10 启动工作
-</code></pre>
-</li>
-<li><pre><code>ZygoteProcess 
-</code></pre>
-</li>
-</ul>
-<h6 id="Activity任务栈模型"><a href="#Activity任务栈模型" class="headerlink" title="Activity任务栈模型"></a>Activity任务栈模型</h6><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gphy75k9mxj30tk0cmmxz.jpg" alt="Activity任务栈模型"></p>
-<h5 id="Launcher进程启动流程"><a href="#Launcher进程启动流程" class="headerlink" title="Launcher进程启动流程"></a>Launcher进程启动流程</h5><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gphyaxa0xsj31oo0u0ajv.jpg" alt="Launcher进程启动流程"></p>
-<p>系统服务启动完成之后，调用ActivityManagerService中的systemReady()方法，会启动Launcher应用。在systemReady()调用了ActivityTaskManagerService#LocalService中startHomeOnAllDisplays()进一步启动launcher应用，而ActivityTaskManangerService在这个方法中只做了转发委托给RootActivityContainer启动Launcher，在RootActivityContainer的startHomeOnDisplay()中会调用PKMS查询符合Launcher应用条件的Activity的Intent信息，紧接着会调用ActivityStarter，在startActivityUnchecked()中做了很多启动前的检查工作，如检查Activity是否注册到清单，检查这个Activity这个类是否存在，检查我们的应用是否有权限启动，还会根据启动的launcher mode和Intent flag计算出该Activity该复用还是新建并加入任务栈。紧接着会调用ActivityStack(任务栈的管理者，它里面可以存放多个或一个任务栈，它取决于Activity的启动模式)，在resumeTopActivityInnerLocked()会把当前可见的Activity暂停也就是调用可见Activity的onPause方法，还会判断待启动的Activity所属的进程是否存在或启动，如果没有启动则会执行进程启动的流程分支。进程启动分支则会进入ActivityStackSuperVisor，在它的startSpecificActivityLocked()中再一次判断待启动的Activity所属进程是都存在，如果已存在则继续启动Activity，不存在则创建进程。进入进程ActivityManagerService#LocalService，在startProcess()中把创建进程的工作委派给ProcessList来负责进程的创建。老版本中进程的创建是在ActivityManagerService中的，android10之后则有ProcessList创建进程。进入ProcessList之后，在它的startProcessLocked()中会配置进程启动的参数，如有ABI类型、entryPoint(进程创建完成之后的入口类，”android.app.ActivityThread”),参数配置完成之后最终进入ZygoteProcessor类中，而ZygoteProcessor属于SystemServer的进程，在attemptZygoteArgsGetResult()中建立连接Zygote进程的socket，把进程创建需要的信息通过socket发送过去。ZygoteInit的main()方法当中创建了Zygote socket服务，服务创建完成之后就会进入阻塞监听状态，一旦有新的链接进来，它就能接受参数去处理进程创建的工作。进程创建完成之后，会根据传递的新进程的入口类，由ZygoteInit反射执行从而进入android应用的进程。</p>
-<blockquote>
-<p>问题1：系统如何识别已安装应用哪个是Launcher应用？<br>    Intent.category_home属性<br>问题2：如何定制一款Launcher应用？<br>  在APP清单文件中，配置category </p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;category android:name=&quot;android.intent.category.HOME&quot; /&gt;</span><br><span class="line">&lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>问题3：进程创建完成的出口是怎么设定的？<br>在ProcessList.java中 设置String entryPoint = “android.app.ActivityThread”;<br>问题4：掌握进程创建流程中各个类和关键方法的作用</p>
-</blockquote>
-<h4 id="Launcher应用的桌面启动流程"><a href="#Launcher应用的桌面启动流程" class="headerlink" title="Launcher应用的桌面启动流程"></a>Launcher应用的桌面启动流程</h4><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpjabtgbsfj31480lijvt.jpg"></p>
-<h4 id="Activity核心知识点"><a href="#Activity核心知识点" class="headerlink" title="Activity核心知识点"></a>Activity核心知识点</h4><ol>
-<li>XML布局文件到View的解析</li>
-<li>Activity与window 、View的关系</li>
-<li>Activity的启动模式</li>
-<li>Activity中Fragment的管理</li>
-<li>View的绘制 出发点</li>
-<li>事件分析</li>
-</ol>
-<blockquote>
-<p>问题1： 触发View三大流程的入口在哪里？<br>    ViewRootImpl<br>问题2：onCreate、onResume中为什么获取不到View的宽高<br>    因为绘制工作是在onResume之后才执行的<br>问题3：onCreate中使用View.post为什么可以获取宽高<br>问题4：子线程更新UI真的不行吗？<br>    可以在子线程更新UI，前提条件是ViewRootImpl未创建之前<br>问题5：Choreography接收动画，输入和绘制事件<br>    ViewRootImpl中注册监听 垂直信号同步的监听<br>问题6：手势事件来源如何传递到Activity？<br>问题7：如何获取栈顶Activity？<br>问题8：如何判断应用前后台？</p>
-</blockquote>
-<p>ActivityThread.handleResumeActivity()中<br>decor.setVisibility(View.INVISIBLE);为了防止View在测绘过程中软键盘弹起而导致页面闪动</p>
-<p>ViewRootImpl<br><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpjccyppcsj30py0j03zs.jpg"></p>
-<h4 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h4><p>待更新</p>
-<h4 id="来自ActivityThread的启发与拓展"><a href="#来自ActivityThread的启发与拓展" class="headerlink" title="来自ActivityThread的启发与拓展"></a>来自ActivityThread的启发与拓展</h4><p>待更新</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>源码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kotlin的应用</title>
-    <url>/2021/04/08/Kotlin%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="Kotlin概述"><a href="#Kotlin概述" class="headerlink" title="Kotlin概述"></a>Kotlin概述</h2><ul>
-<li>一种在Java虚拟机上运行的静态类型编程语言</li>
-<li>可以和Java代码相互运作</li>
-<li>容易在Android项目中替代Java或者同Java一起使用</li>
-</ul>
-<h2 id="Kotlin特点"><a href="#Kotlin特点" class="headerlink" title="Kotlin特点"></a>Kotlin特点</h2><ul>
-<li>简单易用</li>
-<li>安全</li>
-<li>互操作性</li>
-<li>工具友好</li>
-</ul>
-<p>以上是文章摘要 <span id="more"></span> 以下是余下全文 </p>
-<h2 id="Kotlin构建流程"><a href="#Kotlin构建流程" class="headerlink" title="Kotlin构建流程"></a>Kotlin构建流程</h2><p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpchbozwzuj30tq0eq75d.jpg" alt="Kotlin与Java构建流程"></p>
-<h2 id="Kotlin必备基础"><a href="#Kotlin必备基础" class="headerlink" title="Kotlin必备基础"></a>Kotlin必备基础</h2><h3 id="Kotlin基本数值类型"><a href="#Kotlin基本数值类型" class="headerlink" title="Kotlin基本数值类型"></a>Kotlin基本数值类型</h3><p>Kotlin的基本数值类型包括Byte、Short、Int、Long、Float、Double等。<em>不同于Java</em>的是，字符不属于数值类型，是一个独立的数据类型。</p>
-<blockquote>
-<p>对于整数，存在四种具有不同大小和值范围的类型</p>
-</blockquote>
-<h3 id="Kotlin-数组"><a href="#Kotlin-数组" class="headerlink" title="Kotlin 数组"></a>Kotlin 数组</h3><h3 id="Kotlin集合"><a href="#Kotlin集合" class="headerlink" title="Kotlin集合"></a>Kotlin集合</h3><p>Kotlin标准库提供了一整套用于管理集合的工具，集合是可变数量（可能为零）的一组条目，各种结合对于解决为题都具有重要意义，并且经常用到。</p>
-<ul>
-<li>List是一个有序集合，可通过索引（反应元素位置的整数）访问元素。元素可以在list中出现多次。列表的一个示例就是一句话：有一组字、这些字的顺序很重要并且字可以重复。</li>
-<li>Set是唯一元素的集合。它反应了集合（Set）的数学抽象：一组无重复的对象。一般来说set中元素的顺序并不重要。例如，字母表是字母的集合（Set）。</li>
-<li>Map（或者字典）是一组键值对。键是唯一的，每个键都刚好映射到一个值，值可以重复。</li>
-</ul>
-<h4 id="集合的可变性与不可变性"><a href="#集合的可变性与不可变性" class="headerlink" title="集合的可变性与不可变性"></a>集合的可变性与不可变性</h4><p>那什么叫Kotlin集合的可变性与不可变性呢？在Kotlin中存在两种意义上的集合，一种是可以修改的一种是不可修改的<br><em>不可变集合</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//list</span><br><span class="line">val stringList = listOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringList)</span><br><span class="line">//set</span><br><span class="line">val stringSet = setOf(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;)</span><br><span class="line">println(stringSet)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><em>可变集合</em></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">val numbers = mutableListOf(1,2,3,4)</span><br><span class="line">numbers.add(5)</span><br><span class="line">numbers.removeAt(1)</span><br><span class="line">numbers[0] = 0</span><br><span class="line">println(numbers)</span><br></pre></td></tr></table></figure>
-
-<h5 id="原理探索"><a href="#原理探索" class="headerlink" title="原理探索"></a>原理探索</h5><ul>
-<li>Q1：两个具有相同键值对，但顺序不同的map相等吗？为什么？<br>  相等，map的equals方法</li>
-<li>Q2：两个具有相同元素，但单顺序不同的list相等吗？为什么？<br>  不相等</li>
-</ul>
-<h3 id="Kotlin方法与lambda表达式"><a href="#Kotlin方法与lambda表达式" class="headerlink" title="Kotlin方法与lambda表达式"></a>Kotlin方法与lambda表达式</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法可以在文件中直接定义 </p>
-<p>成员方法 在class类中定义</p>
-<p>静态类方法 可以用通过companion object来实现</p>
-<p>静态类 使用修饰符object而不是class</p>
-<p>单表达式方法，当方法返回单个表达式时，恶意省略花括号并且在 = 符号之后指定代码体即可</p>
-<p>可变参数方法 使用vararg 关键字修饰参数</p>
-<h4 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h4><p>对比<br>view.setOnClickListener(new View.OnClickListener(){<br>    @Override<br>    public void onClick(View v){<br>        Toast.makeText(v.getContext(),”Lambda简洁之道”,Toast.LENGTH.LONG).show();<br>    }<br>});</p>
-<p>VS</p>
-<p>view.setOnClickListener{v -&gt; Toast.makeText(v.context,”Lambda简洁之道”,Toast.LENGTH.LONG).show() }</p>
-<p>Lambda表达式的特点：</p>
-<ul>
-<li>是匿名方法</li>
-<li>可传递</li>
-</ul>
-<p>Lambda语法：<br>无参数的情况<br>val/var 变量名 = { 操作的代码 }</p>
-<p>有参数的情况<br>val/var 变量名: (参数类型，参数类型，…) -&gt; 返回值类型 = { 参数1，参数2，… -&gt; 操作的代码 }<br>等价于<br>val/var 变量名 = {参数1：参数类型，参数2：参数类型,… -&gt; 操作的代码}</p>
-<p>it:</p>
-<ul>
-<li>it并不是Kotlin中的一个关键字（保留字）</li>
-<li>it是在当一个高阶方法中Lambda表达式的参数只有一个的时候可以使用it来使用此参数</li>
-<li>it可表示为单个参数的隐式名称，是Kotlin语言约定的</li>
-</ul>
-<h5 id="Kotlin方法进阶"><a href="#Kotlin方法进阶" class="headerlink" title="Kotlin方法进阶"></a>Kotlin方法进阶</h5><p>高阶方法</p>
-<p>闭包</p>
-<p>匿名方法</p>
-<p>方法字面值</p>
-<h3 id="Kotlin类与接口"><a href="#Kotlin类与接口" class="headerlink" title="Kotlin类与接口"></a>Kotlin类与接口</h3><h3 id="Kotlin泛型"><a href="#Kotlin泛型" class="headerlink" title="Kotlin泛型"></a>Kotlin泛型</h3><h3 id="Kotlin注解"><a href="#Kotlin注解" class="headerlink" title="Kotlin注解"></a>Kotlin注解</h3><h3 id="Kotlin扩展"><a href="#Kotlin扩展" class="headerlink" title="Kotlin扩展"></a>Kotlin扩展</h3><p>​    </p>
-]]></content>
-      <categories>
-        <category>Kotlin</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Kotlin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode 初级</title>
-    <url>/2021/09/26/LeetCode_%E5%88%9D%E7%BA%A7/</url>
-    <content><![CDATA[<h3 id="LeetCode-初级"><a href="#LeetCode-初级" class="headerlink" title="LeetCode 初级"></a>LeetCode 初级</h3><p><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-easy/</a><br><a href="https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/">https://leetcode-cn.com/leetbook/detail/top-interview-questions-medium/</a><br><a href="https://leetcode-cn.com/leetbook/detail/illustrate-lcof/">https://leetcode-cn.com/leetbook/detail/illustrate-lcof/</a><br><a href="https://leetcode-cn.com/leetbook/detail/dfs/">https://leetcode-cn.com/leetbook/detail/dfs/</a></p>
-<span id="more"></span>
+  <title>计算机网络-学习笔记 | Cheen Xuan's Blog</title>
+  
 
 
 
-<h4 id="01-删除排序数组中的重复项"><a href="#01-删除排序数组中的重复项" class="headerlink" title="01 - 删除排序数组中的重复项"></a>01 - 删除排序数组中的重复项</h4><p>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<blockquote>
-<p>说明：首先数组是一个有序数组</p>
-</blockquote>
-<h4 id="02-买卖股票的最佳时机-II"><a href="#02-买卖股票的最佳时机-II" class="headerlink" title="02 - 买卖股票的最佳时机 II"></a>02 - 买卖股票的最佳时机 II</h4><p>给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
-<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
-<blockquote>
-<p>说明： prices数组是无序的 关键点 i + 1天的价格大于 i 天 则在i天买入   如果i + 1天的价格小于i天，则在i天卖出</p>
-<p>另外不能多账户操作 只存在一个账户</p>
-</blockquote>
-<h4 id="03-旋转数组"><a href="#03-旋转数组" class="headerlink" title="03 - 旋转数组"></a>03 - 旋转数组</h4><p>给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。</p>
-<p>进阶：</p>
-<p>尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。<br>你可以使用空间复杂度为 O(1) 的 原地 算法解决这个问题吗？</p>
-<h4 id="04-存在重复元素"><a href="#04-存在重复元素" class="headerlink" title="04 - 存在重复元素"></a>04 - 存在重复元素</h4><p>给定一个整数数组，判断是否存在重复元素。</p>
-<p>如果存在一值在数组中出现至少两次，函数返回 <code>true</code> 。如果数组中每个元素都不相同，则返回 <code>false</code> 。</p>
-<h4 id="05-只出现一次的数字"><a href="#05-只出现一次的数字" class="headerlink" title="05 - 只出现一次的数字"></a>05 - 只出现一次的数字</h4><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
-<p>说明：</p>
-<p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p>
-<h4 id="06-两个数组的交集-II"><a href="#06-两个数组的交集-II" class="headerlink" title="06 - 两个数组的交集 II"></a>06 - 两个数组的交集 II</h4><p>给定两个数组，编写一个函数来计算它们的交集。</p>
-<h4 id="07-加一"><a href="#07-加一" class="headerlink" title="07 - 加一"></a>07 - 加一</h4><p>给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<h4 id="有效的字母异位词"><a href="#有效的字母异位词" class="headerlink" title="有效的字母异位词"></a>有效的字母异位词</h4><p>给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
-<p>注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。</p>
-<h4 id="验证回文串"><a href="#验证回文串" class="headerlink" title="验证回文串"></a>验证回文串</h4><p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
-<p><strong>说明：</strong>本题中，我们将空字符串定义为有效的回文串。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lunix指令入门</title>
-    <url>/2021/10/18/Linux%E6%8C%87%E4%BB%A4%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="目录结构和文件管理指令"><a href="#目录结构和文件管理指令" class="headerlink" title="目录结构和文件管理指令"></a>目录结构和文件管理指令</h3><h4 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a>Linux指令</h4><h5 id="问题一：-rm-rf-指令的作用是？"><a href="#问题一：-rm-rf-指令的作用是？" class="headerlink" title="问题一： rm / rf 指令的作用是？"></a>问题一： rm / rf 指令的作用是？</h5><blockquote>
-<p>什么是Shell？</p>
-<p>Shell把输入的指令，传递给系统去执行。Shell是一个命令行的用户界面。</p>
-</blockquote>
-<p>目标文件的绝对路径（Absolute path），或完全路径（full path）路径</p>
-<p>从/开始，每一层都是一级子目录，知道定位到目标文件为止。</p>
-<p>相对路径（Relative path）是以工作目录为基点的路径</p>
-<ul>
-<li>当用户在/usr目录下的时候，rm文件的相对路径就是bin/rm</li>
-<li>如果用户在/usr/bin目录下的时候，rm文件的路径就是./rm或者rm，用.代表当前目录</li>
-<li>如果用户在/usr/bin/somedir下，那么rm的相对路径就是../rm，用..代表上一级目录</li>
-</ul>
-<span id="more"></span>
-
-<blockquote>
-<p>使用cd （change directory）指令切换工作目录的几个注意事项：</p>
-<ul>
-<li>输入cd，不带任何参数会切换到用户目录，Linux中通常是/home/{用户名}</li>
-<li>输入cd . 什么都不会发生，因为.代表当前目录</li>
-<li>输入cd .. 会回退一级目录，因为..代表上一级目录</li>
-<li>输入pwd，（print working directory）打印当前工作目录</li>
-</ul>
-</blockquote>
-<h5 id="几张常见的文件类型"><a href="#几张常见的文件类型" class="headerlink" title="几张常见的文件类型"></a>几张常见的文件类型</h5><p>常见的文件类型有以下7种：</p>
-<p>普通文件、目录文件、可执行文件、管道文件、Socket文件、软链接文件、硬链接文件</p>
-<h6 id="创建删除文件"><a href="#创建删除文件" class="headerlink" title="创建删除文件"></a>创建删除文件</h6><ul>
-<li>使用ls -f 当前文件目录下的文件和它的类型</li>
-<li>使用touch a.txt 创建a.txt文件</li>
-<li>使用man touch查看touch说明书</li>
-<li>使用mkdir hello创建文件夹</li>
-<li>使用rm a.txt 删除a.txt文件</li>
-<li>使用rm -r hello 删除hello目录文件</li>
-<li>使用mkdir -p hello/world 创建多级文件夹</li>
-</ul>
-<h6 id="查阅文件内容"><a href="#查阅文件内容" class="headerlink" title="查阅文件内容"></a>查阅文件内容</h6><ul>
-<li><p>使用cat指令快速查看/etc/hosts文件</p>
-</li>
-<li><p>使用more指令</p>
-</li>
-<li><p>使用less指令</p>
-</li>
-<li><p>使用head和tail指令，用来读取一个文件的头部或者尾部N行，看一个实时nginx日志，使用tail -f文件名</p>
-</li>
-<li><p>使用grep 查看一个指定ip的nginx日志，或者查看一段时间内的nginx日志，</p>
-<p>实例： grep 80.82.207.86 ./nginx_log.txt</p>
-<p>实例：grep 19/May/2015 10:05 ./nginx_log.txt</p>
-</li>
-</ul>
-<h6 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h6><ul>
-<li><p>使用which指令，查询一个指令文件所在的位置</p>
-</li>
-<li><p>使用find指令，通用的指令查找文件</p>
-<p>实例：find / -iname “*.txt”</p>
-</li>
-</ul>
-<h4 id="进程、重定向和管道指令"><a href="#进程、重定向和管道指令" class="headerlink" title="进程、重定向和管道指令"></a>进程、重定向和管道指令</h4><h5 id="xargs指令的作用？"><a href="#xargs指令的作用？" class="headerlink" title="xargs指令的作用？"></a>xargs指令的作用？</h5><p>xargs指令从标准数据流中构造并执行一行行的指令</p>
-<p>从输入流获取字符串，然后利用空白、换行符等切割字符串，这些字符串的基础上构造指令，最后一行行执行这些指令</p>
-<ul>
-<li>作用：支持模板化的生成指令</li>
-</ul>
-<h5 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h5><p>应用的可执行文件是放在文件系统里，把可执行文件启动在操作系统里（具体来说是内存中）形成一个应用的副本，这个副本就是进程</p>
-<blockquote>
-<p>什么是进程？</p>
-<ul>
-<li>回答：进程是应用的执行副本</li>
-<li>不要回答：进程是操作系统分配资源的最小单位</li>
-<li>前者是定义，后者是作用</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>使用ps 查看当前的进程</p>
-<p>不带任何参数的ps指令显示的是同一个电传打字机（TTY上）的进程</p>
-</li>
-<li><p>使用ps -e查看所有进程</p>
-</li>
-<li><p>使用ps -ef 查看所有进程</p>
-</li>
-<li><p>使用ps aux指令所有进程</p>
-</li>
-</ul>
-<h5 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h5><p>管道（Pipeline）的作用是在命令和命令之间，传递数据</p>
-<h5 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h5><ul>
-<li><p>使用ls -l &gt; out 将ls -l的结果重定向到out文件中</p>
-<p>其中&gt;是覆盖重定向，使用&gt;&gt;为追加重定向</p>
-</li>
-</ul>
-<h5 id="管道的作用和分类"><a href="#管道的作用和分类" class="headerlink" title="管道的作用和分类"></a>管道的作用和分类</h5><blockquote>
-<p>将一个进程输出流重定向到另一个进程的输入流</p>
-<ul>
-<li>管道和重定向很像，但是管道是一个连接一个进行计算</li>
-<li>重定向是将一个文件的内容定向到另一个文件，这二者经常会结合使用</li>
-</ul>
-</blockquote>
-<p>管道是FIFO和排队场景一样，先排队的先获得，先流入管道文件的数据，也会先流出去传递给管道下游的进程。</p>
-<h4 id="用户和权限管理指令"><a href="#用户和权限管理指令" class="headerlink" title="用户和权限管理指令"></a>用户和权限管理指令</h4><h5 id="请简述Linux权限划分的原则？"><a href="#请简述Linux权限划分的原则？" class="headerlink" title="请简述Linux权限划分的原则？"></a>请简述Linux权限划分的原则？</h5>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>源码</tag>
-        <tag>计算机基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【收集】B站计算机课程</title>
-    <url>/2021/01/13/%E3%80%90%E6%94%B6%E9%9B%86%E3%80%91B%E7%AB%99%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%BE%E7%A8%8B/</url>
-    <content><![CDATA[<p>互联网让信息更容易触达，但是由于信息过于庞大，筛选出有价值的信息所花费的精力也会很大。</p>
-<p>众所周知，B 站是一个学习的网站，很多人在 B 站上大学、考研、学编程，但 B 站的视频资源那更是五花八门，要从里面选择合适学习视频不是那么容易，而且观看人数多，并不意味着是好的。</p>
-<span id="more"></span>
-
-<p>周末我从 B 站 搜集了些关于学习计算机的视频了，也跟身边的朋友交流一番，特此筛选了下面这些课程的视频，分享给大家。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.png" alt="img"></p>
-<hr>
-<h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><h5 id="计算机网络微课堂"><a href="#计算机网络微课堂" class="headerlink" title="计算机网络微课堂"></a>计算机网络微课堂</h5><p>《计算机网络微课堂》这个视频是湖南科技大学老师制作的，PPT 的动图是我见过做的最用心的了，一看就懂的佳作，而且也适合考研人，因为每个视频末尾都有往年的考题分析。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141331529.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1c4411d7jb?p=1</code></p>
-<h5 id="计算机网络（谢希仁第七版）-方老师"><a href="#计算机网络（谢希仁第七版）-方老师" class="headerlink" title="计算机网络（谢希仁第七版）- 方老师"></a>计算机网络（谢希仁第七版）- 方老师</h5><p>大学学习计算机网络配套的教材是谢希仁的，如果想根据此教材看视频学习的，可以看方老师讲解的计算机网络，<strong>看方老师的视频，你会觉得是一位漂亮的小姐姐在跟你讲课</strong>，方老师不仅颜值高，而且声音也甜，当然最重要是课程质量得到了很多人的认可。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141333238.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1yE411G7Ma?p=1</code></p>
-<h5 id="Wireshark-抓包-从入门到入坟"><a href="#Wireshark-抓包-从入门到入坟" class="headerlink" title="Wireshark 抓包 从入门到入坟"></a>Wireshark 抓包 从入门到入坟</h5><p>在工作中，分析网络数据的时候，必然离不开 Wireshark 工具，如果想学习 Wireshark 抓包的朋友，可以快速看看这个视频，当你有一定的计算机网络基础后，看这个课程会很快的。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141334302.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1X5411x7R4?p=1</code></p>
-<p><strong>补充阅读</strong></p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336419.png" alt="img"></p>
-<p><strong>▊《*<em>**HTTP/2 in Action 中文版**</em>*》</strong></p>
-<p>【美】Barry，Pollard 著</p>
-<p>郑维智 译</p>
-<ul>
-<li>HTTP20 年重大标准升级</li>
-<li>Web 性能大提升</li>
-<li>包括流量控制等高级案例</li>
-</ul>
-<p>本书以易于理解、方便上手的方式，使用贴近用户的实例来解释 HTTP/2 协议。本书首先介绍为什么要升级到 HTTP/2 以及升级的方法 ；然后逐步深入，详细解释了 HTTP/2 协议本身及其对 Web 开发的影响 ；之后介绍了部分高级内容，如流状态、HPACK 等 ；最后探讨了 HTTP 的未来。本书对于 Web 开发者和运维工程师来说是一本很有价值的参考书。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141336518.png" alt="img"></p>
-<p>（扫码了解本书详情）</p>
-<hr>
-<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h5 id="操作系统-清华大学"><a href="#操作系统-清华大学" class="headerlink" title="操作系统 - 清华大学"></a>操作系统 - 清华大学</h5><p>B 站关于操作系统课程资源很多，我在里面也看了不同老师讲的课程，觉得比较好的入门级课程是《<strong>操作系统 - 清华大学</strong>》，该课程由清华大学老师向勇和陈渝授课，虽然我们上不了清华大学，但是至少我们可以在网上选择听清华大学的课嘛。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141338903.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1js411b7vg?from=search&amp;seid=2361361014547524697</code></p>
-<h5 id="操作系统-哈工大"><a href="#操作系统-哈工大" class="headerlink" title="操作系统 - 哈工大"></a>操作系统 - 哈工大</h5><p>清华大学的操作系统视频课讲的比较精炼，涉及到的内容没有那么细，《<strong>操作系统 - 哈工大</strong>》李治军老师授课的视频课程相对就会比较细节，老师会用 Linux 内核代码的角度带你进一步理解操作系统，也会用生活小例子帮助你理解。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141340606.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1d4411v7u7?from=search&amp;seid=2361361014547524697</code></p>
-<p><strong>补充阅读</strong></p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141342759.png" alt="img"></p>
-<p><strong>▊《BPF 之巅：洞悉 Linux 系统和应用性能》</strong></p>
-<p>【美】Brendan Gregg 著</p>
-<p>孙宇聪 吕宏利 刘晓舟 译</p>
-<ul>
-<li>经典书《性能之巅》再续新篇</li>
-<li>震撼全球的 Gregg 大师新作</li>
-<li>深度理解 Linux 系统性能优化</li>
-</ul>
-<p>本书关注 Linux 系统性能和应用程序性能的调优，学习如何分析 CPU、内存、存储设备、文件系统、网络、编程语言、应用程序、容器、虚拟机管理器、安全及内核，由浅入深了解基础、进阶工具的使用，收集更有用更深入的技术信息。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141343109.png" alt="img"></p>
-<p>（扫码了解本书详情）</p>
-<hr>
-<h3 id="计算机组成"><a href="#计算机组成" class="headerlink" title="计算机组成"></a>计算机组成</h3><h5 id="计算机组成原理-快速复习"><a href="#计算机组成原理-快速复习" class="headerlink" title="计算机组成原理 - 快速复习"></a>计算机组成原理 - 快速复习</h5><p>对于非科班出身的朋友，想快速学习计算机组成原理，推荐这个视频，因为这个视频精炼总结出了跟程序员有关的计算机原理知识，篇幅不会太长，一天就可以搞定。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141344765.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1rV411k7Xf?p=1</code></p>
-<h4 id="计算机组成原理（唐朔飞）"><a href="#计算机组成原理（唐朔飞）" class="headerlink" title="计算机组成原理（唐朔飞）"></a>计算机组成原理（唐朔飞）</h4><p>如果想系统学习计算机组成原理，可以看哈工大这门计算机原理课，依据的教材正是大学配套的书。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141346572.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1WW411Q7PF?p=1</code></p>
-<p><strong>补充阅读</strong></p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347265.png" alt="img"></p>
-<p><strong>▊《编码：隐匿在计算机软硬件背后的语言》</strong></p>
-<p>【美】Charles Petzold 著</p>
-<p>左飞，薛佟佟 译</p>
-<ul>
-<li>永不褪色的计算机科学经典著作</li>
-<li>用最简单的语言讲述最专业的知识</li>
-</ul>
-<p>这是一本讲述计算机工作原理的书。不过，你千万不要因为 “工作原理” 之类的字眼就武断地认为，它是晦涩而难懂的。作者用丰富的想象和清晰的笔墨将看似繁杂的理论阐述得通俗易懂，你丝毫不会感到枯燥和生硬。更重要的是，你会因此而获得对计算机工作原理较深刻的理解。这种理解不是抽象层面上的，而是具有一定深度的，这种深度甚至不逊于 “电气工程师” 和“程序员”的理解。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141347344.png" alt="img"></p>
-<p>（扫码了解本书详情）</p>
-<hr>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><h5 id="SQL-进阶教程"><a href="#SQL-进阶教程" class="headerlink" title="SQL 进阶教程"></a>SQL 进阶教程</h5><p>无意间在 B 站发现一个学习 SQL 很牛逼的视频，主讲人是外国的工程师，这门课程适合初学者和进阶，这位工程师全程以「实战」的方式来授课，案例经典，课程真的通熟易懂，很简练。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141348651.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1UE41147KC?p=1</code></p>
-<h5 id="MySQL-高级教程"><a href="#MySQL-高级教程" class="headerlink" title="MySQL 高级教程"></a>MySQL 高级教程</h5><p>如果你想学习 MySQL 底层原理，这个视频是个不错的选择。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141350101.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1CZ4y1M7MQ?p=1</code></p>
-<h5 id="Redis-教程"><a href="#Redis-教程" class="headerlink" title="Redis 教程"></a>Redis 教程</h5><p>学习 Redis 的同学，可以看看这个视频，每一个视频都很详细了说明了对应的知识点，而且不仅只是说了基础应用，还涉及了底层原理和互联网场景面试的知识点。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141351123.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1S54y1R7SB?p=1</code></p>
-<p><strong>补充阅读</strong></p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352151.png" alt="img"></p>
-<p><strong>▊《高性能 MySQL（第 3 版）》</strong></p>
-<p>【美】Baron Schwartz,Peter Zaitsev,Vadim Tkachenko 著</p>
-<p>宁海元 周振兴 彭立勋 翟卫祥 等 译</p>
-<ul>
-<li>MySQL 圣经级著作</li>
-<li>领域排头、畅行全球、天团献译、从业必收</li>
-</ul>
-<p>MySQL 领域经典之作，拥有广泛的影响力。每一章均别具匠心，力求理论与实践的精确平衡，且布满无价之宝，有时甚至越过 MySQL 舞台，完全适用于任一数据库。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141352217.png" alt="img"></p>
-<p>（扫码了解本书详情）</p>
-<hr>
-<h3 id="算法与数据结构"><a href="#算法与数据结构" class="headerlink" title="算法与数据结构"></a>算法与数据结构</h3><h5 id="浙江大学"><a href="#浙江大学" class="headerlink" title="浙江大学"></a>浙江大学</h5><p>强烈推荐浙江大学的算法与数据结构课程，该课程非常系统，也很经典，适合小白入门算法。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141353198.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1JW411i731?p=1</code></p>
-<h5 id="左程云"><a href="#左程云" class="headerlink" title="左程云"></a>左程云</h5><p>这个视频主要是左神讲解国内互联网大厂的高频面试题，是一个突击的好资源。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141355330.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV15D4y1X7Tt?p=1</code></p>
-<p><strong>补充阅读</strong></p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356307.png" alt="img"></p>
-<p><strong>▊《labuladong 的算法小抄》</strong></p>
-<p>付东来（@labuladong） 著</p>
-<ul>
-<li>GitHub 68.8k star 的硬核算法教程</li>
-<li>labuladong 带你挑战力扣算法题</li>
-<li>挑战 BAT 等大厂 Offer</li>
-</ul>
-<p>本书专攻算法刷题，训练算法思维，应对算法笔试。注重用套路和框架思维解决问题，以不变应万变。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141356389.png" alt="img"></p>
-<p>（扫码了解本书详情）</p>
-<hr>
-<h3 id="C-编程"><a href="#C-编程" class="headerlink" title="C++ 编程"></a>C++ 编程</h3><h5 id="侯捷老师全家桶"><a href="#侯捷老师全家桶" class="headerlink" title="侯捷老师全家桶"></a>侯捷老师全家桶</h5><p>学习 C++ 直接跟着侯捷老师一系列视频学下去就对了，相信很多人都是看侯捷老师视频长大的。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141358812.png" alt="img"></p>
-<p>[侯捷] C++ 面向对象高级编程：<code>https://www.bilibili.com/video/BV14s411E772?p=1</code></p>
-<p>[侯捷] C++11 新特性：<code>https://www.bilibili.com/video/BV1p4411v7Dh?p=1</code></p>
-<p>[侯捷] C++ 内存管理：<code>https://www.bilibili.com/video/BV1Kb411B7N8?p=1</code></p>
-<p>[侯捷] C++ STL 源码分析：<code>https://www.bilibili.com/video/BV1db411q7B8?p=1</code></p>
-<p><strong>补充阅读</strong></p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640.jpeg" alt="img"></p>
-<p><strong>▊《*<em>**C++ Primer（中文版 第 5 版）**</em>*》</strong></p>
-<p>【美】Stanley B. Lippman，Josée Lajoie，Barbara E. Moo 著</p>
-<p>王刚，杨巨峰 译</p>
-<ul>
-<li>畅行全球 20 年的 C++ 入门必读经典</li>
-<li>行业大师标杆之作，全球读者千万</li>
-<li>全面采用新标技术，翻译团队强大</li>
-</ul>
-<p>本书可以帮助你全面了解 2011 版本 C++ 标准的内容。无论初学或老手既可用来理解 C++11 规则背后的原理，也可用其新语言特性与标准库来快速构建健壮程序。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141359545.png" alt="img"></p>
-<p>（扫码了解本书详情）</p>
-<hr>
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h5 id="Java-入门"><a href="#Java-入门" class="headerlink" title="Java 入门"></a>Java 入门</h5><p>不知道大家有没有听过高淇老师，我在读大学的时候，那时候看的是高淇老师，讲课的方式很幽默风趣的，这个视频是入门 Java ，一共 300 集，每一集平均 20 分钟，是个干货视频。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141400563.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1dW411Q7mY?p=1</code></p>
-<h5 id="Java-常见应用"><a href="#Java-常见应用" class="headerlink" title="Java 常见应用"></a>Java 常见应用</h5><p>这个视频是 Java 的重点知识整合，是偏向应用类的，比如反射、RPC、SOCKET、文件、JSON、二维码、MAIL、加密等。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141401633.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1k4411W7xq?p=1</code></p>
-<h5 id="Java-SSM-框架视频"><a href="#Java-SSM-框架视频" class="headerlink" title="Java SSM 框架视频"></a>Java SSM 框架视频</h5><p>这个视频面向的是 Java Web 的，源码级别的方式讲解了 spring、springmvc、mybatis。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141403647.png" alt="img"></p>
-<p>B 站视频链接：<code>https://www.bilibili.com/video/BV1uE411C7CW?p=1</code></p>
-<p><strong>补充阅读</strong></p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404176.jpeg" alt="img"></p>
-<p>**▊《*<em>Java 无难事：详解 Java 编程核心思想与技术*<em>》</em></em></p>
-<p>孙鑫 著</p>
-<ul>
-<li>系统讲解 Java 开发核心知识</li>
-<li>由浅入深轻松掌握</li>
-<li>知识点对应视频二维码，随看随学</li>
-</ul>
-<p>本书讲解了依赖注入（IoC/DI）容器、面向切面编程（AOP）、对象关系映射（ORM）框架的实现原理，同时还给出了并发编程领域中经常用到的线程池的实现。涵盖了从 Java 5 到 Java 11 的所有重要新特性。</p>
-<p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/640-20220113141404689.png" alt="img"></p>
-<p>（扫码了解本书详情）</p>
-<hr>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>春节也快来临了，是一个<strong>悄悄发育的好机会</strong>，所以就给大家找了些 B 站学习编程的不错的视频，这些视频仅供大家参考。</p>
-<p>但是大多数视频都是比较基础入门系列的课程，如果想深入继续学习，那必然离不开书了，视频只是做一个辅助学习的作用，所以最好方式就是书和视频搭配使用。</p>
-<p>可能 B 站还有很多优质的视频我没有发现，<strong>欢迎大家分享出你在 B 站发现的优质好课</strong>。</p>
-]]></content>
-      <categories>
-        <category>计算机</category>
-        <category>收集</category>
-      </categories>
-      <tags>
-        <tag>收集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>“深入理解AQS和CAS原理”</title>
-    <url>/2020/09/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3AQS%E5%92%8CCAS%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java基础</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理</title>
-    <url>/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h5 id="不支持递归程序的语言如何实现递归程序？"><a href="#不支持递归程序的语言如何实现递归程序？" class="headerlink" title="不支持递归程序的语言如何实现递归程序？"></a>不支持递归程序的语言如何实现递归程序？</h5><blockquote>
-<p>首先看for循环是如何执行的</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">1</span>,s=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">  s+=i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
- <span id="more"></span> 
-
-<h6 id="将for循环用底层的指令实现："><a href="#将for循环用底层的指令实现：" class="headerlink" title="将for循环用底层的指令实现："></a>将for循环用底层的指令实现：</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># int i=1,s=0;</span></span><br><span class="line"><span class="comment"># 对应Java代码，我们首先将1和0存储到两个地址</span></span><br><span class="line"><span class="comment"># 这两个地址我们用$i和$s表示</span></span><br><span class="line">store <span class="comment">#1-&gt;$i//将数字1存入i的地址</span></span><br><span class="line">store <span class="comment">#0-&gt;$s//将数字0存入s的地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#接下来循环要开始了，我们在这里预留一个loop标签</span></span><br><span class="line"><span class="comment">#loop是一个自定义标签，它代表指令的相应位置</span></span><br><span class="line"><span class="comment">#后续我们可以用jump指令跳转回这个位置实现循环</span></span><br><span class="line">loop: <span class="comment">#循环标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#for...i&lt;=100</span></span><br><span class="line"><span class="comment">#接下里我们开始实现循环控制</span></span><br><span class="line"><span class="comment">#我们先进行i&lt;=100的比较</span></span><br><span class="line"><span class="comment">#我们先将变量i的地址，也就是$i导入寄存器R0</span></span><br><span class="line">load <span class="variable">$i</span>-&gt;R0</span><br><span class="line"><span class="comment">#然后我们用cmp比较指令R0和数字100</span></span><br><span class="line">cmp R0 <span class="comment">#100//比较R0和数字100</span></span><br><span class="line"><span class="comment">#注意指令不会有返回值，它会进行计算，然后改变机器的状态（也就是寄存器）</span></span><br><span class="line"><span class="comment">#比较后，有几个特殊的寄存器会保存比较的结果</span></span><br><span class="line"><span class="comment">#然后我们用ja（就是jump above的意思），如果比较的结果R0比100大</span></span><br><span class="line"><span class="comment">#那么我们就跳转到end标签，实现循环的跳出</span></span><br><span class="line">ja end</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果R0&lt;100，那么ja end没有生效，这是我们处理s+=i</span></span><br><span class="line"><span class="comment">#首先我们把变量s所在地址的数据导入寄存器R1</span></span><br><span class="line">load <span class="variable">$s</span>-&gt;R1</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后我们把寄存器R0和R1加和，把结果存储到结存器R2</span></span><br><span class="line">add R0 R1 R2</span><br><span class="line"></span><br><span class="line"><span class="comment">#这是，我们把寄存器R2的值存入变量s所在的地址</span></span><br><span class="line">store R2-&gt;<span class="variable">$s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刚才我们完成了一次循环</span></span><br><span class="line"><span class="comment">#我们还需要维护变量i的自增</span></span><br><span class="line"><span class="comment">#现在i的值在R0中，我们首先将整数1寄到R0上</span></span><br><span class="line">add R0 <span class="comment">#1 R0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#再把R0的值存入i所在的内存地址</span></span><br><span class="line">store R0-&gt;<span class="variable">$i</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这是我们的循环已经全部执行完成，我们需要跳转回上面loop标签所在的位置</span></span><br><span class="line"><span class="comment">#继续循环</span></span><br><span class="line">jump loop</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">end：</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>一般情况下CPU会预读下一条指令，所以我们会在jump添加nop指令，让cpu空转一个周期</p>
-</blockquote>
-<h6 id="条件控制程序"><a href="#条件控制程序" class="headerlink" title="条件控制程序"></a>条件控制程序</h6><p>if-else 是自上向下的执行逻辑</p>
-<p>switch-case 是精准匹配算法</p>
-<h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li><p><strong>变量</strong>是一个内存地址，只需要分配内存</p>
-</li>
-<li><p><strong>循环控制</strong>可以用跳转加判断实现</p>
-</li>
-<li><p><strong>条件控制</strong>也可以用跳转加判断实现</p>
-<p>只不过如果是switch-case还需要一定的数学计算</p>
-</li>
-<li><p><strong>函数</strong>调用需要压栈参数、返回值和返回地址</p>
-</li>
-</ul>
-</blockquote>
-<h6 id="类型（class）如何实现"><a href="#类型（class）如何实现" class="headerlink" title="类型（class）如何实现"></a>类型（class）如何实现</h6><p>当我们调用一个class 的方法的时候，本质上是执行了一个函数，和函数调用是一致的</p>
-<ul>
-<li>把返回值和返回地址压栈</li>
-<li>压栈参数</li>
-<li>执行跳转</li>
-</ul>
-<h5 id="假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？"><a href="#假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？" class="headerlink" title="假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？"></a>假设你使用的程序语言不支持递归程序，如果要求用栈来模拟下面这个斐波那契求第n项的程序，应该如何转换成等价的基于栈的非递归实现？</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//求斐波那契第n项的值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>||n==<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fib(n-<span class="number">1</span>)+fib(n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>伪代码，实现一个栈</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fib(n)&#123;</span><br><span class="line">	stack = new Stack();</span><br><span class="line">	</span><br><span class="line">	//构造Stack</span><br><span class="line">	//stack中每一项是一个Record</span><br><span class="line">	//Record第一项是数据（参数或者返回值）</span><br><span class="line">	//Record第二项是递归方向（down=1代表向下，up=2代表向上）</span><br><span class="line">	stack.push((n,down));</span><br><span class="line">	</span><br><span class="line">	//stack中只有一项的时候递归停止</span><br><span class="line">	while(stack.size()&gt;1)&#123;</span><br><span class="line">		(n.phase) = stack.pop();</span><br><span class="line">		</span><br><span class="line">		if(phase==down)&#123;</span><br><span class="line">			if(n==1||n==2)&#123;</span><br><span class="line">				stack.push((1,-));</span><br><span class="line">				continue;</span><br><span class="line">			&#125;</span><br><span class="line">			stack.push((n-1,down));</span><br><span class="line">			stack.push((n-1,up));</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			last1 = stack.pop();</span><br><span class="line">			last2 = stack.pop();</span><br><span class="line">			stack.push((last1[0]+last2[0],up));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return stack.pop()[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h5 id="SSD、内存和L1-Cache相比速度差多少倍？"><a href="#SSD、内存和L1-Cache相比速度差多少倍？" class="headerlink" title="SSD、内存和L1 Cache相比速度差多少倍？"></a>SSD、内存和L1 Cache相比速度差多少倍？</h5><h6 id="为什么会有存储器分级策略？"><a href="#为什么会有存储器分级策略？" class="headerlink" title="为什么会有存储器分级策略？"></a>为什么会有存储器分级策略？</h6><p>因为需求的各种限制，所以要给存储器分级。</p>
-<p>存储器分级策略：</p>
-<ul>
-<li><p>根据数据的使用频率使用不同的存储器</p>
-<p>高频率使用的数据，读写越快越好，因此用最贵的材料，放到离CPU最近的位置；使用频率越低的数据，我们放到离CPU越远的位置，用越便宜的材料。</p>
-<p>存储器分成这么几个级别：寄存器-&gt; L1 Cache -&gt; L2 Cache -&gt; L3 Cache -&gt; 内存 -&gt; 硬盘/SSD</p>
-<p>寄存器：存储的速度越快，能耗越高、产热越大，花费也是最贵的。 速度一般是1/2时钟信号周期之内</p>
-<p>L1 Cache： 相比寄存器，位置距离CPU核心更远，造价更低。通常L1-Cache大小在几十个Kb到几百个Kb不等，读写速度在2~4个CPU时钟周期</p>
-<p>L2 Cache：位置比L1-Cache距离CPU核心更远，它的大小比L1-Cache更大，具体大小要看CPU型号，有2M的，有更小或者更大的，速度在10~20个CPU时钟周期</p>
-<p>L3-Cache：位置比L2-Cache距离CPU核心更远，大小通常比L2-Cache更大，读写速度在20~60个CPU周期</p>
-<p>内存：内存的主要材料是半导体硅，位置距离CPU有一段距离，需要用总线和CPU连接</p>
-<p>硬盘/SSD：它的优点在于断电后数据还在，内存的读写速度比SSD大概快10~1000倍，硬盘速度比内存慢100W倍左右</p>
-</li>
-</ul>
-<h6 id="缓存中的数据结构是怎样的？"><a href="#缓存中的数据结构是怎样的？" class="headerlink" title="缓存中的数据结构是怎样的？"></a>缓存中的数据结构是怎样的？</h6><h6 id="指令的预读"><a href="#指令的预读" class="headerlink" title="指令的预读"></a>指令的预读</h6><ul>
-<li><strong>CPU执行指令</strong>：一般是2~6个CPU时钟周期</li>
-<li><strong>存储器分级策略</strong>：大概有200~300个时钟周期</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机基础</category>
-      </categories>
-      <tags>
-        <tag>计算机基础</tag>
-        <tag>计算机原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络</title>
-    <url>/2021/01/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>[toc]</p>
-<h2 id="计算机网络简史"><a href="#计算机网络简史" class="headerlink" title="计算机网络简史"></a>计算机网络简史</h2><p>世界第一台电子计算机ENIAC<br>–&gt;集成电路–&gt;<br>早起计算机<strong>体积大</strong><br>集成电路产生后，计算机体积下降<br>杰克基尔.比发明世界上第一个芯片，体积非常小</p>
-<span id="more"></span>
-<p>理论发展：</p>
-<ul>
-<li>Paul Baran提出分布式可适应信息快交换集成电路</li>
-<li>Donald Davies提出封包交换</li>
-<li>*封包交换算法**：解决数据如何从一个点通过复杂网络到达另一个点的问题。<br>材料发展：<br>1858年跨大西洋同轴电缆：材料是同轴电缆，每分钟传输120个字。<br>同轴电缆：一个导线，速度慢。<br>双绞线电缆：导线两两缠绕，传输速度由导体材料决定，速度较快。<br>光纤：光传输，速度最快（10Gbps），能量耗损低。<br>操作系统：</li>
-<li>*分时系统**：操作系统里能跑多个应用且单个应用也需要使用分时。<br>互联网发展：<br>1969年出现了ARPANET（阿帕网），也就是互联网的雏形，仅连接四个节点，传输速率低，没应用场景。</li>
-<li>应用程序：依赖性</li>
-<li>互联网地址：IP协议</li>
-<li>传输和研发成本：传输的正确性（TCP）</li>
-<li>带宽： 网速慢</li>
-<li>网络安全：明文传输数据</li>
-<li>标准进化：互联网兼容性差，出现OSI7层模型解决问题</li>
-<li>商业力量：商业力量介入<br>万维网发展：</li>
-<li>第一个浏览器万维网（World wide web）蒂姆·博纳斯·李</li>
-<li>应用层协议（HTTP协议）的构建</li>
-<li>HTTP协议成功的原理：介入互联网的应用增多，成本大，对界面的描述困难。<br>无线技术发展：<br>WaveLan（1990）–&gt;热点接入（1993）–&gt;802.11协议出世（1997）–&gt;WIFI开始普及（2003）–&gt;WIFI（2013）<br>1997 802.11    2Mbps<br>1999 802.11B   11Mbps<br>   802.11A   54Mbps<br>2003 802.11G   造价下降<br>2009 802.11N   600Mbps  支持2.4GHz和5GHz 2.4GHz传播更远更容易穿透更容易受到干扰，5GHz传播更近更不容易受到干扰<br>2013 802.11AC  WIFI5 7000Mbps<br>智能手机&amp;移动互联网：<br>乔布斯发明智能手机，拓展手机边界能力<br>流量价格：<br>流量价格降低，降低了手机联网延迟的问题<br>展望未来：</li>
-<li>万物互联：任何设备都有芯片，芯片体积小，成本低，网络技术成熟</li>
-<li>5G:速度快，延迟低。</li>
-<li>卫星上网：网络覆盖远，包括偏远地区</li>
-</ul>
-<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p>OSI模型指的是Open System Interconnection Reference Model，即<strong>开放式系统互联模型</strong>。它是世界上第一个试图在世界范围内规范网络标准的框架。<br>产生背景：<br>基础建设在学术界早已成型，如封包交换原理理论、数据传输能力等。</p>
-<ul>
-<li>应用层（Application Layer）<br>应用层位于OSI模型最上方，只关心业务逻辑，不关心数据的传输</li>
-<li>表现层（Persentation Layer）<br>负责协商用于传输的数据格式，并转换数据格式</li>
-<li>会话层（Session Layer）<br>负责管理两个联网实体间的连接，提供一个稳定实时的连接</li>
-<li>传输层（Transport Layer）<br>负责将数据从一个实体（一个服务或应用传输到另一个实体，但不负责数据传输的方式），主要负责数据拆分并封包<br>  传输层的能力<ul>
-<li>数据分隔重组：将数据拆分后按顺序重组</li>
-<li>纠错：在数据传输过程中出现问题后采取方式进行纠正</li>
-<li>管理连接：处理数据的频繁交换</li>
-<li>流量控制：控制传输数据的速率</li>
-<li>端口寻址：标明参与传输的实体的端口号</li>
-</ul>
-</li>
-<li>网络层（Network Layer）<br>负责把一个封包从一个IP传输到另一个IP地址<br>路由算法：帮助路由选择下一个目的地用的</li>
-<li>数据链路层（Data Link Layer）<br>确保两个临近设备间数据的传输，并隐藏底层实现<br>帧同步：两个设备之间传输时的协商速率问题<br>数据纠错</li>
-<li>物理层（Physical Layer）<br>封装和隐藏具体的传输手段，并提供稳定的传输接口<br>比如：电缆、光纤、蓝牙、WIFI等</li>
-</ul>
-<p>OSI的问题<br>分层设计较为臃肿，并非每一层都为必要的<br>应用层、表示层、会话层 –&gt; 应用层</p>
-<h2 id="TCP-IP协议群"><a href="#TCP-IP协议群" class="headerlink" title="TCP/IP协议群"></a>TCP/IP协议群</h2><p>OSI无实际可行方案<br>罗伯特·卡恩和文顿·顿瑟夫提出的TCP协议<br>TCP/IP 协议群</p>
-<ol>
-<li>报文拆分：数据量大，网络底层设备不支持，复用路径</li>
-<li>增加协议头：数据分块后在接收端需要重组，所以需要使用头部来添加一些描述字段</li>
-<li>数据在相邻设备间数据传递：网络边界</li>
-<li>路由和寻址：路由算法:通过算法寻找下一个要到达的节点</li>
-<li>数据重组</li>
-</ol>
-<p>5层模型</p>
-<ul>
-<li>应用层<br>数据从一个应用发往另一个应用的过程</li>
-<li>传输层<br>主机到主机之间的传输 tcp协议头</li>
-<li>网络层<br>提供路由和寻址 IP头</li>
-<li>数据链路层<br>两个节点之间的物理连接</li>
-<li>物理层<br>负责0-1信号的传输</li>
-</ul>
-<p>5层模型和OSI的区别</p>
-<ul>
-<li>删除了会话层，会话是虚拟概念，不是必须的</li>
-<li>删除了表示层，数据压缩、数据格式转换不是应用必须的</li>
-</ul>
-<p>TCP/IP协议群可选性</p>
-<ul>
-<li>传输层：TCP协议、UDP协议、TLS/SSL、SCTP等</li>
-<li>网络层：IP协议（ipv4和ipv6）、ICMP协议、IPSec协议</li>
-</ul>
-<h2 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h2><ul>
-<li><p>概述<br>TCP全名是（Transport Control Protocol），是一个可以提供可靠的、支持全双工、连接导向的协议，因此在客户端和服务端之间传输数据的时候，是必须先建立一个连接的。</p>
-</li>
-<li><p>TCP的特点</p>
-<ol>
-<li>连接<br>是虚拟、抽象的概念，能让两个通信的程序间确保彼此都在线，加快响应请求速度，连接也被称为会话（Session）。使通信更稳定、安全，消耗更多资源。</li>
-<li>全双工<br>单工：任何时刻数据只能单向发送<br>半双工：允许数据在两个方向上的传输，在某一时刻，只允许数据在一个方向上传输<br>全双工：任何时刻都可以双向发送</li>
-<li>可靠性<br>可靠性指数据保证无损传输</li>
-</ol>
-</li>
-<li><p>TCP协议的工作工程<br>  建立连接的过程（三次握手）</p>
-<ul>
-<li>客户端发送SYN</li>
-<li>服务端准备好进行连接</li>
-<li>服务端针对客户端的SYN给ACK</li>
-<li>服务端发送SYN</li>
-<li>客户端准备就绪</li>
-<li>客户端针对服务端的SYN给ACK<br><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm3eatreiej311o0j20vn.jpg"></li>
-</ul>
-<p>  断开连接的过程（四次挥手）</p>
-<ul>
-<li>客户端发送断开请求FIN</li>
-<li>服务端收到请求，发送ACK （无法与FIN打包发送）</li>
-<li>服务端经过一个等待，确定可以关闭连接，发送FIN</li>
-<li>客户端收到FIN，处理完自己的事情后发送ACK</li>
-</ul>
-<p>  传输数据</p>
-<ul>
-<li>顺序保证<br><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm3emphpi8j31120i0dh5.jpg"></li>
-</ul>
-<ul>
-<li>TCP序号：发送序号（Seq）、接收序号（Ack）</li>
-<li>一个段的发送序号是另一个端的接收序号</li>
-</ul>
-<p>  TCP协议：报文拆分–&gt;增加TCP头–&gt;数据重组</p>
-<ul>
-<li>报文拆分：拿到应用层的数据进行拆分，拆分成TCP段 注：应用层数据很大时无法一次性传输完，拆分后可实现并行传输</li>
-<li>增加TCP头<br>  源端口：描述发送方机器上的引用；<br>  目标端口：描述接收方服务器上的应用；<br>  发送序号（Seq）和接收序号（Ack）每个序号32个字节；<br>  标志位：<ul>
-<li>NS、CWR、ECN：TCP扩展协议</li>
-<li>ECN：显示拥塞控制协议，有助于帮助解决延迟和丢包问题</li>
-<li>URG：紧急标志位</li>
-<li>SYN（Synchronized Sequence Numbers）：同步序号，也就是在建立连接</li>
-<li>FIN：终止连接</li>
-<li>ACK(Achnowledgment):响应</li>
-<li>PSH（push）：传送数据</li>
-<li>RST（Reset Connection）：重置连接<br>TCP协议周边配置</li>
-<li>纠错能力：保证数据可靠性；</li>
-<li>流控能力：协同两边速率，保证可靠性<br>纠错和Checksum</li>
-<li>TCP拥有一个16bit的Checksum字段</li>
-<li>Checksum是一个函数，发送方把元文映射到一个不可逆的16bit的编码中这样就可以知道原文传输过程中又有发生变化<br>流控能力</li>
-<li>主要目标：让发送方和接收方协商一个合理的收发速率，让两边都可以稳定的工作</li>
-<li>利用滑动窗口<h2 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h2>IP协议（Internet Protocal）：网络层协议。<br>IP协议可能遇到的问题<br>封包损坏、丢包、重发、乱序<br>网络层需要解决的3个问题<br>延迟、吞吐量、丢包率<br>IP协议的架构<br>IP协议目前主要有两种架构，Ipv4和Ipv6，Ipv4是目前应用最广泛的互联网协议。<br>IP协议的工作原理</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>分片（Fragmentation）<ul>
-<li>把数据切分成片</li>
-<li>适配底层传输网络</li>
-</ul>
-</li>
-<li>增加协议头 （IP Header）<br><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm3j3ra76yj311s0h20tq.jpg"><br>Source address（源IP）<br>Destination address（目的IP）<br>Type of service（服务类型）：服务的类型，是为了响应不同的用户诉求，用于选择延迟、吞吐量和丢包率之间的关系。<br>IHL（IP协议头长度）：IP协议头的大小。<br>Total length（报文的长度）：报文（封包datagram）的长度。<br>Identification：报文的ID，发送方分配，代表顺序<br>Fragment offset：描述是否要分包（拆分），和如何拆分。<br>Time To Live：封包存活的时间。<br>Protocol：描述上层的协议，比如TCP=6，UDP=17<br>Options：可选项<br>Checksum：检验封包的正确性</li>
-<li>延迟、吞吐量、丢包率<br> 延迟：1bit的数据从网络的1个终端传送到另一个终端需要的时间<br> 吞吐量：单位时间内可以传输的平均数据量<br> 丢包率：发送出去的封包没有到达目的地的比例</li>
-<li>寻址（Addressing）<br> 寻址：给一个地址，然后找到这个东西<br> Ipv4地址（32位）：逐级寻址</li>
-<li>路由（Routing）<br>若寻找的IP地址不在局域网中，需要路由找到去往对应网络的路径<br>IP地址和子网掩码位与的过程是由路由算法实现的。</li>
-</ol>
-<h2 id="Ipv6"><a href="#Ipv6" class="headerlink" title="Ipv6"></a>Ipv6</h2><p>Ipv4只能支持43亿设备，不够用<br>目前通过拆分子网的方式增加 （通过NAT协议转换）NAT(network address translate)<br>Ipv6的工作原理<br>Ipv6和Ipv4两者工作原理相似，为切片、增加封包头、路由（寻址）几个阶段。<br>Ipv6和Ipv4的主要区别：</p>
-<ul>
-<li>地址<ul>
-<li>地址数量：Ipv4有4个8位，共32位，Ipv6有8个16位，共128位</li>
-<li>分隔符号：<ul>
-<li>Ipv4的地址用.分隔，如：103.28.7.35。每一位是8位，用0-255的数字表示；</li>
-<li>Ipv6的地址用：分隔，如0123:4567:89ab:dcef:0123:4567:89ab:cdef。每个是一个16位的16进制数字，就是4个字符。</li>
-</ul>
-</li>
-<li>书写方式：Ipv6地址可简写</li>
-</ul>
-</li>
-<li>寻址<ul>
-<li>全局单播<br>  站点前缀（Site Prefix）：48bit，一般是由ISP（internet Service Provider，运营商）或者RIR（Regional Internet Registry，地区性互联网注册机构）RIR将IP地址分配给运营商。<br>  子网号（subnet ID）:16bit,用于站点内部区分子网<br>  接口号（Interface ID）：64bit，用于站点内部区分设备</li>
-<li>本地单播<br>  定义：给定地址，本地网定位设备<br>  Link-local必须以fe80开头</li>
-<li>分组多播<br>  需要以8个1，也就是ff00开头，后面跟上一个分组的编号<br>  所在的网络中已经定义了该分组编号，而且有设备可以识别这个编号<br>  拥有分组下设备的完整清单，并把数据发送给对应的设备们<br>  Ipv4也支持分组多播，但是需要网络配置整体配合<br>  新设备接入<br>  新设备接入Ipv6后，会使用Ipv6的邻居发现协议（Neighbour Discover Protocol）为自己申请一个IP地址。当新设备需要发送信息到目的地时，还可以通过ND协议广播查询目标设备。然后如果需要路由，还可以通过ND查找路由器。<br>  传统：ARP协议（Address Resolution Protocol，地址解析协议），每个节点存储许多额外信息。<br>  Ipv6：更加无状态化，减少数据冗余带来的风险和负担。<h2 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h2>1980年由科学家David P.Reed提出<br>协议简单，搭建在IP协议之上<br>尽可能的减少通信机制，速度非常快</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>UDP协议介绍<br>  全称：User Datagram Protocol，用户数据报文协议<br>  定义：在传输层提供直接发送报文（Datagram）的能力。Datagram是数据传输的最小单位。<br>  目标：发送报文，无法拆分数据<pre><code>  为什么不直接调用IP协议？IP协议只能把数据从一个网络接口发送到另一个网络接口，无法寻址到应用。
-</code></pre>
-  设计目标：允许用户直接发送报文的情况下最大限度的简化应用的设计<pre><code>  Source Port：源端口号
-  Destination Port：目标端口号
-  Length：消息体长度
-  Checksum：检查封包是否出错
-  Data octets：一个字节一个字节的数据，Octet是8位
-</code></pre>
-  UDP和TCP的区别</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>UDP</th>
-<th>TCP</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>本质</td>
-<td>提供报文交换，简化协议</td>
-<td>提供可靠的网络传输</td>
-</tr>
-<tr>
-<td>可靠性</td>
-<td>不可靠</td>
-<td>可靠</td>
-</tr>
-<tr>
-<td>顺序</td>
-<td>无序</td>
-<td>有序</td>
-</tr>
-<tr>
-<td>负载</td>
-<td>负载小</td>
-<td>负载大</td>
-</tr>
-<tr>
-<td>广播场景</td>
-<td>合适</td>
-<td>不适合，代价大</td>
-</tr>
-</tbody></table>
-<p>聊天室场景分析<br>聊天室是否适合UDP？ 不适合，聊天室并发高但流量不大，依赖可靠性<br>HTTP协议适不适合UDP？ 合适，HTTP3.0就是建立在UDP上的，重新搭建了协议，重新实现了可靠性 提高了速度又能保证了可靠性</p>
-<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>1991年伯纳斯·李，发明了万维网（WWW），写了第一个Web Server<br>HTTP协议：浏览器和Web Server 之间通信的协议<br>HTTP协议（Hyper Text Transfer Protocol）:应用层协议</p>
-<ul>
-<li>请求和返回<br>  一次请求，分成头（head）和体（body），返回同请求</li>
-<li>URL<br>  URL（Uniform Resource Locator）：用于在互联网上定位（Locate）一个资源（Resource）<br>  scheme://host:port/path?query#fragment</li>
-<li>DNS<br>  DNS(Domin Name System):域名解析系统。<br>  DNS Query的分级缓存策略：<ol>
-<li>先查询浏览器的本地缓存（通常在内存中）</li>
-<li>本地没缓存，查找操作系统的host文件，该文件在linux中再/etc/hosts里</li>
-<li>上述步骤没有找到，DNS会查询本地服务提供商（ISP）</li>
-<li>ISP没有，请求指向Root根服务器，返回顶级域名服务器地址</li>
-<li>浏览器发送请求给顶级域名服务器，返回权威域名服务器地址</li>
-<li>浏览器发送Lookup请求给权威域名服务器，找到具体DNS记录，返回给浏览器</li>
-</ol>
-<ul>
-<li>DNS记录<br>DNS的数据以记录形式存储，就叫DNS记录。DNS记录的种类非常多，有30多种。每条DNS记录描述了网址（URL）的一种关系。</li>
-</ul>
-<ul>
-<li>A记录 功能：定义主机的Ip地址</li>
-<li>AAAA记录 功能：定义主机的Ipv6的地址</li>
-<li>CNAME记录 功能：定义域名的别名</li>
-<li>MX记录 功能：定义邮件服务器所在的位置</li>
-<li>NS记录 功能：定义DNS信息服务器所在的位置</li>
-<li>SOA记录 功能：定义在多个服务器中哪个是主服务器</li>
-<li>TXT记录 功能：提供一个文本</li>
-</ul>
-</li>
-<li>内容分发网络（CDN）<br>  CDN（Content Delivery Network）将请求分散到全世界各地，分发流量，加快访问速度<br>  CDN上无法部署业务逻辑，更新慢，无法保证一致性，比较适合纯的静态资源，比如图片、视频、脚本文件、样式文件等。</li>
-<li>请求头/响应头<br>  Content—Length：发送/接收Body内容的字节数<br>  User-Agent：帮助客户端用了什么浏览器、操作系统等。<br>  Content-Type：请求的时候，告知服务器数据的媒体类（MediaType/MIMEType）。返回的时候告知客户端，数据的媒体类型。  <pre><code>  text/html：HTML格式
-  text/css：css文本
-  application/json：JSON数据格式
-  image/jpeg：jpg图片格式
-  text/plain：纯文本
-</code></pre>
-  Origin：描述请求来源地址<br>  Accept：是HTTP协议协商能力的体现，用于建议服务器端返回何种媒体类型（MIME Type）<br>  Accept-Encoding：建议服务端发送哪种编码（压缩算法）<br>  Accept-Language：建议服务端传递哪种语言<br>  Referer：高速服务端打开当前页面的上一张页面的URL<pre><code>      非浏览器环境有时候不发送Referer（或者虚拟Referer，通常是爬虫）
-</code></pre>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机基础</category>
-      </categories>
-      <tags>
-        <tag>计算机基础</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络-学习笔记</title>
-    <url>/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a>计算机网络概述</h3><h4 id="计算机网络在信息时代的作用"><a href="#计算机网络在信息时代的作用" class="headerlink" title="计算机网络在信息时代的作用"></a>计算机网络在信息时代的作用</h4><ol>
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cheen Xuan's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/cheenxuan" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header_icon.jpeg">
+      <meta itemprop="name" content="Cheen Xuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cheen Xuan's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络-学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-29 10:14:17" itemprop="dateCreated datePublished" datetime="2022-03-29T10:14:17+08:00">2022-03-29</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/03/29/计算机网络-学习笔记/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>29k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>26 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a>计算机网络概述</h3><h4 id="计算机网络在信息时代的作用"><a href="#计算机网络在信息时代的作用" class="headerlink" title="计算机网络在信息时代的作用"></a>计算机网络在信息时代的作用</h4><ol>
 <li><p>计算机网络已经变成了我们生活中不可或缺的一部分，由一种通讯基础设施发展成为一种重要的<strong>信息服务基础设施</strong>。</p>
-<p><a href="http://www.cnnic.net.cn/">中国互联网信息中心</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.cnnic.net.cn/">中国互联网信息中心</a></p>
 <span id="more"></span></li>
 </ol>
 <h4 id="因特网概述"><a href="#因特网概述" class="headerlink" title="因特网概述"></a>因特网概述</h4><ol>
@@ -1511,7 +875,7 @@
 </ul>
 </li>
 </ul>
-<p>生成树算法STA可参考《<a href="https://www.bilibili.com/video/BV1Ut411d7RE?from=search&seid=4024568497697167776&spm_id_from=333.337.0.0">计算机网络简明教程和仿真实验</a>》</p>
+<p>生成树算法STA可参考《<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ut411d7RE?from=search&seid=4024568497697167776&spm_id_from=333.337.0.0">计算机网络简明教程和仿真实验</a>》</p>
 <h4 id="虚拟局域网VLAN概述"><a href="#虚拟局域网VLAN概述" class="headerlink" title="虚拟局域网VLAN概述"></a>虚拟局域网VLAN概述</h4><ul>
 <li>以太网交换机工作在数据链路层（也包括物理层）</li>
 <li>使用一个或多个以太网交换机互连起来的交换式以太网，其所有站点都属于同一个广播域。</li>
@@ -2241,7 +1605,7 @@
 </ul>
 <p><img src="https://cheenxuan-1258508588.cos.ap-beijing.myqcloud.com/202203271420969.png" alt="image-20220327142043863"></p>
 <h4 id="域名系统DNS（Domain-Name-System）"><a href="#域名系统DNS（Domain-Name-System）" class="headerlink" title="域名系统DNS（Domain Name System）"></a>域名系统DNS（Domain Name System）</h4><ul>
-<li>域名系统DNS是因特网使用的命名系统，用来把便于人们记忆的具有特定含义的主机名（例如<a href="http://www.baidu.com),转换为便于机器处理的ip地址./">www.baidu.com）,转换为便于机器处理的IP地址。</a></li>
+<li>域名系统DNS是因特网使用的命名系统，用来把便于人们记忆的具有特定含义的主机名（例如<a target="_blank" rel="noopener" href="http://www.baidu.com),转换为便于机器处理的ip地址./">www.baidu.com）,转换为便于机器处理的IP地址。</a></li>
 <li>因特网采用层次树状结构的域名结构</li>
 <li>顶级域名TLD（Top Level Domain）分为以下三类：<ul>
 <li>国家顶级域名nTLD</li>
@@ -2329,10 +1693,282 @@
 <li>Cookie提供了一种机制使得万维网服务器能够“记住”用户，而无需用户主动提供用户标识信息。也就是说，Cookie是一种对无状态的HTTP进行状态化的技术。</li>
 <li>在万维网中还可以使用缓存机制以提高万维网的效率。万维网缓存又称为Web缓存，可位于客户机，也可位于中间系统上，位于中间系统上的Web缓存又称为代理服务器。</li>
 </ul>
-]]></content>
-      <tags>
-        <tag>计算机基础</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-</search>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"><i class="fa fa-tag"></i> 计算机基础</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/18/Linux%E6%8C%87%E4%BB%A4%E5%85%A5%E9%97%A8/" rel="prev" title="Lunix指令入门">
+      <i class="fa fa-chevron-left"></i> Lunix指令入门
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9C%A8%E4%BF%A1%E6%81%AF%E6%97%B6%E4%BB%A3%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">计算机网络在信息时代的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.</span> <span class="nav-text">因特网概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">三种交换方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">计算机网络的定义和分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="nav-number">1.5.</span> <span class="nav-text">计算机网络的性能指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.</span> <span class="nav-text">计算机网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.1.</span> <span class="nav-text">常见的计算机网络体系结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E5%B1%82%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="nav-number">1.6.2.</span> <span class="nav-text">计算机网络体系结构分层的必要性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E4%B8%93%E7%94%A8%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.6.3.</span> <span class="nav-text">计算机网络体系结构中的专用术语</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">物理层的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BD%93"><span class="nav-number">2.1.1.</span> <span class="nav-text">传输媒体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.1.2.</span> <span class="nav-text">物理层协议的主要任务</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="nav-number">2.2.</span> <span class="nav-text">编码与调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%BC%96%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">常用编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">基本调制方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E8%B0%83%E5%88%B6"><span class="nav-number">2.5.</span> <span class="nav-text">混合调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E9%81%93%E7%9A%84%E6%9E%81%E9%99%90%E5%AE%B9%E9%87%8F"><span class="nav-number">2.6.</span> <span class="nav-text">信道的极限容量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">3.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">数据链路层概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E7%9A%84%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.1.</span> <span class="nav-text">数据链路层的三个重要问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B9%BF%E6%92%AD%E4%BF%A1%E9%81%93%E7%9A%84%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">3.1.2.</span> <span class="nav-text">使用广播信道的数据链路层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E7%9A%84%E4%BA%92%E8%BF%9E%E8%AE%BE%E5%A4%87"><span class="nav-number">3.1.3.</span> <span class="nav-text">数据链路层的互连设备</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7"><span class="nav-number">3.2.</span> <span class="nav-text">封装成帧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-number">3.3.</span> <span class="nav-text">差错检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">3.4.</span> <span class="nav-text">可靠传输的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%93%E5%81%9C%E6%AD%A2-%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AESW%EF%BC%88Stop-and-Wait%EF%BC%89"><span class="nav-number">3.4.1.</span> <span class="nav-text">可靠传输实现机制–停止-等待协议SW（Stop-and-Wait）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%93%E5%9B%9E%E9%80%80N%E5%B8%A7%E5%8D%8F%E8%AE%AEGBN%EF%BC%88Go-Back-N%EF%BC%89"><span class="nav-number">3.4.2.</span> <span class="nav-text">可靠传输实现机制–回退N帧协议GBN（Go-Back-N）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E2%80%93%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AESR%EF%BC%88Selective-Request%EF%BC%89"><span class="nav-number">3.4.3.</span> <span class="nav-text">可靠传输的实现机制–选择重传协议SR（Selective Request）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AEPPP"><span class="nav-number">3.5.</span> <span class="nav-text">点对点协议PPP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E7%9A%84%E6%8E%A7%E5%88%B6"><span class="nav-number">3.6.</span> <span class="nav-text">媒体接入的控制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E7%9A%84%E6%8E%A7%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">3.6.1.</span> <span class="nav-text">媒体接入的控制的基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E6%8E%A7%E5%88%B6%E2%80%93%E9%9D%99%E6%80%81%E5%88%92%E5%88%86%E4%BF%A1%E9%81%93"><span class="nav-number">3.6.2.</span> <span class="nav-text">媒体接入控制–静态划分信道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E6%8E%A7%E5%88%B6%E2%80%93%E5%8A%A8%E6%80%81%E6%8E%A5%E5%85%A5%E6%8E%A7%E5%88%B6%E2%80%93%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5"><span class="nav-number">3.6.3.</span> <span class="nav-text">媒体接入控制–动态接入控制–随机接入</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BD%BD%E6%B3%A2%E7%9B%91%E5%90%AC%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5-%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B-CSMA-CD%E5%8D%8F%E8%AE%AE-Carrier-Sense-Multiple-Access-Collision-Detection"><span class="nav-number">3.6.3.1.</span> <span class="nav-text">载波监听多址接入&#x2F;碰撞检测 CSMA&#x2F;CD协议(Carrier Sense Multiple Access&#x2F;Collision Detection)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BD%BD%E6%B3%A2%E7%9B%91%E5%90%AC%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5-CSMA-CA-%E5%8D%8F%E8%AE%AE-Carrier-Sense-Multiple-Access-Collision-Avoidance"><span class="nav-number">3.6.3.2.</span> <span class="nav-text">载波监听多址接入&#x2F;CSMA&#x2F;CA 协议(Carrier Sense Multiple Access&#x2F;Collision Avoidance)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80%E3%80%81IP%E5%9C%B0%E5%9D%80%E4%BB%A5%E5%8F%8AARP%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.7.</span> <span class="nav-text">MAC地址、IP地址以及ARP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80"><span class="nav-number">3.7.1.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="nav-number">3.7.2.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.7.3.</span> <span class="nav-text">ARP协议</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E7%BA%BF%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.8.</span> <span class="nav-text">集线器与交换机的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%87%AA%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AC%E5%8F%91%E7%9C%9F%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">3.8.1.</span> <span class="nav-text">以太网交换机自学习和转发真的流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP"><span class="nav-number">3.8.2.</span> <span class="nav-text">以太网交换机的生成树协议STP</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91VLAN%E6%A6%82%E8%BF%B0"><span class="nav-number">3.9.</span> <span class="nav-text">虚拟局域网VLAN概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91-VLAN%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-number">3.10.</span> <span class="nav-text">虚拟局域网 VLAN的实现机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">4.</span> <span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">网络层概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8F%90%E4%BE%9B%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.2.</span> <span class="nav-text">网络层提供的两种服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80-1"><span class="nav-number">4.3.</span> <span class="nav-text">IP地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv4%E5%9C%B0%E5%9D%80%E6%A6%82%E8%BF%B0"><span class="nav-number">4.3.1.</span> <span class="nav-text">IPv4地址概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="nav-number">4.3.2.</span> <span class="nav-text">分类编址的IPv4地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="nav-number">4.3.3.</span> <span class="nav-text">划分子网的IPv4地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%88%B6%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="nav-number">4.3.4.</span> <span class="nav-text">无分类编制的IPv4地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv4%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BA%94%E7%94%A8%E8%A7%84%E5%88%92"><span class="nav-number">4.3.5.</span> <span class="nav-text">IPv4地址的应用规划</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E8%BD%AC%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="nav-number">4.4.</span> <span class="nav-text">IP数据报的发送和转发过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%85%B6%E5%8F%AF%E8%83%BD%E4%BA%A7%E7%94%9F%E7%9A%84%E8%B7%AF%E7%94%B1%E7%8E%AF%E8%B7%AF%E9%97%AE%E9%A2%98"><span class="nav-number">4.5.</span> <span class="nav-text">静态路由配置及其可能产生的路由环路问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-number">4.6.</span> <span class="nav-text">路由选择协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0"><span class="nav-number">4.6.1.</span> <span class="nav-text">路由选择协议概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF%E5%8D%8F%E8%AE%AERIP%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.6.2.</span> <span class="nav-text">路由信息协议RIP的基本工作原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E6%9C%89%E9%99%90OSPF%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.6.3.</span> <span class="nav-text">开放最短路径有限OSPF的基本工作原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AEBGP%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.6.4.</span> <span class="nav-text">边界网关协议BGP的基本工作原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv4%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.7.</span> <span class="nav-text">IPv4数据报的首部格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E9%99%85%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AEICMP"><span class="nav-number">4.8.</span> <span class="nav-text">网际控制报文协议ICMP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E4%B8%93%E7%94%A8%E7%BD%91VPN%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2NAT"><span class="nav-number">4.9.</span> <span class="nav-text">虚拟专用网VPN与网络地址转换NAT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82"><span class="nav-number">5.</span> <span class="nav-text">运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">5.1.</span> <span class="nav-text">运输层概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82%E7%AB%AF%E5%8F%A3%E5%8F%B7%E3%80%81%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%88%86%E7%94%A8%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">5.2.</span> <span class="nav-text">运输层端口号、复用与分用的概念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP%E5%92%8CTCP%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">6.</span> <span class="nav-text">UDP和TCP的对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-number">6.1.</span> <span class="nav-text">TCP的流量控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">6.2.</span> <span class="nav-text">TCP的拥塞控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E6%97%B6%E9%97%B4%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">6.3.</span> <span class="nav-text">TCP超时重传时间的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.4.</span> <span class="nav-text">TCP可靠传输的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP%E7%9A%84%E8%BF%90%E8%BE%93%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86-TCP%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B"><span class="nav-number">6.4.1.</span> <span class="nav-text">TCP的运输连接管理-TCP的连接建立</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP%E7%9A%84%E8%BF%90%E8%BE%93%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86%E2%80%93TCP%E7%9A%84%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE"><span class="nav-number">6.4.2.</span> <span class="nav-text">TCP的运输连接管理–TCP的连接释放</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%9A%84%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F"><span class="nav-number">6.5.</span> <span class="nav-text">TCP报文段的首部格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">7.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">7.1.</span> <span class="nav-text">应用层概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%B9%E5%BC%8F%EF%BC%88C-S%E6%96%B9%E5%BC%8F%EF%BC%89%E5%92%8C%E5%AF%B9%E7%AD%89%E6%96%B9%E5%BC%8F%EF%BC%88P2P%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-number">7.2.</span> <span class="nav-text">客户&#x2F;服务器方式（C&#x2F;S方式）和对等方式（P2P方式）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AEDHCP"><span class="nav-number">7.3.</span> <span class="nav-text">动态主机配置协议DHCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9FDNS%EF%BC%88Domain-Name-System%EF%BC%89"><span class="nav-number">7.4.</span> <span class="nav-text">域名系统DNS（Domain Name System）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%BC%A0%E9%80%81%E5%8D%8F%E8%AE%AEFTP"><span class="nav-number">7.5.</span> <span class="nav-text">文件传送协议FTP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="nav-number">7.6.</span> <span class="nav-text">电子邮件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%87%E7%BB%B4%E7%BD%91"><span class="nav-number">7.7.</span> <span class="nav-text">万维网</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cheen Xuan"
+      src="/images/header_icon.jpeg">
+  <p class="site-author-name" itemprop="name">Cheen Xuan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cheenxuan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cheenxuan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cheen Xuan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">53k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">48 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cheenxuan.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://example.com/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/";
+    this.page.identifier = "2022/03/29/计算机网络-学习笔记/";
+    this.page.title = "计算机网络-学习笔记";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://cheenxuan.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+  
+
+</body>
+</html>
